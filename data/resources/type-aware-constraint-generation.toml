@@ -1,0 +1,8 @@
+title = "Type-Aware Constraint Generation for LLM Code Synthesis"
+authors = "Niels Mündler, Naman Antonov, Martin Vechev"
+year = 2025
+kind = "paper"
+venue = "SRI Lab, ETH Zürich"
+url = "https://www.sri.inf.ethz.ch/publications"
+subjects = ["cs/constrained-generation", "cs/type-theory", "ml/llm"]
+blurb = "Constraints that carry typing, not just syntax. One step short of the move P7 makes — we collaborate with Niels on this."

@@ -1,0 +1,8 @@
+title = "Functional Programming with Bananas, Lenses, Envelopes and Barbed Wire"
+authors = "Erik Meijer, Maarten Fokkinga, Ross Paterson"
+year = 1991
+kind = "paper"
+venue = "FPCA '91"
+url = "https://research.utwente.nl/files/6142049/db-utwente-40501F46.pdf"
+subjects = ["cs/program-synthesis", "math/category-theory"]
+blurb = "Catamorphisms, anamorphisms, and the recursion schemes behind any honest data pipeline. The reason load_data_dir is a fold, not a loop."

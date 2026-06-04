@@ -1,0 +1,11 @@
+---
+title: Why regex sampling isn't enough
+date: 2026-05-28
+subjects: [cs/constrained-generation, ml/llm]
+resources: [efficient-guided-generation, type-aware-constraint-generation]
+status: growing
+---
+
+Outlines-style FSM masking is real and it works — but it only enforces *grammar*. A grammatically perfect, well-formed term can still be a type error, or a dead-end proof branch (Wittgenstein's *sinnlos*).
+
+Mündler et al. push the constraint into the type system. P7 pushes one step further, into proof obligations. Same idea, escalating in strength.

@@ -1,0 +1,191 @@
+<?style?>
+.aufbau-section { padding-top: 2rem; }
+.aufbau {
+    max-width: 80rem;
+    margin: 0 auto;
+}
+.aufbau-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    font-weight: 700;
+}
+.aufbau-name {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    line-height: 1;
+    margin: 0.5rem 0 0.5rem;
+    letter-spacing: 0.02em;
+}
+.aufbau-tag {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin: 0 0 2.5rem;
+    max-width: 40rem;
+}
+.aufbau-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: start;
+}
+.aufbau-prose p {
+    color: var(--text-default);
+    line-height: 1.75;
+    margin: 0 0 1.1rem;
+}
+.aufbau-prose .highlight { color: var(--accent); font-weight: 600; }
+.aufbau-prose strong { color: var(--text-heading); }
+.aufbau-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 1.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+}
+.aufbau-links a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+}
+.aufbau-links a:hover { border-bottom-color: var(--accent); }
+.aufbau-links .meta { color: var(--text-muted); }
+.aufbau-code {
+    background: #111827;
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    overflow-x: auto;
+}
+.aufbau-code pre { margin: 0; }
+.aufbau-code code {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: #e5e7eb;
+    white-space: pre;
+}
+.aufbau-code .c { color: #6b7280; }
+.aufbau-code .k { color: #c4b5fd; }
+.aufbau-install {
+    margin-top: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+@media (max-width: 860px) {
+    .aufbau-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .aufbau-name { font-size: 2.25rem; }
+}
+<?/style?>
+
+<?use id="hero-cmp"?>
+    <?label?>Dynamic Formal Systems<?/label?>
+    <?title?>Constraint as <span class="highlight">construction</span><?/title?>
+    <?description?>The DFS lab builds the formal core behind everything we do: proof systems, strong normalization, applied type theory, and the engines that turn a typed grammar into a guarantee.<?/description?>
+</?use?>
+
+<section class="section aufbau-section">
+    <div class="aufbau">
+        <p class="aufbau-eyebrow">The lab's flagship engine</p>
+        <h2 class="aufbau-name">AUFBAU</h2>
+        <p class="aufbau-tag">A typed prefix-parsing engine for constrained decoding.</p>
+
+        <div class="aufbau-grid">
+            <div class="aufbau-prose">
+                <p>The name is borrowed from Carnap's <em>Der logische Aufbau der Welt</em> — the wager that a whole world can be built up from a small set of construction rules. AUFBAU does the same for generation: from a typed grammar it constructs, token by token, only the continuations that keep a partial syntax tree <span class="highlight">well-formed and well-typed</span>.</p>
+                <p>It works on prefixes. A <strong>Regex</strong> layer matches patterns and takes their derivatives to classify any partial string — already complete, still extensible, or a dead end (<strong>PrefixStatus</strong>). A <strong>Synthesizer</strong> lifts that to whole programs: it parses the input so far into a partial AST, asks the typing rules which constructors may come next, and exposes exactly that set as the legal tokens.</p>
+                <p>That set of legal moves is what we hand to a language model. The model keeps its judgement — <em>which</em> valid move is interesting — while AUFBAU guarantees the move is valid at all. It is the engine underneath <strong>Proposition 7</strong>, our system-agnostic constrained-generation interface.</p>
+                <div class="aufbau-links">
+                    <a href="https://github.com/Unsuspicious-Industries/aufbau" target="_blank" rel="noopener">GitHub →</a>
+                    <span class="meta">Rust core · Python bindings (PyO3) · MIT</span>
+                </div>
+            </div>
+
+            <div>
+                <div class="aufbau-code"><pre><code><span class="k">from</span> aufbau <span class="k">import</span> Synthesizer
+
+syn = Synthesizer(grammar, max_depth=32)
+syn.set_input(prompt)
+
+<span class="k">while not</span> syn.is_complete():
+    valid = syn.tokens()        <span class="c"># moves that keep</span>
+                                <span class="c"># the AST well-typed</span>
+    token = model.choose(valid) <span class="c"># LLM picks a move</span>
+    syn.feed(token)
+
+tree = syn.ast()                <span class="c"># well-formed</span></code></pre></div>
+                <p class="aufbau-install">Build from source — <code>cargo build --features python-ffi</code>, then <code>maturin develop</code>. Early and moving fast; no tagged release yet.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<?use id="section-cmp"?>
+    <?block slot="content"?>
+        <?use id="section-header"?>
+            <?label?>Research Focus<?/label?>
+            <?title?>What the lab works on<?/title?>
+            <?subtitle?>The formal questions that AUFBAU and Proposition 7 are built to answer.<?/subtitle?>
+        </?use?>
+        <?use id="card-grid"?>
+            <?block slot="content"?>
+                <?use id="card-cmp"?>
+                    <?glyph?>⊢<?/glyph?>
+                    <?title?>Constrained generation<?/title?>
+                    <?text?>Decoding that can only ever emit formally valid output. The model proposes; the type system disposes.<?/text?>
+                </?use?>
+                <?use id="card-cmp"?>
+                    <?glyph?>λ<?/glyph?>
+                    <?title?>Type theory & proof systems<?/title?>
+                    <?text?>Programs are proofs. We build the introduction and elimination rules that make a generated term mean something.<?/text?>
+                </?use?>
+                <?use id="card-cmp"?>
+                    <?glyph?>↓<?/glyph?>
+                    <?title?>Strong normalization<?/title?>
+                    <?text?>Guaranteeing that the systems we generate into actually terminate — that every reduction reaches a value.<?/text?>
+                </?use?>
+                <?use id="card-cmp"?>
+                    <?glyph?>⊨<?/glyph?>
+                    <?title?>Meta-typed grammars<?/title?>
+                    <?text?>A rule DSL — EBNF for syntax, natural deduction for typing — that is itself type-checked before it is ever run as a constraint.<?/text?>
+                </?use?>
+                <?use id="card-cmp"?>
+                    <?glyph?>∂<?/glyph?>
+                    <?title?>Regex derivatives<?/title?>
+                    <?text?>Brzozowski derivatives for prefix validation: decide in one step whether a partial string can still complete to a match.<?/text?>
+                </?use?>
+                <?use id="card-cmp"?>
+                    <?glyph?>≡<?/glyph?>
+                    <?title?>Benchmarks & reproducibility<?/title?>
+                    <?text?>Typed grammars for STLC, ML, and imperative fragments, with a benchmark runner that ships with its configs.<?/text?>
+                </?use?>
+            </?block?>
+        </?use?>
+    </?block?>
+</?use?>
+
+<?use id="stats-section"?>
+    <?label?>The lab, honestly<?/label?>
+    <?title?>Where things stand<?/title?>
+    <?block slot="content"?>
+        <?use id="stat-item"?><?number?>2<?/number?><?label?>Engines · AUFBAU & P7<?/label?></?use?>
+        <?use id="stat-item"?><?number?>STLC·ML<?/number?><?label?>Typed grammars, &amp; more<?/label?></?use?>
+        <?use id="stat-item"?><?number?>MIT<?/number?><?label?>Open from day one<?/label?></?use?>
+        <?use id="stat-item"?><?number?>ETHZ<?/number?><?label?>Research collaboration<?/label?></?use?>
+    </?block?>
+</?use?>
+
+<?use id="cta-section"?>
+    <?title?>Work on the formal core<?/title?>
+    <?subtitle?>We welcome researchers, contributors, and the formally curious.<?/subtitle?>
+    <?primary?>See the code<?/primary?>
+    <?primary-href?>https://github.com/Unsuspicious-Industries/aufbau<?/primary-href?>
+    <?secondary?>Talk to the lab<?/secondary?>
+    <?secondary-href?>/contact<?/secondary-href?>
+</?use?>

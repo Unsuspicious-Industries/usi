@@ -1,0 +1,8 @@
+title = "Tractatus Logico-Philosophicus"
+authors = "Ludwig Wittgenstein"
+year = 1921
+kind = "book"
+venue = "Kegan Paul"
+url = "https://www.gutenberg.org/ebooks/5740"
+subjects = ["philosophy/wittgenstein", "philosophy", "cs/logic"]
+blurb = "Proposition 7 names our constrained-generation system. The boundary between the sayable and the showable is, for us, the boundary between the formal layer and latent taste."

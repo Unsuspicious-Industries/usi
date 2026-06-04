@@ -1,0 +1,261 @@
+<?data from="data/resources" as="resources"?>
+<?sort over="resources" by="year" order="desc" as="resources"?>
+<?data from="data/notes" as="notes"?>
+<?sort over="notes" by="date" order="desc" as="notes"?>
+
+<?style?>
+.fn-section { padding-top: 1rem; padding-bottom: 6rem; }
+.fn-grid {
+    max-width: 84rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 20rem) minmax(0, 1fr) 13rem;
+    gap: 3rem;
+    align-items: start;
+}
+.fn-col-title {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    font-weight: 700;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+.fn-scroll { position: relative; }
+.fn-scroll::before,
+.fn-scroll::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0.75rem;
+    height: 2.75rem;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 1;
+}
+.fn-scroll::before { top: 0; background: linear-gradient(var(--bg-page), transparent); }
+.fn-scroll::after { bottom: 0; background: linear-gradient(transparent, var(--bg-page)); }
+.fn-scroll.more-above::before { opacity: 1; }
+.fn-scroll.more-below::after { opacity: 1; }
+.fn-list {
+    display: flex;
+    flex-direction: column;
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 0.75rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+}
+.fn-list::-webkit-scrollbar { width: 6px; }
+.fn-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+.is-hidden { display: none !important; }
+
+/* ---- resource rows ---- */
+.fn-resource {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border);
+    scroll-margin-top: 1rem;
+}
+.fn-resource:target {
+    background: var(--bg-section);
+    margin: 0 -1rem;
+    padding: 1.25rem 1rem;
+    border-radius: 4px;
+    border-bottom-color: transparent;
+    box-shadow: inset 3px 0 0 var(--accent);
+}
+.fn-resource-head { display: flex; gap: 0.6rem; align-items: baseline; }
+.fn-kind {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.15rem 0.45rem;
+    border-radius: 3px;
+    background: var(--bg-section);
+    color: var(--text-muted);
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+}
+.fn-kind-paper { color: var(--accent); border-color: var(--accent); }
+.fn-kind-book { color: var(--brand-accent-1); border-color: var(--brand-accent-1); }
+.fn-kind-link, .fn-kind-video { color: var(--brand-accent-2); border-color: var(--brand-accent-2); }
+.fn-resource-title {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    text-decoration: none;
+    line-height: 1.3;
+}
+.fn-resource-title:hover { color: var(--accent); text-decoration: underline; }
+.fn-resource-meta { font-size: 0.8125rem; color: var(--text-muted); margin: 0.4rem 0 0.5rem; }
+.fn-resource-blurb { font-size: 0.9rem; color: var(--text-default); line-height: 1.55; margin: 0 0 0.75rem; }
+
+/* ---- note cards ---- */
+.fn-note { padding: 1.5rem 0; border-bottom: 1px solid var(--border); }
+.fn-note-head { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.4rem; }
+.fn-note-date {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+}
+.fn-status {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+}
+.fn-status-evergreen { color: #15803d; border-color: #15803d; }
+.fn-status-growing { color: var(--brand-accent-2); border-color: var(--brand-accent-2); }
+.fn-status-WIP { color: var(--brand-accent-1); border-color: var(--brand-accent-1); }
+.fn-note-title {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    line-height: 1.25;
+    margin: 0 0 0.6rem;
+}
+.fn-note-body { color: var(--text-default); line-height: 1.7; font-size: 1rem; }
+.fn-note-body p { margin: 0 0 0.75rem; }
+.fn-note-body p:last-child { margin-bottom: 0; }
+.fn-note-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: 1rem; }
+
+/* ---- tags + refs ---- */
+.fn-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.fn-tag {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: color 0.12s ease;
+}
+.fn-tag::before { content: '#'; opacity: 0.5; }
+.fn-tag:hover { color: var(--accent); }
+.fn-refs { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.fn-ref {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    background: var(--bg-section);
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    text-decoration: none;
+}
+.fn-ref:hover { color: var(--accent); }
+
+/* ---- topics rail ---- */
+.fn-topics { position: sticky; top: 5.5rem; }
+.fn-topics-list { display: flex; flex-direction: column; gap: 0.1rem; }
+.fn-topic {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    padding: 0.3rem 0.5rem;
+    border-radius: 4px;
+    text-align: left;
+    transition: background 0.12s ease, color 0.12s ease;
+}
+.fn-topic:hover { background: var(--bg-section); color: var(--accent); }
+.fn-topic.is-active { background: var(--accent); color: #fff; }
+.fn-topic.is-active .fn-topic-count { color: rgba(255,255,255,0.7); }
+.fn-topic-all { font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.25rem; }
+.fn-topic-count { font-size: 0.7rem; color: var(--text-muted); opacity: 0.7; }
+
+.fn-empty { color: var(--text-muted); font-style: italic; padding: 2rem 0; }
+
+@media (max-width: 1024px) {
+    .fn-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .fn-topics { grid-column: 1 / -1; position: static; }
+    .fn-topics-list { flex-direction: row; flex-wrap: wrap; }
+    .fn-topic { width: auto; }
+}
+@media (max-width: 720px) {
+    .fn-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .fn-list { max-height: none; overflow: visible; padding-right: 0; }
+}
+<?/style?>
+
+<?use id="hero-cmp"?>
+    <?label?>Field Notes<?/label?>
+    <?title?>Reading &amp; <span class="highlight">Marginalia</span><?/title?>
+    <?description?>Resources we keep returning to, and the notes we leave in the margins. Pick a topic to filter everything; each note points back to what it is reading.<?/description?>
+</?use?>
+
+<section class="section fn-section">
+    <div class="fn-grid">
+        <div class="fn-col fn-col-resources">
+            <h2 class="fn-col-title">Resources</h2>
+            <div class="fn-scroll">
+            <div class="fn-list" id="fn-resources">
+                <?map over="resources" as="resource"?>
+                <article class="fn-resource" id="r-$resource.slug">
+                    <div class="fn-resource-head">
+                        <span class="fn-kind fn-kind-$resource.kind">$resource.kind</span>
+                        <a class="fn-resource-title" href="$resource.url" target="_blank" rel="noopener">$resource.title</a>
+                    </div>
+                    <p class="fn-resource-meta">$resource.authors · $resource.year · $resource.venue</p>
+                    <p class="fn-resource-blurb">$resource.blurb</p>
+                    <div class="fn-tags">
+                        <?map over="resource.subjects" as="s"?><span class="fn-tag" data-s="$s">$s</span><?/map?>
+                    </div>
+                </article>
+                <?/map?>
+            </div>
+            </div>
+        </div>
+
+        <div class="fn-col fn-col-notes">
+            <h2 class="fn-col-title">Notes</h2>
+            <div class="fn-scroll">
+            <div class="fn-list" id="fn-notes">
+                <?map over="notes" as="note"?>
+                <article class="fn-note">
+                    <header class="fn-note-head">
+                        <time class="fn-note-date">$note.date</time>
+                        <?if cond="$note.status"?><span class="fn-status fn-status-$note.status">$note.status</span><?/if?>
+                    </header>
+                    <h3 class="fn-note-title">$note.title</h3>
+                    <div class="fn-note-body">$note.body</div>
+                    <footer class="fn-note-foot">
+                        <div class="fn-tags">
+                            <?map over="note.subjects" as="s"?><span class="fn-tag" data-s="$s">$s</span><?/map?>
+                        </div>
+                        <div class="fn-refs">
+                            <?map over="note.resources" as="rs"?><a class="fn-ref" href="#r-$rs">↳ $rs</a><?/map?>
+                        </div>
+                    </footer>
+                </article>
+                <?/map?>
+                <p class="fn-empty" id="fn-empty" hidden>Nothing under this topic yet.</p>
+            </div>
+            </div>
+        </div>
+
+        <aside class="fn-col fn-topics">
+            <h2 class="fn-col-title">Topics</h2>
+            <div class="fn-topics-list" id="fn-topics-list"></div>
+        </aside>
+    </div>
+</section>
+
+<script src="/static/js/notes.js" defer></script>

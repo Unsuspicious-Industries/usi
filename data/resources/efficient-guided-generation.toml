@@ -1,0 +1,8 @@
+title = "Efficient Guided Generation for Large Language Models"
+authors = "Brandon T. Willard, Rémi Louf"
+year = 2023
+kind = "paper"
+venue = "arXiv:2307.09702"
+url = "https://arxiv.org/abs/2307.09702"
+subjects = ["cs/constrained-generation", "ml/llm"]
+blurb = "The Outlines approach: compile a regex/CFG to a finite-state machine and mask logits. Solves grammar — but never touches logic. The point P7 departs from."

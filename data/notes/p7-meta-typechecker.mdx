@@ -1,0 +1,11 @@
+---
+title: P7 meta-typechecker accepts its first rule file
+date: 2026-06-01
+subjects: [p7/progress, cs/constrained-generation]
+resources: [type-aware-constraint-generation]
+status: WIP
+---
+
+Milestone: the meta-checker now type-checks a rule file *before* admitting it as a constraint engine, then simulates (not executes) its inference rules to emit completions. The STLC rule file passes end-to-end.
+
+Next: variable shadowing + mutability rules, so we can constrain beyond the pure-functional fragment.
