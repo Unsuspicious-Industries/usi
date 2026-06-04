@@ -177,7 +177,7 @@ tree = syn.ast()                <span class="c"># well-formed</span></code></pre
         <?use id="stat-item"?><?number?>2<?/number?><?label?>Engines · AUFBAU & P7<?/label?></?use?>
         <?use id="stat-item"?><?number?>STLC·ML<?/number?><?label?>Typed grammars, &amp; more<?/label?></?use?>
         <?use id="stat-item"?><?number?>MIT<?/number?><?label?>Open from day one<?/label?></?use?>
-        <?use id="stat-item"?><?number?>ETHZ<?/number?><?label?>Research collaboration<?/label?></?use?>
+        <?use id="stat-item"?><?number?>Rust<?/number?><?label?>Core · Python bindings<?/label?></?use?>
     </?block?>
 </?use?>
 

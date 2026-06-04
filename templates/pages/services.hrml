@@ -1,14 +1,14 @@
 <?use id="hero-cmp"?>
     <?label?>Services<?/label?>
-    <?title?>Expert Consultation & Development<?/title?>
-    <?description?>We provide specialized consulting services in formal methods, type theory, and advanced software engineering.<?/description?>
+    <?title?>Consulting & Collaboration<?/title?>
+    <?description?>We bring formal rigour and deep technical expertise to companies, institutions, and cultural projects — across any industry.<?/description?>
 </?use?>
 
 <?use id="section-cmp"?>
     <?block slot="content"?>
         <?use id="section-header"?>
-            <?title?>What We Offer<?/title?>
-            <?subtitle?>Specialized expertise for complex problems<?/subtitle?>
+            <?title?>What we offer<?/title?>
+            <?subtitle?>Specialized expertise for complex problems.<?/subtitle?>
         </?use?>
         <?use id="card-grid"?>
             <?block slot="content"?>
@@ -16,13 +16,13 @@
                     <?href?>/contact<?/href?>
                     <?icon?>brain<?/icon?>
                     <?title?>Consulting<?/title?>
-                    <?text?>Pretty much anything involving logic, systems, and code. We bring deep expertise in formal methods, type theory, compiler design, distributed architectures, and whatever else your stack throws at us.<?/text?>
+                    <?text?>Pretty much anything involving logic, systems, and code — for any industry. Formal methods, type theory, compiler design, ML infrastructure, distributed architectures, and whatever else your stack throws at us.<?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
                     <?href?>/contact<?/href?>
                     <?icon?>flask<?/icon?>
-                    <?title?>Research Collaboration<?/title?>
-                    <?text?>Collaborative research with academic and industry partners. We co-design experiments, co-author papers, and bring formal rigour to open problems in computer science and beyond.<?/text?>
+                    <?title?>Institutional collaboration<?/title?>
+                    <?text?>Co-research and co-development with universities, labs, and cultural institutions. We co-design experiments, co-author papers, and build the tooling around hard problems.<?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
                     <?href?>/contact<?/href?>
@@ -35,20 +35,55 @@
     </?block?>
 </?use?>
 
-<?use id="stats-section"?>
-    <?label?>No inflated numbers<?/label?>
-    <?title?>How we actually work<?/title?>
+<?use id="section-cmp"?>
     <?block slot="content"?>
-        <?use id="stat-item"?><?number?>Open<?/number?><?label?>Source by default · MIT<?/label?></?use?>
-        <?use id="stat-item"?><?number?>6<?/number?><?label?>Tools released publicly<?/label?></?use?>
-        <?use id="stat-item"?><?number?>ETHZ<?/number?><?label?>Research collaboration<?/label?></?use?>
-        <?use id="stat-item"?><?number?>Direct<?/number?><?label?>You talk to the people doing the work<?/label?></?use?>
+        <?use id="section-header"?>
+            <?label?>Selected work<?/label?>
+            <?title?>Some things we've done<?/title?>
+        </?use?>
+        <?use id="card-grid"?>
+            <?cols?>2<?/cols?>
+            <?block slot="content"?>
+                <?use id="card-cmp"?>
+                    <?icon?>palette<?/icon?>
+                    <?title?>SCHIRN Kunsthalle, Frankfurt<?/title?>
+                    <?text?>Development work for an exhibition at the SCHIRN, built on our <strong>SLOP</strong> infrastructure — probing the latent biases and imagery of diffusion models.<?/text?>
+                </?use?>
+                <?use id="card-cmp"?>
+                    <?icon?>chart-line<?/icon?>
+                    <?title?>Mediapart<?/title?>
+                    <?text?>Technical consulting for Mediapart, the independent French investigative newspaper.<?/text?>
+                </?use?>
+            </?block?>
+        </?use?>
+    </?block?>
+</?use?>
+
+<?use id="section-cmp"?>
+    <?block slot="content"?>
+        <?use id="card-grid"?>
+            <?cols?>2<?/cols?>
+            <?block slot="content"?>
+                <?use id="card-cmp"?>
+                    <?href?>/contact<?/href?>
+                    <?icon?>users<?/icon?>
+                    <?title?>We take interns<?/title?>
+                    <?text?>If you want to do serious work in formal methods, ML, or systems — and you don't mind weird constraints — write to us.<?/text?>
+                </?use?>
+                <?use id="card-cmp"?>
+                    <?href?>https://github.com/Unsuspicious-Industries<?/href?>
+                    <?icon?>code<?/icon?>
+                    <?title?>We contribute to open source<?/title?>
+                    <?text?>We give back to the open-source projects we build on, and release our own work under MIT.<?/text?>
+                </?use?>
+            </?block?>
+        </?use?>
     </?block?>
 </?use?>
 
 <?use id="cta-section"?>
-    <?title?>Get a Quote<?/title?>
-    <?subtitle?>Let's discuss your project<?/subtitle?>
+    <?title?>Get in touch<?/title?>
+    <?subtitle?>Tell us about your project, your institution, or your idea.<?/subtitle?>
     <?primary?>Contact Us<?/primary?>
     <?primary-href?>/contact<?/primary-href?>
 </?use?>
