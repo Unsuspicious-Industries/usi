@@ -1,8 +1,0 @@
-title = "Propositions as Types"
-authors = "Philip Wadler"
-year = 2015
-kind = "paper"
-venue = "Communications of the ACM"
-url = "https://homepages.inf.ed.ac.uk/wadler/papers/propositions-as-types/propositions-as-types.pdf"
-subjects = ["cs/type-theory", "cs/logic", "philosophy"]
-blurb = "The clearest exposition of the Curry-Howard correspondence: programs are proofs, types are propositions. The conceptual spine of everything the DFS lab does."

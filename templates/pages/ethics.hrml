@@ -1,8 +1,12 @@
 
 <?style?>
-.ethics-body .prose-shell,
-.ethics-body .prose-shell p {
-    font-family: var(--font-typewriter);
+.prose-shell,
+.prose-shell p,
+.prose-shell h1,
+.prose-shell h2,
+.prose-shell h3,
+.prose-shell h4 {
+    font-family: var(--font-typewriter) !important;
 }
 <?/style?>
 
@@ -12,18 +16,22 @@
     <?description?>How Unsuspicious Industries tries to keep weird research answerable to something larger than itself.<?/description?>
     <?meta?>Last updated · 2025-04-08<?/meta?>
     <?block slot="content"?>
-        <h2>Our ethics research division</h2>
-        <p>Unsuspicious Industries is committed to upholding the latest discoveries in ethics and ensuring that our practices remain aligned with the best available methods in philosophical inquiry, systems design, and institutional accountability.</p>
-        <p>We maintain a dedicated ethics division to discover new moral constraints and pressure-test our research agenda against them. We use philosophy, technical audits, public argument, and occasionally embarrassing levels of debate to keep that work alive.</p>
+        <p>Unsuspicious Industries is committed to upholding the latest discoveries in ethics and ensuring that all our practices align with the most recent technology in ethics research.</p>
 
-        <h2>Ethical decision-making</h2>
-        <p>We encourage a culture where ethical dilemmas are not hidden under implementation details. Staff are expected to surface concerns early, argue clearly, and propose alternatives that could survive contact with the real world.</p>
+        <h2>Our Ethics research Division</h2>
+        <p>In order to maximize our moral value, we have established a dedicated Ethics research division. The goal of this division is to discover new moral laws and ensure our practices align with their findings. We employ the most advanced technology, including cutting-edge philosophy, AI-assisted reasoning, polls, twitter threads, and more, to ensure our ethical standards are always up-to-date.</p>
 
-        <h2>Reporting concerns</h2>
-        <p>If you believe our standards have been compromised, or simply gone stale, write to <a href="mailto:contact@unsuspicious.org">contact@unsuspicious.org</a>. We are committed to investigating serious concerns promptly and revising our operating assumptions when needed.</p>
+        <h2>Ethical Decision-Making</h2>
+        <p>We encourage a culture of ethical decision-making, where employees can launch debates on ethical dilemmas and explore new moral paths.</p>
 
-        <h2>Continuous improvement</h2>
-        <p>We treat ethics as an evolving research program rather than a static compliance checklist. That means continuously revisiting inherited frameworks, incorporating diverse perspectives, and updating our constraints when reality demands it.</p>
+        <h2>Reporting Violations</h2>
+        <p>If you believe that our ethical standards have been compromised, or aren't up to date, we encourage you to report your concerns to us. We are committed to investigating all reports promptly and taking appropriate action.</p>
+
+        <h2>Continuous Improvement</h2>
+        <p>We are dedicated to continuously reviewing and improving our ethics policy and practices to ensure they remain relevant and effective. We actively try to get out of the hegemonic frameworks of traditional ethics by incorporating diverse perspectives and methodologies.</p>
+
+        <h2>Contact Us</h2>
+        <p>If you have any questions or concerns about our Ethics Policy, please contact us at <a href="mailto:contact@unsuspicious.org">contact@unsuspicious.org</a>.</p>
     <?/block?>
 </?use?>
 
@@ -36,7 +44,7 @@
         Est-ce que comme on le dit beauccoup que vous pensez trop à vous ? 
         Ou n'est-ce pas plutôt qu'a votre insu vous pensez trop aux autres ? 
         Peut-être sentez vous confusément que votre sort est lié à celui des autres,
-        que le bonheur et le malheur sont deux sociétés secrètes, si sécrètes que vous y êtes affilié sans le savoir, 
+        que le bonheur et le malheur sont deux sociétés secrètes, si secrètes que vous y êtes affilié sans le savoir, 
         et que sans l'entendre vous abritez cette voix qui dit :
             Tant que la misère existe, vous n'êtes pas riches.
             Tant que la détresse existe, vous n'êtes pas heureux.

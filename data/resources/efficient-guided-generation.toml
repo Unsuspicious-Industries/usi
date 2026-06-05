@@ -5,4 +5,4 @@ kind = "paper"
 venue = "arXiv:2307.09702"
 url = "https://arxiv.org/abs/2307.09702"
 subjects = ["cs/constrained-generation", "ml/llm"]
-blurb = "The Outlines approach: compile a regex/CFG to a finite-state machine and mask logits. Solves grammar — but never touches logic. The point P7 departs from."
+blurb = "Encountering thid work was a an important moment. One of the inspiratoin for P7 and USI as a whole. The paper introduces a novel approach to constrained decoding (more efficient that naive parsers and earleys) and applies it to a variety of tasks, using a grammar agnostic core engine and loading grammars at runtime. This idea of system agnosticism is the core principle in AUFBAU/P7. "

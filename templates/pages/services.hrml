@@ -45,36 +45,14 @@
             <?cols?>2<?/cols?>
             <?block slot="content"?>
                 <?use id="card-cmp"?>
-                    <?icon?>palette<?/icon?>
+                    <?image?>/static/images/schirn.svg<?/image?>
                     <?title?>SCHIRN Kunsthalle, Frankfurt<?/title?>
                     <?text?>Development work for an exhibition at the SCHIRN, built on our <strong>SLOP</strong> infrastructure — probing the latent biases and imagery of diffusion models.<?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
-                    <?icon?>chart-line<?/icon?>
+                    <?image?>/static/images/mediapart.svg<?/image?>
                     <?title?>Mediapart<?/title?>
                     <?text?>Technical consulting for Mediapart, the independent French investigative newspaper.<?/text?>
-                </?use?>
-            </?block?>
-        </?use?>
-    </?block?>
-</?use?>
-
-<?use id="section-cmp"?>
-    <?block slot="content"?>
-        <?use id="card-grid"?>
-            <?cols?>2<?/cols?>
-            <?block slot="content"?>
-                <?use id="card-cmp"?>
-                    <?href?>/contact<?/href?>
-                    <?icon?>users<?/icon?>
-                    <?title?>We take interns<?/title?>
-                    <?text?>If you want to do serious work in formal methods, ML, or systems — and you don't mind weird constraints — write to us.<?/text?>
-                </?use?>
-                <?use id="card-cmp"?>
-                    <?href?>https://github.com/Unsuspicious-Industries<?/href?>
-                    <?icon?>code<?/icon?>
-                    <?title?>We contribute to open source<?/title?>
-                    <?text?>We give back to the open-source projects we build on, and release our own work under MIT.<?/text?>
                 </?use?>
             </?block?>
         </?use?>

@@ -2,8 +2,8 @@
 <?bind var="modifier"/?>
 <?style?>
 .section {
-    padding: 4rem 1.5rem;
-    max-width: 80rem;
+    padding: 4rem 2rem;
+    max-width: 90rem;
     margin: 0 auto;
 }
 <?/style?>

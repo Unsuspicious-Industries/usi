@@ -197,8 +197,8 @@
 
 <?use id="hero-cmp"?>
     <?label?>Field Notes<?/label?>
-    <?title?>Reading &amp; <span class="highlight">Marginalia</span><?/title?>
-    <?description?>Resources we keep returning to, and the notes we leave in the margins. Pick a topic to filter everything; each note points back to what it is reading.<?/description?>
+    <?title?>Readings &amp; <span class="highlight">Marginalia</span><?/title?>
+    <?description?>Resources we keep returning to, and the notes we leave in the margins. Filtered by topic. Sometimes a bit blurry.<?/description?>
 </?use?>
 
 <section class="section fn-section">
@@ -213,7 +213,7 @@
                         <span class="fn-kind fn-kind-$resource.kind">$resource.kind</span>
                         <a class="fn-resource-title" href="$resource.url" target="_blank" rel="noopener">$resource.title</a>
                     </div>
-                    <p class="fn-resource-meta">$resource.authors · $resource.year · $resource.venue</p>
+                    <p class="fn-resource-meta">$resource.authors · $resource.year<?if cond="$resource.venue"?> · $resource.venue<?/if?></p>
                     <p class="fn-resource-blurb">$resource.blurb</p>
                     <div class="fn-tags">
                         <?map over="resource.subjects" as="s"?><span class="fn-tag" data-s="$s">$s</span><?/map?>
@@ -246,7 +246,7 @@
                     </footer>
                 </article>
                 <?/map?>
-                <p class="fn-empty" id="fn-empty" hidden>Nothing under this topic yet.</p>
+                <p class="fn-empty" id="fn-empty" hidden>Nothing to see.</p>
             </div>
             </div>
         </div>

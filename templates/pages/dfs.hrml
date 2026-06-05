@@ -59,16 +59,18 @@
 .aufbau-code {
     background: #111827;
     border-radius: 6px;
-    padding: 1.25rem 1.5rem;
+    padding: 1.2rem 1.5rem;
     overflow-x: auto;
 }
 .aufbau-code pre { margin: 0; }
 .aufbau-code code {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     line-height: 1.7;
     color: #e5e7eb;
     white-space: pre;
+    background: transparent;
+    padding: 0;
 }
 .aufbau-code .c { color: #6b7280; }
 .aufbau-code .k { color: #c4b5fd; }
@@ -87,7 +89,7 @@
 <?use id="hero-cmp"?>
     <?label?>Dynamic Formal Systems<?/label?>
     <?title?>Constraint as <span class="highlight">construction</span><?/title?>
-    <?description?>The DFS lab builds the formal core behind everything we do: proof systems, strong normalization, applied type theory, and the engines that turn a typed grammar into a guarantee.<?/description?>
+    <?description?>The DFS lab is the main research division at Unusupicious. We bridge formal constructions of the world and the concrete state of affairs. Trying to close the gap between logic and the unsayable. <?/description?>
 </?use?>
 
 <section class="section aufbau-section">
@@ -98,29 +100,43 @@
 
         <div class="aufbau-grid">
             <div class="aufbau-prose">
-                <p>The name is borrowed from Carnap's <em>Der logische Aufbau der Welt</em> — the wager that a whole world can be built up from a small set of construction rules. AUFBAU does the same for generation: from a typed grammar it constructs, token by token, only the continuations that keep a partial syntax tree <span class="highlight">well-formed and well-typed</span>.</p>
-                <p>It works on prefixes. A <strong>Regex</strong> layer matches patterns and takes their derivatives to classify any partial string — already complete, still extensible, or a dead end (<strong>PrefixStatus</strong>). A <strong>Synthesizer</strong> lifts that to whole programs: it parses the input so far into a partial AST, asks the typing rules which constructors may come next, and exposes exactly that set as the legal tokens.</p>
-                <p>That set of legal moves is what we hand to a language model. The model keeps its judgement — <em>which</em> valid move is interesting — while AUFBAU guarantees the move is valid at all. It is the engine underneath <strong>Proposition 7</strong>, our system-agnostic constrained-generation interface.</p>
+                <p>The systems is named after Carnap's <em>Der logische Aufbau der Welt</em>. In the same way he tried to built the whole world on a rather small set of construction rules, AUFBAU makes the wager that LLMs guided by a correct-by-construction constraint layer.  From a dynamically loaded typed grammar it constructs, token by token, only the continuations that keep a partial syntax tree <span class="highlight">well-formed and well-typed</span>.</p>
+                <p>In the technical sense, its a prefix parser for a subset of attribute grammars. </p>
+                <p>The model interface lives in <strong>Proposition 7</strong>, where we use an <em> oracle </em> interface in the generation loop that allows us to verify if a token is a valid continuation of the current input. Validity is not only syntactic derivability but also semantic correctess.</p>
                 <div class="aufbau-links">
-                    <a href="https://github.com/Unsuspicious-Industries/aufbau" target="_blank" rel="noopener">GitHub →</a>
+                    <a href="https://github.com/Unsuspicious-Industries/aufbau" target="_blank" rel="noopener">GitHub</a>
+                    <a href="https://pypi.org/project/aufbau-rs" target="_blank" rel="noopener">PyPI</a>
                     <span class="meta">Rust core · Python bindings (PyO3) · MIT</span>
                 </div>
             </div>
 
             <div>
-                <div class="aufbau-code"><pre><code><span class="k">from</span> aufbau <span class="k">import</span> Synthesizer
+                <div class="aufbau-code"><pre>
+                <code>
 
-syn = Synthesizer(grammar, max_depth=32)
-syn.set_input(prompt)
+Variable(var) ::= Identifier[x]
+BaseType ::= Identifier | '(' Type ')'
+AtomicType ::= BaseType | '(' Type ')'
+FunctionType ::= AtomicType '->' Type
+Type ::= AtomicType | FunctionType
+Lambda(lambda) ::= 'λ' Identifier[a] ':' Type[τ] '.' Expression[e]
+AtomicExpression ::= Variable | '(' Expression ')' | Lambda
+Application(app) ::= Expression[l] AtomicExpression[r]
+Expression ::= AtomicExpression |  Application
 
-<span class="k">while not</span> syn.is_complete():
-    valid = syn.tokens()        <span class="c"># moves that keep</span>
-                                <span class="c"># the AST well-typed</span>
-    token = model.choose(valid) <span class="c"># LLM picks a move</span>
-    syn.feed(token)
+x ∈ Γ
+----------- (var)
+Γ(x)
 
-tree = syn.ast()                <span class="c"># well-formed</span></code></pre></div>
-                <p class="aufbau-install">Build from source — <code>cargo build --features python-ffi</code>, then <code>maturin develop</code>. Early and moving fast; no tagged release yet.</p>
+Γ[a:τ] ⊢ e : ?B
+--------------------------- (lambda)
+τ → ?B
+
+Γ ⊢ l : ?A → ?B, Γ ⊢ r : ?A
+--------------------------------- (app)
+?B
+                </code></pre></div>
+                <p class="aufbau-install">AUFBAU grammar file format. Install with <code>pip install aufbau-rs</code> and get started with your own grammar files.</p>
             </div>
         </div>
     </div>
@@ -138,22 +154,22 @@ tree = syn.ast()                <span class="c"># well-formed</span></code></pre
                 <?use id="card-cmp"?>
                     <?glyph?>⊢<?/glyph?>
                     <?title?>Constrained generation<?/title?>
-                    <?text?>Decoding that can only ever emit formally valid output. The model proposes; the type system disposes.<?/text?>
+                    <?text?>We are buiding not only an engine but also a genealized theory of completability in context dependent languages. At the frontier between abstract semantics and concrete applications. <?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
                     <?glyph?>λ<?/glyph?>
-                    <?title?>Type theory & proof systems<?/title?>
-                    <?text?>Programs are proofs. We build the introduction and elimination rules that make a generated term mean something.<?/text?>
+                    <?title?>Proofs and Programs<?/title?>
+                    <?text?>Applying computer science techniques to logical reasoning, trying to discover the computational basis of intelligence. <?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
                     <?glyph?>↓<?/glyph?>
-                    <?title?>Strong normalization<?/title?>
-                    <?text?>Guaranteeing that the systems we generate into actually terminate — that every reduction reaches a value.<?/text?>
+                    <?title?>Unification<?/title?>
+                    <?text?>Working on axioms bridging typing and computation.<?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
                     <?glyph?>⊨<?/glyph?>
                     <?title?>Meta-typed grammars<?/title?>
-                    <?text?>A rule DSL — EBNF for syntax, natural deduction for typing — that is itself type-checked before it is ever run as a constraint.<?/text?>
+                    <?text?>Making the meta-est theory of typed grammars.<?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
                     <?glyph?>∂<?/glyph?>
@@ -162,8 +178,8 @@ tree = syn.ast()                <span class="c"># well-formed</span></code></pre
                 </?use?>
                 <?use id="card-cmp"?>
                     <?glyph?>≡<?/glyph?>
-                    <?title?>Benchmarks & reproducibility<?/title?>
-                    <?text?>Typed grammars for STLC, ML, and imperative fragments, with a benchmark runner that ships with its configs.<?/text?>
+                    <?title?>Interaction Nets and Computation graphs<?/title?>
+                    <?text?>Developpping a compute substrate for ML that uses parralelizable interaction nets.<?/text?>
                 </?use?>
             </?block?>
         </?use?>
@@ -171,13 +187,13 @@ tree = syn.ast()                <span class="c"># well-formed</span></code></pre
 </?use?>
 
 <?use id="stats-section"?>
-    <?label?>The lab, honestly<?/label?>
-    <?title?>Where things stand<?/title?>
+    <?label?>State of affairs<?/label?>
+    <?title?>What we've been doing<?/title?>
     <?block slot="content"?>
         <?use id="stat-item"?><?number?>2<?/number?><?label?>Engines · AUFBAU & P7<?/label?></?use?>
-        <?use id="stat-item"?><?number?>STLC·ML<?/number?><?label?>Typed grammars, &amp; more<?/label?></?use?>
-        <?use id="stat-item"?><?number?>MIT<?/number?><?label?>Open from day one<?/label?></?use?>
-        <?use id="stat-item"?><?number?>Rust<?/number?><?label?>Core · Python bindings<?/label?></?use?>
+        <?use id="stat-item"?><?number?>ML &amp; PL<?/number?><?label?>Constraint generation, RL environnements, ...<?/label?></?use?>
+        <?use id="stat-item"?><?number?>MIT<?/number?><?label?>Open Source commitement<?/label?></?use?>
+        <?use id="stat-item"?><?number?>Rust<?/number?><?label?>Type safety in all our projects<?/label?></?use?>
     </?block?>
 </?use?>
 

@@ -54,10 +54,10 @@
             <div class="prod-feature-body">
                 <p class="prod-feature-flag">Flagship engine</p>
                 <h3 class="prod-feature-title">AUFBAU</h3>
-                <p class="prod-feature-text">A typed prefix-parsing engine for constrained decoding. From a typed grammar it emits, token by token, only the continuations that keep a partial program <strong>well-formed and well-typed</strong> — so a language model can only ever make a valid move. Rust core with Python bindings (PyO3), MIT-licensed.</p>
+                <p class="prod-feature-text">A typed prefix-parsing engine for constrained decoding. Generalized Earley-style prefix parsing with an added constraint domain. Rust core with Python bindings (PyO3), MIT-licensed.</p>
                 <div class="prod-feature-links">
                     <a href="https://github.com/Unsuspicious-Industries/aufbau" target="_blank" rel="noopener">GitHub →</a>
-                    <a href="/dfs">Deep dive in the DFS lab →</a>
+                    <a href="/dfs">Details →</a>
                 </div>
             </div>
         </div>
@@ -66,13 +66,18 @@
             <div class="prod-feature-body">
                 <p class="prod-feature-flag">Built on AUFBAU</p>
                 <h3 class="prod-feature-title">Proposition 7</h3>
-                <p class="prod-feature-text">System-agnostic, formally constrained generation for LLMs. Type-aware constrained decoding, a benchmark runner, and built-in typed grammars for STLC, ML, and imperative fragments. Named for the last line of the <em>Tractatus</em>.</p>
+                <p class="prod-feature-text">System-agnostic, formally constrained generation for LLMs using AUFBAU. Type-aware constrained decoding, a benchmark runner, and built-in typed grammars for STLC, ML, and imperative fragments. Named for the last line of the <em>Tractatus</em>.</p>
                 <div class="prod-feature-links">
                     <a href="https://github.com/Unsuspicious-Industries/p7" target="_blank" rel="noopener">GitHub →</a>
-                    <a href="/blog/proposition-7">Read the essay →</a>
+                    <a href="/blog/proposition-7">Blog post →</a>
                 </div>
             </div>
         </div>
+        <blockquote style="margin: 0 0 2rem; padding: 2rem 2rem 2rem 2.5rem; border-radius: 12px; background: rgba(84, 0, 91, 0.06); border-left: none; position: relative;">
+            <span style="position: absolute; top: -0.5rem; left: 1rem; font-family: var(--font-serif); font-size: 4rem; line-height: 1; color: var(--brand-accent-1); opacity: 0.35;">&ldquo;</span>
+            <p style="font-family: var(--font-serif); font-style: italic; font-size: 1.125rem; color: var(--text-heading); line-height: 1.65; margin: 0 0 0.75rem;">Wovon man nicht sprechen kann, darüber muß man schweigen.</p>
+            <p style="font-size: 0.875rem; color: var(--text-muted); margin: 0;"><strong style="color: var(--primary);">L. Wittgenstein</strong> · <em>Tractatus Logico-Philosophicus</em>, 7</p>
+        </blockquote>
     </?block?>
 </?use?>
 
@@ -90,13 +95,13 @@
                     <?href?>https://github.com/Unsuspicious-Industries/slop</?href?>
                     <?icon?>brain<?/icon?>
                     <?title?>SLOP<?/title?>
-                    <?text?>Infrastructure for low-budget comparative study of AI slop and colonial imagery. Probes diffusion model latent biases using remote GPU inference over SSH, with support for Stable Diffusion, Flux, and Modal.<?/text?>
+                    <?text?>Infrastructure for low-budget comparative study of AI slop and colonial imagery. Custom difusion models implementations for field probing and latent space exploration.<?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
-                    <?href?>https://github.com/pkd667/slut</?href?>
+                    <?href?>https://crates.io/crates/slut</?href?>
                     <?icon?>flask<?/icon?>
                     <?title?>SLUT<?/title?>
-                    <?text?>Static Linear Untiful Tensors. A Rust crate for vectors and matrices with physical dimensions — basically <code>uom</code> but in a vector space. Compile-time dimensional analysis for physics simulation and linear algebra.<?/text?>
+                    <?text?>Static Linear Untiful Tensors. A Rust crate for working with vectors and matrices with physical dimensions. Basically <code>uom</code> but in a vector space. Zero-runtime code, fully compile-time.<?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
                     <?href?>https://github.com/Unsuspicious-Industries/hrml</?href?>

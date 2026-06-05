@@ -99,11 +99,10 @@
 }
 .card-image {
     width: 100%;
-    height: 3rem;
+    height: 4rem;
     object-fit: contain;
     object-position: left;
     margin-bottom: 0.75rem;
-    border-radius: 4px;
 }
 <?/style?>
 <div class="card">

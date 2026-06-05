@@ -1,121 +1,260 @@
-<?use id="hero-cmp"?>
-    <?label?>Wandering in the close unknowns<?/label?>
-    <?title?>Composing formal methods and <span class="text-accent">mystical vibes</span><?/title?>
-    <?description?><span>Unsuspicious Industries</span> operates at the convergence of computer science, critical theory, and natural sciences.<?/description?>
-</?use?>
+<?style?>
+.hero-section {
+    max-width: 90rem;
+    margin: 0 auto;
+    padding: 8rem 2rem 4rem;
+}
+.hero-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+.hero-title {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    max-width: 50rem;
+}
+.hero-title .text-accent {
+    color: var(--accent);
+}
+.hero-description {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    max-width: 40rem;
+    line-height: 1.6;
+}
+.hero-description span {
+    color: var(--text-heading);
+    font-weight: 600;
+}
 
-<?use id="section-cmp"?>
-    <?block slot="content"?>
-        <?use id="section-header"?>
-            <?label?>Research Divisions<?/label?>
-            <?title?>Currently investigating<?/title?>
-            <?subtitle?>Six areas where we focus our efforts<?/subtitle?>
-        </?use?>
-        <?use id="card-grid"?>
-            <?block slot="content"?>
-                <?use id="card-cmp"?>
-                    <?href?>/dfs<?/href?>
-                    <?icon?>code<?/icon?>
-                    <?title?>Dynamic Formal Systems lab<?/title?>
-                    <?text?>Investigating proof systems, strong normalization, and applied type theory.<?/text?>
-                    <?quote?>1<?/quote?>
-                    <?block slot="quote"?>
-                        <p class="card-quote-text">philosophy courses should teach how to use proof assistants</p>
-                        <div class="card-quote-attribution">
-                            <span class="card-quote-author">Alcuin</span>
-                            <span class="card-quote-work">𝕏, @scheminglunatic</span>
-                        </div>
-                    <?/block?>
-                </?use?>
-                <?use id="card-cmp"?>
-                    <?href?>/ethics<?/href?>
-                    <?icon?>cpu<?/icon?>
-                    <?title?>Axiomatic Elaboration team<?/title?>
-                    <?text?>
-                        Finding <span class="text-accent">good</span> and <span class="text-accent">beautiful</span> bases for rational thinking. 
-                        Gathering vibes for researchers.
-                    <?/text?>
-                    <?quote?>1<?/quote?>
-                    <?block slot="quote"?>
-                        <p class="card-quote-text">Ethics and æsthetics are one</p>
-                        <div class="card-quote-attribution">
-                            <span class="card-quote-author">Wittgenstein</span>
-                            <span class="card-quote-work">6.421</span>
-                        </div>
-                    <?/block?>
-                </?use?>
-                <?use id="card-cmp"?>
-                    <?icon?>brain<?/icon?>
-                    <?title?>Diffused Consciousness research<?/title?>
-                    <?text?>Exploring non-atomic models of consciousness and learning<?/text?>
-                    <?quote?>1<?/quote?>
-                    <?block slot="quote"?>
-                        <p class="card-quote-text">    
-                            I think I might have been stupid in some respects, if it weren't for my psychedelic experiences.
-                        </p>
-                        <div class="card-quote-attribution">
-                            <span class="card-quote-author">Kary Mullis</span>
-                            <span class="card-quote-work">MAPS</span>
-                        </div>
-                    <?/block?>
-                </?use?>
-                <?use id="card-cmp"?>
-                    <?href?>/product<?/href?>
-                    <?icon?>chart-line<?/icon?>
-                    <?title?>Macroeconomics formalization department<?/title?>
-                    <?text?>
-                    Rewriting advanced economics research using High Performance Computing and formal systems. 
-                    Modelling emergent market behavior from first principles. 
-                    Formalising structural social shifts in topological spaces.
-                    <?/text?>
-                    <?quote?>1<?/quote?>
-                    <?block slot="quote"?>
-                        <p class="card-quote-text">In the long run we are all dead</p>
-                        <div class="card-quote-attribution">
-                            <span class="card-quote-author">J.M Keynes</span>
-                            <span class="card-quote-work">A Tract on Monetary Reform (1923)</span>
-                        </div>
-                    <?/block?>
-                </?use?>
-                <?use id="card-cmp"?>
-                    <?href?>/product<?/href?>
-                    <?icon?>leaf<?/icon?>
-                    <?title?>Automated Reasoning division<?/title?>
-                    <?text?>Working on automated AI tools to help humans with reasoning and discovery<?/text?>
-                    <?quote?>1<?/quote?>
-                    <?block slot="quote"?>
-                        <p class="card-quote-text">
-                            La connaissance est devenue force productive immédiate, 
-                            et, par suite, [...] les conditions du processus vital de la société sont elles-mêmes passées sous le contrôle de l'
-                            <span  class="text-normal">intellect général</span>, 
-                            et sont réorganisées conformément à lui. 
-                        </p>
-                        <div class="card-quote-attribution">
-                            <span class="card-quote-author">Karl Marx</span>
-                            <span class="card-quote-work">Grundrisse</span>
-                        </div>
-                    <?/block?>
-                </?use?>
-                <?use id="card-cmp"?>
-                    <?icon?>palette<?/icon?>
-                    <?title?>LSH Department<?/title?>
-                    <?text?>Studying history, arts and litterature. Grounding our lab in human values.<?/text?>
-                    <?quote?>1<?/quote?>
-                    <?block slot="quote"?>
-                        <p class="card-quote-text">
-                            Les Hommes ont inventé la Naphthaline de la Beauté, cela s'appelle l'Art. 
-                            C'est quelque fois un peu erratique dans ses formes, mais c'est quelque fois très beau.
-                        </p>
-                        <div class="card-quote-attribution">
-                            <span class="card-quote-author">Chris Marker</span>
-                            <span class="card-quote-work">Le joli Mai</span>
-                        </div>
-                    <?/block?>
-                </?use?>
-            </?block?>
-        </?use?>
-    </?block?>
-</?use?>
+.division-section {
+    max-width: 90rem;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+}
+.division-header {
+    text-align: center;
+    max-width: 48rem;
+    margin: 0 auto 4rem;
+}
+.division-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+.division-title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+}
+.division-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+}
+.division-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+.division-card {
+    background: white;
+    border: 1px solid var(--border);
+    padding: 2rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.division-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+.division-card-icon {
+    width: 2rem;
+    height: 2rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+.division-card-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin-bottom: 0.75rem;
+}
+.division-card-text {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+}
+.division-card-text .text-accent {
+    color: var(--accent);
+    font-weight: 600;
+}
+.division-card-quote {
+    margin-top: auto;
+    padding: 1.25rem 1.25rem 1.25rem 1.75rem;
+    border-left: 3px solid var(--accent);
+    background: var(--bg-section);
+    position: relative;
+}
+.division-card-quote::before {
+    content: '\201C';
+    position: absolute;
+    top: -0.25rem;
+    left: 0.2rem;
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--accent);
+    opacity: 0.25;
+}
+.division-card-quote-text {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--text-heading);
+    line-height: 1.65;
+    margin-bottom: 0.75rem;
+}
+.division-card-quote-author {
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: var(--primary);
+}
+.division-card-quote-work {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .division-grid {
+        grid-template-columns: 1fr;
+    }
+}
+<?/style?>
+
+<section class="hero-section">
+    <p class="hero-label">Wandering in the close unknowns</p>
+    <h1 class="hero-title">Composing formal methods and <span class="text-accent">mystical vibes</span></h1>
+    <p class="hero-description"><span>Unsuspicious Industries</span> operates at the convergence of computer science, critical theory, and natural sciences.</p>
+</section>
+
+<section class="division-section">
+    <div class="division-header">
+        <p class="division-label">Research Divisions</p>
+        <h2 class="division-title">Currently investigating</h2>
+        <p class="division-subtitle">Six areas where we focus our efforts</p>
+    </div>
+
+    <div class="division-grid">
+        <a href="/dfs" class="division-card">
+            <div class="division-card-icon">
+                <svg class="icon-md"><use href="#icon-code"/></svg>
+            </div>
+            <h3 class="division-card-title">Dynamic Formal Systems lab</h3>
+            <p class="division-card-text">Investigating proof systems, strong normalization, and applied type theory.</p>
+            <div class="division-card-quote">
+                <p class="division-card-quote-text">philosophy courses should teach how to use proof assistants</p>
+                <div>
+                    <span class="division-card-quote-author">Alcuin</span>
+                    <span class="division-card-quote-work"> · 𝕏, @scheminglunatic</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="/ethics" class="division-card">
+            <div class="division-card-icon">
+                <svg class="icon-md"><use href="#icon-cpu"/></svg>
+            </div>
+            <h3 class="division-card-title">Axiomatic Elaboration team</h3>
+            <p class="division-card-text">Finding <span class="text-accent">good</span> and <span class="text-accent">beautiful</span> bases for rational thinking. Gathering vibes for researchers.</p>
+            <div class="division-card-quote">
+                <p class="division-card-quote-text">Ethics and æsthetics are one</p>
+                <div>
+                    <span class="division-card-quote-author">Wittgenstein</span>
+                    <span class="division-card-quote-work"> · 6.421</span>
+                </div>
+            </div>
+        </a>
+
+        <div class="division-card">
+            <div class="division-card-icon">
+                <svg class="icon-md"><use href="#icon-brain"/></svg>
+            </div>
+            <h3 class="division-card-title">Diffused Consciousness research</h3>
+            <p class="division-card-text">Exploring non-atomic models of consciousness and learning</p>
+            <div class="division-card-quote">
+                <p class="division-card-quote-text">I think I might have been stupid in some respects, if it weren't for my psychedelic experiences.</p>
+                <div>
+                    <span class="division-card-quote-author">Kary Mullis</span>
+                    <span class="division-card-quote-work"> · MAPS</span>
+                </div>
+            </div>
+        </div>
+
+        <a href="/product" class="division-card">
+            <div class="division-card-icon">
+                <svg class="icon-md"><use href="#icon-chart-line"/></svg>
+            </div>
+            <h3 class="division-card-title">Macroeconomics formalization department</h3>
+            <p class="division-card-text">Rewriting advanced economics research using High Performance Computing and formal systems. Modelling emergent market behavior from first principles.</p>
+            <div class="division-card-quote">
+                <p class="division-card-quote-text">In the long run we are all dead</p>
+                <div>
+                    <span class="division-card-quote-author">J.M Keynes</span>
+                    <span class="division-card-quote-work"> · A Tract on Monetary Reform (1923)</span>
+                </div>
+            </div>
+        </a>
+
+        <a href="/product" class="division-card">
+            <div class="division-card-icon">
+                <svg class="icon-md"><use href="#icon-leaf"/></svg>
+            </div>
+            <h3 class="division-card-title">Automated Reasoning division</h3>
+            <p class="division-card-text">Working on automated AI tools to help humans with reasoning and discovery</p>
+            <div class="division-card-quote">
+                <p class="division-card-quote-text">La connaissance est devenue force productive immédiate, et, par suite, les conditions du processus vital de la société sont elles-mêmes passées sous le contrôle de l'<span style="color: var(--text-default)">intellect général</span>, et sont réorganisées conformément à lui.</p>
+                <div>
+                    <span class="division-card-quote-author">Karl Marx</span>
+                    <span class="division-card-quote-work"> · Grundrisse</span>
+                </div>
+            </div>
+        </a>
+
+        <div class="division-card">
+            <div class="division-card-icon">
+                <svg class="icon-md"><use href="#icon-palette"/></svg>
+            </div>
+            <h3 class="division-card-title">LSH Department</h3>
+            <p class="division-card-text">Studying history, arts and litterature. Grounding our lab in human values.</p>
+            <div class="division-card-quote">
+                <p class="division-card-quote-text">Les Hommes ont inventé la Naphthaline de la Beauté, cela s'appelle l'Art. C'est quelque fois un peu erratique dans ses formes, mais c'est quelque fois très beau.</p>
+                <div>
+                    <span class="division-card-quote-author">Chris Marker</span>
+                    <span class="division-card-quote-work"> · Le joli Mai</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <?use id="stats-section"?>
     <?label?>Research Stats<?/label?>

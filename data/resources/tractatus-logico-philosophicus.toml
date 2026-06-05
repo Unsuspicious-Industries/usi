@@ -5,4 +5,4 @@ kind = "book"
 venue = "Kegan Paul"
 url = "https://www.gutenberg.org/ebooks/5740"
 subjects = ["philosophy/wittgenstein", "philosophy", "cs/logic"]
-blurb = "Proposition 7 names our constrained-generation system. The boundary between the sayable and the showable is, for us, the boundary between the formal layer and latent taste."
+blurb = "While we consider it inapplicable to most of the work we do, the <em>Tractatus</em> bring the fundamental distinction between things in the domain of logic and thoses outside. Tackles the issue of building a formal system in a language that preexists it."

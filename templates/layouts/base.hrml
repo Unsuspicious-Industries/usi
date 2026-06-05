@@ -39,6 +39,7 @@
     --brand-accent-2: $globals.brand_accent_2;
     --font-mono: $globals.font_mono;
     --font-serif: $globals.font_serif;
+    --font-typewriter: $globals.font_typewriter;
 }
 </style>
     <?styles?>
