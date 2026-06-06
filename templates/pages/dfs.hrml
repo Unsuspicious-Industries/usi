@@ -111,7 +111,7 @@
             </div>
 
             <div>
-                <div class="aufbau-code"><pre>
+                <div class="aufbau-code" style="margin-top: -4rem;"><pre>
                 <code>
 
 Variable(var) ::= Identifier[x]
