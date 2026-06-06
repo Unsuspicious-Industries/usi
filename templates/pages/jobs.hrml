@@ -2,30 +2,6 @@
 <?sort over="jobs" by="priority" order="desc" as="jobs"?>
 
 <?style?>
-.section-header {
-    text-align: center;
-    max-width: 48rem;
-    margin: 0 auto 3rem;
-}
-.section-label {
-    font-weight: 700;
-    color: var(--secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 0.875rem;
-    margin-bottom: 0.5rem;
-}
-.section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text-heading);
-    line-height: 1.1;
-    margin-bottom: 1rem;
-}
-.section-subtitle {
-    color: var(--text-muted);
-    font-size: 1.25rem;
-}
 <?/style?>
 
 <?use id="hero-cmp"?>
@@ -35,11 +11,11 @@
 </?use?>
 
 <section class="section jobs-section">
-    <div class="section-header">
-        <p class="section-label">Open Roles</p>
-        <h2 class="section-title">Current briefs</h2>
-        <p class="section-subtitle">Small team, weird constraints, unusually high leverage.</p>
-    </div>
+    <?use id="section-header"?>
+        <?label?>Open Roles<?/label?>
+        <?title?>Current briefs<?/title?>
+        <?subtitle?>Small team, weird constraints, unusually high leverage.<?/subtitle?>
+    </?use?>
 
     <div class="job-grid">
         <?map over="jobs" as="job"?>

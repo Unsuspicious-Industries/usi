@@ -3,15 +3,16 @@
 <?bind var="title"/?>
 <?style?>
 .stats-section {
-    background: var(--bg-section);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+    background: var(--bg-page);
 }
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
     text-align: center;
+    max-width: 90rem;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 .stat-icon .icon-md {
     color: var(--primary);
@@ -25,14 +26,10 @@
 }
 <?/style?>
 <section class="section stats-section">
-    <div class="section-header">
-        <?if cond="$label"?>
-        <p class="section-label">$label</p>
-        <?/if?>
-        <?if cond="$title"?>
-        <h2 class="section-title">$title</h2>
-        <?/if?>
-    </div>
+    <?use id="section-header"?>
+        <?label from="$label"/?>
+        <?title from="$title"/?>
+    </?use?>
     <div class="stats-grid">
         <?slot id="content"?>
     </div>
@@ -65,7 +62,7 @@
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #374151;
+    color: var(--text-muted);
 }
 <?/style?>
 <div class="stat-item">
