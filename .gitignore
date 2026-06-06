@@ -5,3 +5,6 @@ dist/
 .env
 .env.local
 
+# Deploy
+deploy.sh
+
