@@ -1,0 +1,36 @@
+---
+title: Generalized typing in Aufbau
+date: 2026-06-05
+subjects: [logic, cs, type theory]
+resources: [intuitionistic-type-theory, type-aware-constraint-generation]
+status: WIP
+---
+
+The main interest of AUFBAU, much like it's inspiration and subset implementation Outlines is generality. As Mündler and his colleagues demonstrated it in their paper, writting constraint gen for a particular language is not that hard, though probably a bit tedious.
+
+The end goal, in our view is to have a strong enough implementation so that we can declare proof-checkers in the aufbau grammar spec. This would be huge. First it would allow us to have constraint proof-search, but in it of itselft, it is also a very powerful semantic statement. 
+
+However, we lack a truly general definition of what a constraint is, and since most of our semantic constraints are typing constraint, what is a type ? 
+Every formal system will have its answer, and we could go implementing them one by one, with reduction rules, and all the machinery, but it doesnt feel right. 
+
+Our first version used a sort of compormise, where a type language live in parralel with the EBNF defined grammar, but they can unify when needed with pattern matching and sort of substitution rules. 
+
+It works, but it's not very satisfying, and this is why we are currently working on new definitions. 
+
+## The most generalizable definition
+
+
+First, a type posseses some sort of relation to syntactic elements. It has an input string representation, that might be reducible and non-canonical but that is equivalent to its canonical form. Thanks to the CG-grammar, the parser can trasnform any input string into a syntactic tree. 
+
+Is is over this tree form that type chekcing operates, with three atomic operations:
+ - Shape unification: $A \to B \equiv \top \to B \equiv A \to ( B )$ 
+ - Ascription: $x: \tau$
+ - Normalization: $(A \to B)A \implies A$ 
+
+Shape unfication is generalized and corresponds to hole resolution + the application of some elaboration rules
+Ascription is just a constraint propagation mecanisms
+Normalization works with grammar specific normalization rules
+
+## TODO
+
+This is a first step towards fully general stuff. Normalizaiton needq a lot of expansion to be abe to support complex type systems. byt the skeleton is good. 
