@@ -116,4 +116,19 @@
   var m = location.hash.match(/^#topic=(.+)$/);
   if (m) active = decodeURIComponent(m[1]);
   render();
+
+  // ---- mission refs: [text]{code} in .fn-note-body ----
+  var missionMap = {};
+  if (typeof MISSIONS !== 'undefined') {
+    MISSIONS.forEach(function (mis) { missionMap[mis.code] = mis; });
+  }
+  var missionRe = /\[([^\]]+)\]\{([A-Z]+-\d+)\}/g;
+  document.querySelectorAll('.fn-note-body').forEach(function (body) {
+    body.innerHTML = body.innerHTML.replace(missionRe, function (_, label, code) {
+      var mis = missionMap[code];
+      var cls = mis && mis.done ? 'fn-mission fn-mission-done' : 'fn-mission fn-mission-active';
+      var title = mis ? mis.title : code;
+      return '<span class="' + cls + '" title="' + title + '">' + label + ' ' + code + '</span>';
+    });
+  });
 })();

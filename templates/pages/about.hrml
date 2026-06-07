@@ -56,7 +56,7 @@
     <?block slot="content"?>
         <?use id="section-header"?>
             <?title?>Our Mission<?/title?>
-            <?subtitle?>Advancing human knowledge through stochastic epistemology<?/subtitle?>
+            <?subtitle?>Advancing human knowledge through stochastic epistemology (intellectual wandering ?)<?/subtitle?>
         </?use?>
         <?use id="card-grid"?>
             <?block slot="content"?>

@@ -107,7 +107,7 @@
 <?use id="hero-cmp"?>
     <?label?>Thoughts<?/label?>
     <?title?>Research Notes & Reflections<?/title?>
-    <?description?>Research dispatches from formal systems, constrained generation, and the philosophy of computation.<?/description?>
+    <?description?>Our thoughts on various subjects. Not always an expert's opinion, but always curiosity driven.<?/description?>
 </?use?>
 
 <section class="section blog-section">
@@ -130,13 +130,5 @@
         <?/map?>
     </div>
 </section>
-
-<?use id="cta-section"?>
-    <?title?>Want the full archive?<?/title?>
-    <?primary?>Talk to the lab<?/primary?>
-    <?primary-href?>/contact<?/primary-href?>
-    <?secondary?>Read about our methods<?/secondary?>
-    <?secondary-href?>/product<?/secondary-href?>
-</?use?>
 
 <br><br>

@@ -2,14 +2,14 @@
 <?sort over="resources" by="year" order="desc" as="resources"?>
 <?data from="data/notes" as="notes"?>
 <?sort over="notes" by="date" order="desc" as="notes"?>
-
 <?style?>
 .fn-section { padding-top: 1rem; padding-bottom: 6rem; }
 .fn-grid {
-    max-width: 84rem;
+    max-width: 100rem;
     margin: 0 auto;
+    padding: 0 2rem;
     display: grid;
-    grid-template-columns: minmax(0, 20rem) minmax(0, 1fr) 13rem;
+    grid-template-columns: 20rem 1fr 22rem;
     gap: 3rem;
     align-items: start;
 }
@@ -54,7 +54,6 @@
 .fn-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 .is-hidden { display: none !important; }
 
-/* ---- resource rows ---- */
 .fn-resource {
     padding: 1.25rem 0;
     border-bottom: 1px solid var(--border);
@@ -96,7 +95,6 @@
 .fn-resource-meta { font-size: 0.8125rem; color: var(--text-muted); margin: 0.4rem 0 0.5rem; }
 .fn-resource-blurb { font-size: 0.9rem; color: var(--text-default); line-height: 1.55; margin: 0 0 0.75rem; }
 
-/* ---- note cards ---- */
 .fn-note { padding: 1.5rem 0; border-bottom: 1px solid var(--border); }
 .fn-note-head { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.4rem; }
 .fn-note-date {
@@ -132,7 +130,6 @@
 .fn-note-body p:last-child { margin-bottom: 0; }
 .fn-note-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: 1rem; }
 
-/* ---- tags + refs ---- */
 .fn-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .fn-tag {
     font-family: var(--font-mono);
@@ -154,9 +151,22 @@
     text-decoration: none;
 }
 .fn-ref:hover { color: var(--accent); }
+.fn-mission {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    background: var(--bg-section);
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.fn-mission::before { content: '● '; font-size: 0.5rem; vertical-align: middle; }
+.fn-mission-done { color: #15803d; border: 1px solid #15803d; }
+.fn-mission-done::before { color: #15803d; }
+.fn-mission-active { color: var(--brand-accent-1); border: 1px solid var(--brand-accent-1); }
+.fn-mission-active::before { color: var(--brand-accent-1); }
 
-/* ---- topics rail ---- */
-.fn-topics { position: sticky; top: 5.5rem; }
+.fn-topics { margin-top: 2rem; }
 .fn-topics-list { display: flex; flex-direction: column; gap: 0.1rem; }
 .fn-topic {
     display: flex;
@@ -180,14 +190,10 @@
 .fn-topic.is-active .fn-topic-count { color: rgba(255,255,255,0.7); }
 .fn-topic-all { font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.25rem; }
 .fn-topic-count { font-size: 0.7rem; color: var(--text-muted); opacity: 0.7; }
-
 .fn-empty { color: var(--text-muted); font-style: italic; padding: 2rem 0; }
 
 @media (max-width: 1024px) {
     .fn-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-    .fn-topics { grid-column: 1 / -1; position: static; }
-    .fn-topics-list { flex-direction: row; flex-wrap: wrap; }
-    .fn-topic { width: auto; }
 }
 @media (max-width: 720px) {
     .fn-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -203,24 +209,26 @@
 
 <section class="section fn-section">
     <div class="fn-grid">
-        <div class="fn-col fn-col-resources">
-            <h2 class="fn-col-title">Resources</h2>
-            <div class="fn-scroll">
-            <div class="fn-list" id="fn-resources">
-                <?map over="resources" as="resource"?>
-                <article class="fn-resource" id="r-$resource.slug">
-                    <div class="fn-resource-head">
-                        <span class="fn-kind fn-kind-$resource.kind">$resource.kind</span>
-                        <a class="fn-resource-title" href="$resource.url" target="_blank" rel="noopener">$resource.title</a>
-                    </div>
-                    <p class="fn-resource-meta">$resource.authors · $resource.year<?if cond="$resource.venue"?> · $resource.venue<?/if?></p>
-                    <p class="fn-resource-blurb">$resource.blurb</p>
-                    <div class="fn-tags">
-                        <?map over="resource.subjects" as="s"?><span class="fn-tag" data-s="$s">$s</span><?/map?>
-                    </div>
-                </article>
-                <?/map?>
-            </div>
+        <div>
+            <div class="fn-col fn-col-resources">
+                <h2 class="fn-col-title">Resources</h2>
+                <div class="fn-scroll">
+                <div class="fn-list" id="fn-resources">
+                    <?map over="resources" as="resource"?>
+                    <article class="fn-resource" id="r-$resource.slug">
+                        <div class="fn-resource-head">
+                            <span class="fn-kind fn-kind-$resource.kind">$resource.kind</span>
+                            <a class="fn-resource-title" href="$resource.url" target="_blank" rel="noopener">$resource.title</a>
+                        </div>
+                        <p class="fn-resource-meta">$resource.authors · $resource.year<?if cond="$resource.venue"?> · $resource.venue<?/if?></p>
+                        <p class="fn-resource-blurb">$resource.blurb</p>
+                        <div class="fn-tags">
+                            <?map over="resource.subjects" as="s"?><span class="fn-tag" data-s="$s">$s</span><?/map?>
+                        </div>
+                    </article>
+                    <?/map?>
+                </div>
+                </div>
             </div>
         </div>
 
@@ -251,11 +259,16 @@
             </div>
         </div>
 
-        <aside class="fn-col fn-topics">
-            <h2 class="fn-col-title">Topics</h2>
-            <div class="fn-topics-list" id="fn-topics-list"></div>
-        </aside>
+        <div>
+            <div class="fn-topics">
+                <h2 class="fn-col-title">Topics</h2>
+                <div class="fn-topics-list" id="fn-topics-list"></div>
+            </div>
+        </div>
+
+
     </div>
 </section>
 
+<script>var MISSIONS = [{"code":"P7-01","done":true},{"code":"DFS-03","done":false},{"code":"AUF-02","done":false},{"code":"ETH-01","done":false},{"code":"POL-01","done":false}];</script>
 <script src="/static/js/notes.js" defer></script>

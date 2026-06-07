@@ -59,7 +59,6 @@
                     </?block?>
                 </?use?>
                 <?use id="card-cmp"?>
-                    <?href?>/product<?/href?>
                     <?icon?>chart-line<?/icon?>
                     <?title?>Macroeconomics formalization department<?/title?>
                     <?text?>
@@ -76,7 +75,6 @@
                     </?block?>
                 </?use?>
                 <?use id="card-cmp"?>
-                    <?href?>/product<?/href?>
                     <?icon?>leaf<?/icon?>
                     <?title?>Automated Reasoning division<?/title?>
                     <?text?>Working on automated AI tools to help humans with reasoning and discovery<?/text?>

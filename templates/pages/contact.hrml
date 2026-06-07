@@ -51,9 +51,9 @@
 </?use?>
 
 <?use id="cta-section"?>
-    <?title?>Interested in joining our teams?<?/title?>
+    <?title?>Interested in working with us ?<?/title?>
     <?subtitle?>Check the latest openings or drop us a line if your specialty does not yet have a listing.<?/subtitle?>
-    <?primary?>View Open Positions<?/primary?>
+    <?primary?>View Positions<?/primary?>
     <?primary-href?>/jobs<?/primary-href?>
 </?use?>
 

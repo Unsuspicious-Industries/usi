@@ -1,0 +1,135 @@
+<?component id="missions-panel"?>
+<?bind var="missions"/?>
+<?bind var="variant" default="sidebar"/?>
+<?style?>
+.missions-board {
+    background: #111827;
+    border-radius: 6px;
+    padding: 1.25rem;
+    font-family: var(--font-mono);
+}
+.missions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #374151;
+}
+.missions-header-label {
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #6b7280;
+    margin: 0;
+}
+.missions-clock {
+    font-size: 0.6875rem;
+    color: #22c55e;
+}
+.mission-row {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #1f2937;
+}
+.mission-row:last-child { border-bottom: none; }
+.mission-top {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.3rem;
+}
+.mission-code {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: #22c55e;
+    flex-shrink: 0;
+    min-width: 3.5rem;
+}
+.mission-name {
+    font-size: 0.8125rem;
+    color: #e5e7eb;
+    flex: 1;
+    line-height: 1.3;
+}
+.mission-platform {
+    font-size: 0.625rem;
+    color: #6b7280;
+    text-align: right;
+    flex-shrink: 0;
+}
+.mission-stops {
+    margin-left: 4.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+.mission-stop {
+    font-size: 0.6875rem;
+    color: #9ca3af;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+.mission-stop::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #4b5563;
+    flex-shrink: 0;
+}
+.missions-footer {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #374151;
+    font-size: 0.625rem;
+    color: #6b7280;
+    text-align: center;
+}
+.missions-footer a { color: #22c55e; text-decoration: none; }
+.missions-footer a:hover { text-decoration: underline; }
+.missions-board-wide {
+    max-width: 100rem;
+    margin: 0 auto;
+}
+.missions-board-wide .mission-row {
+    display: grid;
+    grid-template-columns: 4rem 1fr auto;
+    gap: 1rem;
+    align-items: start;
+}
+.missions-board-wide .mission-top {
+    margin-bottom: 0;
+}
+.missions-board-wide .mission-stops {
+    margin-left: 0;
+    grid-column: 2;
+}
+.missions-board-wide .mission-platform {
+    text-align: right;
+}
+<?/style?>
+<div class="missions-board missions-board-$variant">
+    <div class="missions-header">
+        <span class="missions-header-label">Departures</span>
+        <span class="missions-clock">LIVE</span>
+    </div>
+    <?map over="$missions" as="m"?>
+    <div class="mission-row">
+        <div class="mission-top">
+            <span class="mission-code">$m.code</span>
+            <span class="mission-name">$m.title</span>
+            <span class="mission-platform">$m.repo</span>
+        </div>
+        <div class="mission-stops">
+            <?map over="$m.stops" as="stop"?>
+            <span class="mission-stop">$stop</span>
+            <?/map?>
+        </div>
+    </div>
+    <?/map?>
+    <div class="missions-footer">
+        <a href="https://github.com/Unsuspicious-Industries" target="_blank" rel="noopener">Open a PR to complete a mission →</a>
+    </div>
+</div>
+<?/component?>

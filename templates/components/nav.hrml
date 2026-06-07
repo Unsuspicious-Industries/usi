@@ -80,6 +80,7 @@
         <a href="/about" class="nav-link">About</a>
         <a href="/blog" class="nav-link">Thoughts</a>
         <a href="/notes" class="nav-link">Field Notes</a>
+        <a href="/missions" class="nav-link">Missions</a>
     </div>
     <a href="/contact" class="nav-link nav-cta nav-cta-link">Contact</a>
 </nav>

@@ -1,0 +1,25 @@
+<?data from="data/missions.json" as="missions"?>
+
+<?use id="hero-cmp"?>
+    <?label?>Active Operations<?/label?>
+    <?title?>Missions <span class="highlight">Board</span><?/title?>
+    <?description?>Open missions across all Unsuspicious Industries labs. Complete a mission by opening a PR to the corresponding repository.<?/description?>
+</?use?>
+
+<?use id="section-cmp"?>
+    <?block slot="content"?>
+        <?use id="missions-panel"?>
+            <?bind var="missions" from="$missions"/?>
+            <?variant?>wide<?/variant?>
+        </?use?>
+    </?block?>
+</?use?>
+
+<?use id="cta-section"?>
+    <?title?>Pick a mission<?/title?>
+    <?subtitle?>Fork the repo, complete the stops, open a PR.<?/subtitle?>
+    <?primary?>GitHub<?/primary?>
+    <?primary-href?>https://github.com/Unsuspicious-Industries<?/primary-href?>
+    <?secondary?>Back to Field Notes<?/secondary?>
+    <?secondary-href?>/notes<?/secondary-href?>
+</?use?>
