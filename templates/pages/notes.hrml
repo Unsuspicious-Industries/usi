@@ -1,7 +1,86 @@
-<?data from="data/resources" as="resources"?>
+<?data from="data/ressources.bib" as="resources"?>
 <?sort over="resources" by="year" order="desc" as="resources"?>
 <?data from="data/notes" as="notes"?>
 <?sort over="notes" by="date" order="desc" as="notes"?>
+
+<?use id="hero-cmp"?>
+    <?label?>Field Notes<?/label?>
+    <?title?>Readings &amp; <span class="highlight">Marginalia</span><?/title?>
+    <?description?>Resources we keep returning to, and the notes we leave in the margins. Filtered by topic. Sometimes a bit blurry.<?/description?>
+</?use?>
+
+<section class="section fn-section">
+    <div class="fn-grid">
+        <div>
+            <div class="fn-col fn-col-resources">
+                <h2 class="fn-col-title">Resources</h2>
+                <div class="fn-scroll">
+                <div class="fn-list" id="fn-resources">
+                    <?map over="resources" as="resource"?>
+                    <article class="fn-resource" id="r-$resource.key">
+                        <div class="fn-resource-head">
+                            <span class="fn-kind fn-kind-$resource.entry_type">$resource.entry_type</span>
+                            <a class="fn-resource-title" href="$resource.url" target="_blank" rel="noopener">$resource.title</a>
+                        </div>
+                        <p class="ressource-info"> $resource.author · $resource.year
+                            <span class="fn-resource-meta">
+                                <?if cond="$resource.journal"?> 
+                                    · $resource.journal  <?/if?>
+                                <?if cond="$resource.publisher"?>
+                                    · $resource.publisher <?/if?>
+                                <?if cond="$resource.booktitle"?>
+                                    · $resource.booktitle <?/if?>
+                            </span>
+                        </p>
+                        <div class="fn-tags">
+                            <?map over="resource.subjects" as="s"?><span class="fn-tag" data-s="$s">$s</span><?/map?>
+                        </div>
+                    </article>
+                    <?/map?>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fn-col fn-col-notes">
+            <h2 class="fn-col-title">Notes</h2>
+            <div class="fn-scroll">
+            <div class="fn-list" id="fn-notes">
+                <?map over="notes" as="note"?>
+                <article class="fn-note">
+                    <header class="fn-note-head">
+                        <time class="fn-note-date">$note.date</time>
+                        <?if cond="$note.status"?><span class="fn-status fn-status-$note.status">$note.status</span><?/if?>
+                    </header>
+                    <h3 class="fn-note-title">$note.title</h3>
+                    <div class="fn-note-body">$note.body</div>
+                    <footer class="fn-note-foot">
+                        <div class="fn-tags">
+                            <?map over="note.subjects" as="s"?><span class="fn-tag" data-s="$s">$s</span><?/map?>
+                        </div>
+                        <div class="fn-refs">
+                            <?map over="note.resources" as="rs"?><a class="fn-ref" href="#r-$rs">↳ $rs</a><?/map?>
+                        </div>
+                    </footer>
+                </article>
+                <?/map?>
+                <p class="fn-empty" id="fn-empty" hidden>Nothing to see.</p>
+            </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="fn-topics">
+                <h2 class="fn-col-title">Topics</h2>
+                <div class="fn-topics-list" id="fn-topics-list"></div>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+<script src="/static/js/notes.js" defer></script>
+
 <?style?>
 .fn-section { padding-top: 1rem; padding-bottom: 6rem; }
 .fn-grid {
@@ -67,7 +146,7 @@
     border-bottom-color: transparent;
     box-shadow: inset 3px 0 0 var(--accent);
 }
-.fn-resource-head { display: flex; gap: 0.6rem; align-items: baseline; }
+
 .fn-kind {
     font-family: var(--font-mono);
     font-size: 0.625rem;
@@ -93,7 +172,7 @@
 }
 .fn-resource-title:hover { color: var(--accent); text-decoration: underline; }
 .fn-resource-meta { font-size: 0.8125rem; color: var(--text-muted); margin: 0.4rem 0 0.5rem; }
-.fn-resource-blurb { font-size: 0.9rem; color: var(--text-default); line-height: 1.55; margin: 0 0 0.75rem; }
+.fn-resource-info { font-size: 0.8125rem; color: var(--text-default); margin: 0.4rem 0 0.5rem; }
 
 .fn-note { padding: 1.5rem 0; border-bottom: 1px solid var(--border); }
 .fn-note-head { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.4rem; }
@@ -151,20 +230,37 @@
     text-decoration: none;
 }
 .fn-ref:hover { color: var(--accent); }
-.fn-mission {
+.fn-mission-ref {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
     font-family: var(--font-mono);
     font-size: 0.7rem;
-    background: var(--bg-section);
-    padding: 0.2rem 0.5rem;
-    border-radius: 3px;
+    background: #1a237e;
+    color: #fff;
+    padding: 0.15rem 0.5rem 0.15rem 0.3rem;
+    border-radius: 4px;
     text-decoration: none;
     white-space: nowrap;
+    transition: background 0.15s ease;
 }
-.fn-mission::before { content: '● '; font-size: 0.5rem; vertical-align: middle; }
-.fn-mission-done { color: #15803d; border: 1px solid #15803d; }
-.fn-mission-done::before { color: #15803d; }
-.fn-mission-active { color: var(--brand-accent-1); border: 1px solid var(--brand-accent-1); }
-.fn-mission-active::before { color: var(--brand-accent-1); }
+.fn-mission-ref:hover { background: #283593; }
+.fn-mission-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.fn-mission-dot.ms-done { background: #4caf50; }
+.fn-mission-dot.ms-in_progress { background: #ffc107; }
+.fn-mission-dot.ms-todo { background: rgba(255,255,255,0.3); }
+.fn-mission-code {
+    font-weight: 700;
+    color: #90caf9;
+}
+.fn-mission-label {
+    color: rgba(255,255,255,0.7);
+}
 
 .fn-topics { margin-top: 2rem; }
 .fn-topics-list { display: flex; flex-direction: column; gap: 0.1rem; }
@@ -201,74 +297,3 @@
 }
 <?/style?>
 
-<?use id="hero-cmp"?>
-    <?label?>Field Notes<?/label?>
-    <?title?>Readings &amp; <span class="highlight">Marginalia</span><?/title?>
-    <?description?>Resources we keep returning to, and the notes we leave in the margins. Filtered by topic. Sometimes a bit blurry.<?/description?>
-</?use?>
-
-<section class="section fn-section">
-    <div class="fn-grid">
-        <div>
-            <div class="fn-col fn-col-resources">
-                <h2 class="fn-col-title">Resources</h2>
-                <div class="fn-scroll">
-                <div class="fn-list" id="fn-resources">
-                    <?map over="resources" as="resource"?>
-                    <article class="fn-resource" id="r-$resource.slug">
-                        <div class="fn-resource-head">
-                            <span class="fn-kind fn-kind-$resource.kind">$resource.kind</span>
-                            <a class="fn-resource-title" href="$resource.url" target="_blank" rel="noopener">$resource.title</a>
-                        </div>
-                        <p class="fn-resource-meta">$resource.authors · $resource.year<?if cond="$resource.venue"?> · $resource.venue<?/if?></p>
-                        <p class="fn-resource-blurb">$resource.blurb</p>
-                        <div class="fn-tags">
-                            <?map over="resource.subjects" as="s"?><span class="fn-tag" data-s="$s">$s</span><?/map?>
-                        </div>
-                    </article>
-                    <?/map?>
-                </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="fn-col fn-col-notes">
-            <h2 class="fn-col-title">Notes</h2>
-            <div class="fn-scroll">
-            <div class="fn-list" id="fn-notes">
-                <?map over="notes" as="note"?>
-                <article class="fn-note">
-                    <header class="fn-note-head">
-                        <time class="fn-note-date">$note.date</time>
-                        <?if cond="$note.status"?><span class="fn-status fn-status-$note.status">$note.status</span><?/if?>
-                    </header>
-                    <h3 class="fn-note-title">$note.title</h3>
-                    <div class="fn-note-body">$note.body</div>
-                    <footer class="fn-note-foot">
-                        <div class="fn-tags">
-                            <?map over="note.subjects" as="s"?><span class="fn-tag" data-s="$s">$s</span><?/map?>
-                        </div>
-                        <div class="fn-refs">
-                            <?map over="note.resources" as="rs"?><a class="fn-ref" href="#r-$rs">↳ $rs</a><?/map?>
-                        </div>
-                    </footer>
-                </article>
-                <?/map?>
-                <p class="fn-empty" id="fn-empty" hidden>Nothing to see.</p>
-            </div>
-            </div>
-        </div>
-
-        <div>
-            <div class="fn-topics">
-                <h2 class="fn-col-title">Topics</h2>
-                <div class="fn-topics-list" id="fn-topics-list"></div>
-            </div>
-        </div>
-
-
-    </div>
-</section>
-
-<script>var MISSIONS = [{"code":"P7-01","done":true},{"code":"DFS-03","done":false},{"code":"AUF-02","done":false},{"code":"ETH-01","done":false},{"code":"POL-01","done":false}];</script>
-<script src="/static/js/notes.js" defer></script>

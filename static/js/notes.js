@@ -126,9 +126,10 @@
   document.querySelectorAll('.fn-note-body').forEach(function (body) {
     body.innerHTML = body.innerHTML.replace(missionRe, function (_, label, code) {
       var mis = missionMap[code];
-      var cls = mis && mis.done ? 'fn-mission fn-mission-done' : 'fn-mission fn-mission-active';
+      var statusClass = mis ? 'ms-' + mis.status : 'ms-active';
       var title = mis ? mis.title : code;
-      return '<span class="' + cls + '" title="' + title + '">' + label + ' ' + code + '</span>';
+      var href = '/missions#' + code;
+      return '<a class="fn-mission-ref" href="' + href + '" title="' + title + '"><span class="fn-mission-dot ' + statusClass + '"></span><span class="fn-mission-code">' + code + '</span><span class="fn-mission-label">' + label + '</span></a>';
     });
   });
 })();

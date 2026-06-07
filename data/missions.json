@@ -2,43 +2,49 @@
     {
         "code": "P7-01",
         "title": "Proposition 7 release",
-        "done": true,
+        "type": "code",
+        "status": "done",
         "stops": ["benchmark suite", "grammars documentation", "pip packaging"],
-        "repo": "Unsuspicious-Industries/p7"
+        "quai": "P7"
     },
     {
         "code": "DFS-03",
         "title": "Regex derivatives paper",
-        "done": false,
+        "type": "math",
+        "status": "in_progress",
         "stops": ["completeability proofs", "Brzozowski formalization", "LaTeX draft"],
-        "repo": "Unsuspicious-Industries/aufbau"
+        "quai": "AUF"
     },
     {
         "code": "AUF-02",
         "title": "AUFBAU typed grammars",
-        "done": false,
+        "type": "code",
+        "status": "in_progress",
         "stops": ["attribute grammar parser", "STLC backend", "error recovery"],
-        "repo": "Unsuspicious-Industries/aufbau"
+        "quai": "AUF"
     },
     {
         "code": "ETH-01",
         "title": "Ethics framework v2",
-        "done": false,
+        "type": "think",
+        "status": "todo",
         "stops": ["constraint catalog", "review process", "public draft"],
-        "repo": "Unsuspicious-Industries/usi"
+        "quai": "USI"
     },
     {
         "code": "POL-01",
         "title": "Political alignment dashboard",
-        "done": false,
+        "type": "ask",
+        "status": "todo",
         "stops": ["compass embedding space", "multi-language eval", "report generator"],
-        "repo": "Unsuspicious-Industries/political-alignement"
+        "quai": "POL"
     },
     {
         "code": "HRM-04",
         "title": "HRML type inference engine",
-        "done": false,
+        "type": "math",
+        "status": "in_progress",
         "stops": ["constraint solver", "error messages", "playground demo"],
-        "repo": "Unsuspicious-Industries/hrml"
+        "quai": "HRM"
     }
 ]
