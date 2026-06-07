@@ -16,7 +16,7 @@
     min-height: 3.5rem;
 }
 .mission-row:nth-child(odd) {
-    background: #f9fafb;
+    background: #f3f4f6;
 }
 .mission-row:last-child { border-bottom: none; }
 .mission-type {
