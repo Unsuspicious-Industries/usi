@@ -3,133 +3,200 @@
 <?bind var="variant" default="sidebar"/?>
 <?style?>
 .missions-board {
-    background: #111827;
-    border-radius: 6px;
-    padding: 1.25rem;
-    font-family: var(--font-mono);
+    background: #1a237e;
+    border-radius: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow: hidden;
 }
 .missions-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 1px solid #374151;
+    padding: 1rem 1.5rem;
+    background: #0d1452;
+    border-bottom: 2px solid #283593;
 }
-.missions-header-label {
-    font-size: 0.6875rem;
+.missions-header-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #fff;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: #6b7280;
-    margin: 0;
+    letter-spacing: 0.08em;
 }
-.missions-clock {
-    font-size: 0.6875rem;
-    color: #22c55e;
-}
-.mission-row {
-    padding: 0.75rem 0;
-    border-bottom: 1px solid #1f2937;
-}
-.mission-row:last-child { border-bottom: none; }
-.mission-top {
+.missions-header-status {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
-    margin-bottom: 0.3rem;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.6);
+}
+.missions-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4caf50;
+    animation: missions-pulse 2s ease-in-out infinite;
+}
+@keyframes missions-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+.mission-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 0 1.5rem;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: background 0.15s ease;
+}
+.mission-row:last-child { border-bottom: none; }
+.mission-row:nth-child(odd) { background: rgba(255,255,255,0.03); }
+.mission-row:hover { background: rgba(255,255,255,0.06); }
+.mission-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 5rem;
+}
+.mission-status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.mission-status-dot.done { background: #4caf50; }
+.mission-status-dot.active { background: #ff9800; }
+.mission-status-text {
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.5);
+    white-space: nowrap;
+}
+.mission-info {
+    min-width: 0;
+}
+.mission-top {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 0.15rem;
 }
 .mission-code {
-    font-size: 0.6875rem;
+    font-size: 0.875rem;
     font-weight: 700;
-    color: #22c55e;
+    color: #90caf9;
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
     flex-shrink: 0;
-    min-width: 3.5rem;
 }
-.mission-name {
-    font-size: 0.8125rem;
-    color: #e5e7eb;
-    flex: 1;
-    line-height: 1.3;
+.mission-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.mission-platform {
-    font-size: 0.625rem;
-    color: #6b7280;
-    text-align: right;
-    flex-shrink: 0;
+.mission-meta {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.4);
 }
 .mission-stops {
-    margin-left: 4.1rem;
     display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.4rem;
 }
 .mission-stop {
     font-size: 0.6875rem;
-    color: #9ca3af;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
+    color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.06);
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    border: 1px solid rgba(255,255,255,0.08);
 }
-.mission-stop::before {
-    content: '';
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: #4b5563;
+.mission-platform {
+    text-align: right;
     flex-shrink: 0;
 }
+.mission-platform-label {
+    font-size: 0.5625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 0.1rem;
+}
+.mission-platform-code {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+}
 .missions-footer {
-    margin-top: 0.75rem;
-    padding-top: 0.75rem;
-    border-top: 1px solid #374151;
-    font-size: 0.625rem;
-    color: #6b7280;
+    padding: 0.75rem 1.5rem;
+    background: #0d1452;
+    border-top: 1px solid rgba(255,255,255,0.08);
     text-align: center;
 }
-.missions-footer a { color: #22c55e; text-decoration: none; }
+.missions-footer a {
+    font-size: 0.75rem;
+    color: #90caf9;
+    text-decoration: none;
+}
 .missions-footer a:hover { text-decoration: underline; }
+
+/* Wide variant for dedicated page */
 .missions-board-wide {
+    border-radius: 0;
     max-width: 100rem;
     margin: 0 auto;
 }
 .missions-board-wide .mission-row {
-    display: grid;
-    grid-template-columns: 4rem 1fr auto;
-    gap: 1rem;
-    align-items: start;
-}
-.missions-board-wide .mission-top {
-    margin-bottom: 0;
-}
-.missions-board-wide .mission-stops {
-    margin-left: 0;
-    grid-column: 2;
-}
-.missions-board-wide .mission-platform {
-    text-align: right;
+    padding: 1.25rem 2rem;
 }
 <?/style?>
 <div class="missions-board missions-board-$variant">
     <div class="missions-header">
-        <span class="missions-header-label">Departures</span>
-        <span class="missions-clock">LIVE</span>
+        <span class="missions-header-title">Départs</span>
+        <span class="missions-header-status">
+            <span class="missions-status-dot"></span>
+            En temps réel
+        </span>
     </div>
     <?map over="$missions" as="m"?>
     <div class="mission-row">
-        <div class="mission-top">
-            <span class="mission-code">$m.code</span>
-            <span class="mission-name">$m.title</span>
-            <span class="mission-platform">$m.repo</span>
+        <div class="mission-status">
+            <?if cond="$m.done"?>
+            <span class="mission-status-dot done"></span>
+            <span class="mission-status-text">Terminé</span>
+            <?else?>
+            <span class="mission-status-dot active"></span>
+            <span class="mission-status-text">En cours</span>
+            <?/if?>
         </div>
-        <div class="mission-stops">
-            <?map over="$m.stops" as="stop"?>
-            <span class="mission-stop">$stop</span>
-            <?/map?>
+        <div class="mission-info">
+            <div class="mission-top">
+                <span class="mission-code">$m.code</span>
+                <span class="mission-title">$m.title</span>
+            </div>
+            <div class="mission-meta">$m.repo</div>
+            <?if cond="$m.stops"?>
+            <div class="mission-stops">
+                <?map over="$m.stops" as="stop"?>
+                <span class="mission-stop">$stop</span>
+                <?/map?>
+            </div>
+            <?/if?>
+        </div>
+        <div class="mission-platform">
+            <div class="mission-platform-label">Voie</div>
+            <div class="mission-platform-code">$m.code</div>
         </div>
     </div>
     <?/map?>
     <div class="missions-footer">
-        <a href="https://github.com/Unsuspicious-Industries" target="_blank" rel="noopener">Open a PR to complete a mission →</a>
+        <a href="https://github.com/Unsuspicious-Industries" target="_blank" rel="noopener">Ouvrir une PR pour compléter une mission →</a>
     </div>
 </div>
 <?/component?>

@@ -33,5 +33,12 @@
         "done": false,
         "stops": ["compass embedding space", "multi-language eval", "report generator"],
         "repo": "Unsuspicious-Industries/political-alignement"
+    },
+    {
+        "code": "HRM-04",
+        "title": "HRML type inference engine",
+        "done": false,
+        "stops": ["constraint solver", "error messages", "playground demo"],
+        "repo": "Unsuspicious-Industries/hrml"
     }
 ]
