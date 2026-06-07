@@ -4,27 +4,31 @@
 <?style?>
 .missions-board {
     font-family: 'Avenir', -apple-system, BlinkMacSystemFont, sans-serif;
+    width: 100%;
 }
 .mission-row {
     display: grid;
-    grid-template-columns: auto auto 1fr auto auto;
+    grid-template-columns: 5rem 5.5rem 1fr 7rem 3rem;
     gap: 0 1rem;
     align-items: center;
     padding: 0.875rem 1.5rem;
     border-bottom: 1px solid var(--border);
     min-height: 3.5rem;
 }
+.mission-row:nth-child(odd) {
+    background: #f9fafb;
+}
 .mission-row:last-child { border-bottom: none; }
 .mission-type {
     flex-shrink: 0;
-    width: 3rem;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .mission-type img {
-    height: 18px;
+    height: 22px;
     width: auto;
     display: block;
-    margin: 0 auto;
 }
 .mission-code {
     font-size: 0.8125rem;
@@ -32,7 +36,6 @@
     color: var(--text-muted);
     font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
     flex-shrink: 0;
-    min-width: 4.5rem;
 }
 .mission-content {
     min-width: 0;
@@ -50,7 +53,6 @@
 .mission-stops-wrap {
     overflow: hidden;
     max-height: 1.4rem;
-    position: relative;
 }
 .mission-stops {
     display: flex;
@@ -79,8 +81,6 @@
     text-transform: uppercase;
     letter-spacing: 0.08em;
     white-space: nowrap;
-    flex-shrink: 0;
-    min-width: 5rem;
     text-align: right;
 }
 .mission-status-todo { color: var(--text-muted); }
@@ -101,10 +101,6 @@
     text-transform: uppercase;
     flex-shrink: 0;
     font-family: 'SF Mono', Monaco, monospace;
-}
-.missions-board-wide {
-    max-width: 100rem;
-    margin: 0 auto;
 }
 .missions-board-wide .mission-row {
     padding: 1rem 2rem;
