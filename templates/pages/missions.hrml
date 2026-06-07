@@ -1,8 +1,23 @@
 <?data from="data/missions.json" as="missions"?>
 
-<section class="section" style="padding-top: 6rem; padding-bottom: 4rem;">
+<?style?>
+.missions-page {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 5rem);
+    padding-top: 5rem;
+}
+.missions-page .missions-board {
+    flex: 1;
+}
+body > footer {
+    display: none;
+}
+<?/style?>
+
+<div class="missions-page">
     <?use id="missions-panel"?>
         <?bind var="missions" from="$missions"/?>
         <?variant?>wide<?/variant?>
     </?use?>
-</section>
+</div>
