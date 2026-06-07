@@ -2,20 +2,77 @@
 
 <?style?>
 .missions-page {
-    display: flex;
-    flex-direction: column;
-    min-height: calc(100vh - 5rem);
     padding-top: 5rem;
 }
-.missions-page .missions-board {
-    flex: 1;
+.missions-intro {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 2.5rem 2rem;
+    border-bottom: 1px solid var(--border);
 }
-body > footer {
-    display: none;
+.missions-intro-text {
+    max-width: 60rem;
+}
+.missions-intro-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+.missions-intro-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin-bottom: 0.5rem;
+}
+.missions-intro-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+.missions-intro-icon {
+    flex-shrink: 0;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-section);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+.missions-intro-icon svg {
+    width: 2rem;
+    height: 2rem;
+    color: var(--accent);
+}
+.missions-board {
+    width: 100%;
 }
 <?/style?>
 
 <div class="missions-page">
+    <div class="missions-intro">
+        <div class="missions-intro-text">
+            <p class="missions-intro-label">Active Operations</p>
+            <h1 class="missions-intro-title">Mission Board</h1>
+            <p class="missions-intro-desc">Open missions across all Unsuspicious Industries labs. Fork the repo, complete the steps, open a PR.</p>
+        </div>
+        <div class="missions-intro-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+                <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+            </svg>
+        </div>
+    </div>
     <?use id="missions-panel"?>
         <?bind var="missions" from="$missions"/?>
         <?variant?>wide<?/variant?>
