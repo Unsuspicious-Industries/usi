@@ -3,43 +3,7 @@
 <?bind var="variant" default="sidebar"/?>
 <?style?>
 .missions-board {
-    background: #1a237e;
-    border-radius: 8px;
     font-family: 'Avenir', -apple-system, BlinkMacSystemFont, sans-serif;
-    overflow: hidden;
-}
-.missions-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 1.5rem;
-    background: #0d1452;
-    border-bottom: 2px solid #283593;
-}
-.missions-header-title {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-}
-.missions-header-status {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.6);
-}
-.missions-status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #4caf50;
-    animation: missions-pulse 2s ease-in-out infinite;
-}
-@keyframes missions-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
 }
 .mission-row {
     display: grid;
@@ -47,10 +11,9 @@
     gap: 0 1rem;
     align-items: center;
     padding: 0.875rem 1.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid var(--border);
     min-height: 3.5rem;
 }
-.mission-row:nth-child(odd) { background: rgba(255,255,255,0.03); }
 .mission-row:last-child { border-bottom: none; }
 .mission-type {
     flex-shrink: 0;
@@ -66,7 +29,7 @@
 .mission-code {
     font-size: 0.8125rem;
     font-weight: 600;
-    color: rgba(255,255,255,0.7);
+    color: var(--text-muted);
     font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
     flex-shrink: 0;
     min-width: 4.5rem;
@@ -78,7 +41,7 @@
 .mission-title {
     font-size: 1.0625rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--text-heading);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -89,9 +52,6 @@
     max-height: 1.4rem;
     position: relative;
 }
-.mission-stops-wrap.expanded {
-    max-height: 3rem;
-}
 .mission-stops {
     display: flex;
     flex-wrap: nowrap;
@@ -100,7 +60,7 @@
 }
 .mission-stop {
     font-size: 0.75rem;
-    color: rgba(255,255,255,0.5);
+    color: var(--text-muted);
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
@@ -123,7 +83,7 @@
     min-width: 5rem;
     text-align: right;
 }
-.mission-status-todo { color: rgba(255,255,255,0.35); }
+.mission-status-todo { color: var(--text-muted); }
 .mission-status-in_progress { color: #ffc107; }
 .mission-status-done { color: #4caf50; }
 .mission-quai {
@@ -132,30 +92,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(255,255,255,0.1);
-    border: 2px solid rgba(255,255,255,0.25);
+    background: var(--bg-section);
+    border: 1px solid var(--border);
     border-radius: 4px;
     font-size: 0.75rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--text-heading);
     text-transform: uppercase;
     flex-shrink: 0;
     font-family: 'SF Mono', Monaco, monospace;
 }
-.missions-footer {
-    padding: 0.75rem 1.5rem;
-    background: #0d1452;
-    border-top: 1px solid rgba(255,255,255,0.08);
-    text-align: center;
-}
-.missions-footer a {
-    font-size: 0.75rem;
-    color: #90caf9;
-    text-decoration: none;
-}
-.missions-footer a:hover { text-decoration: underline; }
 .missions-board-wide {
-    border-radius: 0;
     max-width: 100rem;
     margin: 0 auto;
 }
@@ -164,13 +111,6 @@
 }
 <?/style?>
 <div class="missions-board missions-board-$variant">
-    <div class="missions-header">
-        <span class="missions-header-title">Départs</span>
-        <span class="missions-header-status">
-            <span class="missions-status-dot"></span>
-            En temps réel
-        </span>
-    </div>
     <?map over="$missions" as="m"?>
     <div class="mission-row">
         <div class="mission-type">
@@ -193,8 +133,5 @@
         <div class="mission-quai">$m.quai</div>
     </div>
     <?/map?>
-    <div class="missions-footer">
-        <a href="https://github.com/Unsuspicious-Industries" target="_blank" rel="noopener">Ouvrir une PR pour compléter une mission →</a>
-    </div>
 </div>
 <?/component?>

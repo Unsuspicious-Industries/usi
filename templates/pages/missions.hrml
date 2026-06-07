@@ -1,21 +1,8 @@
 <?data from="data/missions.json" as="missions"?>
 
-<?use id="hero-cmp"?>
-    <?label?>Opérations en cours<?/label?>
-    <?title?>Tableau des <span class="highlight">Départs</span><?/title?>
-    <?description?>Missions ouvertes sur l'ensemble des laboratoires Unsuspicious Industries. Complétez une mission en ouvrant PR sur le dépôt correspondant.<?/description?>
-</?use?>
-
-<?use id="missions-panel"?>
-    <?bind var="missions" from="$missions"/?>
-    <?variant?>wide<?/variant?>
-</?use?>
-
-<?use id="cta-section"?>
-    <?title?>Choisir une mission<?/title?>
-    <?subtitle?>Forkez le dépôt, complétez les étapes, ouvrez une PR.<?/subtitle?>
-    <?primary?>GitHub<?/primary?>
-    <?primary-href?>https://github.com/Unsuspicious-Industries<?/primary-href?>
-    <?secondary?>Retour aux Field Notes<?/secondary?>
-    <?secondary-href?>/notes<?/secondary-href?>
-</?use?>
+<section class="section" style="padding-top: 6rem; padding-bottom: 4rem;">
+    <?use id="missions-panel"?>
+        <?bind var="missions" from="$missions"/?>
+        <?variant?>wide<?/variant?>
+    </?use?>
+</section>
