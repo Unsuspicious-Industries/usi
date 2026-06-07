@@ -18,7 +18,7 @@
     align-items: center;
     justify-content: center;
     aspect-ratio: 1;
-    max-height: 18rem;
+    max-height: 12rem;
     background: var(--bg-section);
     border-radius: 12px;
 }
