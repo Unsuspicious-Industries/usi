@@ -2,7 +2,7 @@
 
 <?style?>
 .missions-page {
-    padding-top: 5rem;
+    padding-top: 0;
 }
 .missions-intro {
     display: grid;
