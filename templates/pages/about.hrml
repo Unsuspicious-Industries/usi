@@ -77,6 +77,12 @@
     </?block?>
 </?use?>
 
+<?use id="quote-cmp"?>
+    <?text?>Not all who wander are lost<?/text?>
+    <?author?>J.R.R. Tolkien<?/author?>
+    <?work?>The Fellowship of the Ring<?/work?>
+</?use?>
+
 <?use id="section-cmp"?>
     <?block slot="content"?>
         <?use id="section-header"?>
