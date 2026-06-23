@@ -73,11 +73,11 @@
                 </div>
             </div>
         </div>
-        <blockquote style="margin: 0 0 2rem; padding: 2rem 2rem 2rem 2.5rem; border-radius: 12px; background: rgba(84, 0, 91, 0.06); border-left: none; position: relative;">
-            <span style="position: absolute; top: -0.5rem; left: 1rem; font-family: var(--font-serif); font-size: 4rem; line-height: 1; color: var(--brand-accent-1); opacity: 0.35;">&ldquo;</span>
-            <p style="font-family: var(--font-serif); font-style: italic; font-size: 1.125rem; color: var(--text-heading); line-height: 1.65; margin: 0 0 0.75rem;">Wovon man nicht sprechen kann, darüber muß man schweigen.</p>
-            <p style="font-size: 0.875rem; color: var(--text-muted); margin: 0;"><strong style="color: var(--primary);">L. Wittgenstein</strong> · <em>Tractatus Logico-Philosophicus</em>, 7</p>
-        </blockquote>
+        <?use id="short-quote-cmp"?>
+            <?text?>Wovon man nicht sprechen kann, darüber muß man schweigen.<?/text?>
+            <?author?>L. Wittgenstein<?/author?>
+            <?work?>Tractatus Logico-Philosophicus, 7<?/work?>
+        </?use>
     </?block?>
 </?use?>
 
