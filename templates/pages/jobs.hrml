@@ -2,6 +2,7 @@
 <?sort over="jobs" by="priority" order="desc" as="jobs"?>
 
 <?style?>
+.jobs-section, .jobs-section * { font-family: var(--font-typewriter); }
 <?/style?>
 
 <?use id="hero-cmp"?>
