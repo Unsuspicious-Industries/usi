@@ -1,7 +1,12 @@
 <?data from="data/jobs/$slug.mdx" as="job"?>
 
 <?style?>
-.prose-shell, .hero { font-family: var(--font-typewriter); }
+.hero .hero-title, .hero .hero-label, .hero .hero-description, .hero .page-meta,
+.prose-shell, .prose-shell h1, .prose-shell h2, .prose-shell h3, .prose-shell h4,
+.prose-shell p, .prose-shell li, .prose-shell ul, .prose-shell ol,
+.btn, .btn-primary, .btn-secondary {
+    font-family: var(--font-typewriter) !important;
+}
 <?/style?>
 
 <?use id="prose-page"?>

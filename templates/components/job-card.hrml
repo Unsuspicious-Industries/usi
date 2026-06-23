@@ -10,8 +10,16 @@
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 1.5rem;
 }
+.job-card,
+.job-card-title,
+.job-card-subtitle,
+.job-card-text,
+.job-chip,
+.job-card-meta,
+.job-card-actions {
+    font-family: var(--font-typewriter) !important;
+}
 .job-card {
-    font-family: var(--font-typewriter);
     background: white;
     border: 1px solid var(--border);
     padding: 1.5rem;
