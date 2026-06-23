@@ -1,7 +1,7 @@
 <?data from="data/jobs/$slug.mdx" as="job"?>
 
 <?style?>
-.prose-shell, .prose-shell h1, .prose-shell h2, .prose-shell h3, .prose-shell h4 {
+.hero, .hero *, .prose-shell, .prose-shell * {
     font-family: var(--font-typewriter) !important;
 }
 <?/style?>
