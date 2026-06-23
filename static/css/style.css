@@ -1,4 +1,4 @@
-/* USI Industrial Styles — global reset, fonts, and shared utilities */
+/* USI Industrial Styles - global reset, fonts, and shared utilities */
 
 /* ── Font Faces ──────────────────────────────── */
 
@@ -33,21 +33,21 @@
 
 @font-face {
     font-family: 'Libre Baskerville';
-    src: url('/static/fonts/libre-baskerville/LibreBaskerville-Regular.ttf') format('truetype');
+    src: url('/static/fonts/libre-baskerville/LibreBaskerville-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'Libre Baskerville';
-    src: url('/static/fonts/libre-baskerville/LibreBaskerville-Bold.ttf') format('truetype');
+    src: url('/static/fonts/libre-baskerville/LibreBaskerville-Bold.woff2') format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
 }
 @font-face {
     font-family: 'Libre Baskerville';
-    src: url('/static/fonts/libre-baskerville/LibreBaskerville-Italic.ttf') format('truetype');
+    src: url('/static/fonts/libre-baskerville/LibreBaskerville-Italic.woff2') format('woff2');
     font-weight: 400;
     font-style: italic;
     font-display: swap;
@@ -55,7 +55,7 @@
 
 @font-face {
     font-family: 'Nazi Typewriter';
-    src: url('/static/fonts/nazi-typewriter/NaziTypewriter-Regular.ttf') format('truetype');
+    src: url('/static/fonts/nazi-typewriter/NaziTypewriter-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap;

@@ -6,7 +6,9 @@
     <?description from="$job.subtitle"/?>
     <?meta?>$job.team · $job.location · $job.employmentType<?/meta?>
     <?block slot="content"?>
+        <div style="font-family: var(--font-typewriter);">
         $job.body
+        </div>
         <p><a class="btn btn-primary" href="$job.applyUrl">Apply for this role</a></p>
     </?block?>
 </?use?>
