@@ -1,7 +1,0 @@
-title = "What is entropy ?"
-authors = "John  C. Baez"
-year = 2024
-kind = "book"
-url = "https://arxiv.org/abs/2409.09232"
-subjects = ["cs/information", "physics", "statistics"]
-blurb = "A very good ressources for learning the links between information theory and physical processes. Details on every construct of entropy, going from Shannon to concrete application to physical objects. A very good read for anyone who likes Mawell's demon."

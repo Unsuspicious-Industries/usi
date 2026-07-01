@@ -1,7 +1,7 @@
 <?use id="hero-cmp"?>
     <?label?>Services<?/label?>
     <?title?>Consulting & Collaboration<?/title?>
-    <?description?>We bring formal rigour and deep technical expertise to companies, institutions, and cultural projects — across any industry.<?/description?>
+    <?description?>We bring a rare mix of vibes and technical skills to the party.<?/description?>
 </?use?>
 
 <?use id="section-cmp"?>
@@ -16,13 +16,13 @@
                     <?href?>/contact<?/href?>
                     <?icon?>brain<?/icon?>
                     <?title?>Consulting<?/title?>
-                    <?text?>Pretty much anything involving logic, systems, and code — for any industry. Formal methods, type theory, compiler design, ML infrastructure, distributed architectures, and whatever else your stack throws at us.<?/text?>
+                    <?text?>Pretty much anything involving logic, systems, and code. Deploying Formal methods, type theory, compiler design, ML infrastructure, distributed architectures, and whatever else your stack throws at us.<?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
                     <?href?>/contact<?/href?>
                     <?icon?>flask<?/icon?>
                     <?title?>Institutional collaboration<?/title?>
-                    <?text?>Co-research and co-development with universities, labs, and cultural institutions. We co-design experiments, co-author papers, and build the tooling around hard problems.<?/text?>
+                    <?text?>Co-research and co-development with universities, labs, and cultural institutions. We design experiments, co-author papers, and build the tooling around hard problems. We tackle soft problem with hard methods and the reverse.<?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
                     <?href?>/contact<?/href?>
@@ -47,7 +47,7 @@
                 <?use id="card-cmp"?>
                     <?image?>/static/images/schirn.svg<?/image?>
                     <?title?>SCHIRN Kunsthalle, Frankfurt<?/title?>
-                    <?text?>Development work for an exhibition at the SCHIRN, built on our <strong>SLOP</strong> infrastructure — probing the latent biases and imagery of diffusion models.<?/text?>
+                    <?text?>Development work for an exhibition at the SCHIRN, built on our <a href="https://github.com/Unsuspicious-Industries/slop"><strong>SLOP</strong></a> experiments. Probing and modelling the latent biases and imagery of diffusion models.<?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
                     <?image?>/static/images/mediapart.svg<?/image?>

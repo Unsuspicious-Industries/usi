@@ -1,8 +1,0 @@
-title = "Intuitionistic Type Theory"
-authors = "Per Martin-Löf"
-year = 1984
-kind = "book"
-venue = "Bibliopolis"
-url = "https://archive-pml.github.io/martin-lof/pdfs/Bibliopolis-Book-retypeset-1984.pdf"
-subjects = ["cs/type-theory", "math", "philosophy", "logic"]
-blurb = "Foundational paper, the basis of the type theory we use in P7. Even shows up in notation. Going for a universal foundation of mathematical logic that gos beyond propositional calculus, with a purely constructive interepretation. "

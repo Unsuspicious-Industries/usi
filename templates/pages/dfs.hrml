@@ -88,13 +88,13 @@
 
 <?use id="hero-cmp"?>
     <?label?>Dynamic Formal Systems<?/label?>
-    <?title?>Constraint as <span class="highlight">construction</span><?/title?>
-    <?description?>The DFS lab is the main research division at Unusupicious. We bridge formal constructions of the world and the concrete state of affairs. Trying to close the gap between logic and the unsayable. <?/description?>
+    <?title?>Truth by <span class="highlight">construction</span><?/title?>
+    <?description?>The DFS lab is the main research division at Unusupicious. We bridge formal constructions of the world and it's physical substrate. Trying to close the gap between logic and the unsayable. <?/description?>
 </?use?>
 
 <section class="section aufbau-section">
     <div class="aufbau">
-        <p class="aufbau-eyebrow">The lab's flagship engine</p>
+        <p class="aufbau-eyebrow">Main developppement product</p>
         <h2 class="aufbau-name">AUFBAU</h2>
         <p class="aufbau-tag">A typed prefix-parsing engine for constrained decoding.</p>
 
@@ -147,7 +147,7 @@ x ∈ Γ
         <?use id="section-header"?>
             <?label?>Research Focus<?/label?>
             <?title?>What the lab works on<?/title?>
-            <?subtitle?>The formal questions that AUFBAU and Proposition 7 are built to answer.<?/subtitle?>
+            <?subtitle?>Some of our areas of interest.<?/subtitle?>
         </?use?>
         <?use id="card-grid"?>
             <?block slot="content"?>
@@ -163,8 +163,8 @@ x ∈ Γ
                 </?use?>
                 <?use id="card-cmp"?>
                     <?glyph?>↓<?/glyph?>
-                    <?title?>Unification<?/title?>
-                    <?text?>Working on axioms bridging typing and computation.<?/text?>
+                    <?title?>Physical formalisms<?/title?>
+                    <?text?>Implementing physical dimensional analysis inside rust's type system with the <a href="https://crates.io/crates/slut" target="_blank" rel="noopener">SLUT crate</a>. Used in simulations and scientific computing.<?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
                     <?glyph?>⊨<?/glyph?>
