@@ -6,6 +6,11 @@
     max-width: 100rem;
     margin: 0 auto;
 }
+@media (max-width: 768px) {
+    .section {
+        padding: 2rem 1rem;
+    }
+}
 <?/style?>
 <?if cond="$modifier"?>
 <section class="section $modifier">
