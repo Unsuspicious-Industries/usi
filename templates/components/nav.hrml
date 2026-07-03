@@ -83,6 +83,8 @@
     }
     .nav-hamburger {
         display: flex;
+        flex: 1;
+        align-items: center;
     }
     .nav-links {
         display: none;
