@@ -94,15 +94,13 @@
         align-items: center;
     }
     .nav-logo-mobile img {
-        height: 32px;
-        width: 32px;
+        height: 40px;
+        width: 40px;
         display: block;
     }
     .nav-hamburger {
         display: flex;
-        flex: 1;
         align-items: center;
-        justify-content: center;
         gap: 6px;
         width: auto;
         height: auto;
