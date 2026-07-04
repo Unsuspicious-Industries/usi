@@ -105,6 +105,9 @@
         width: auto;
         height: auto;
     }
+    .nav-cta-link {
+        margin-left: auto;
+    }
     .nav-hamburger span {
         width: 20px;
         height: 3px;
@@ -135,6 +138,7 @@
     }
     .nav-cta-link {
         display: block;
+        margin-left: auto;
         border-top: 1px solid var(--border);
         margin-top: 0.25rem;
         padding-top: 0.75rem;
