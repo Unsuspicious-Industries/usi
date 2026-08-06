@@ -20,7 +20,7 @@
     display: flex;
     gap: 1.25rem;
     align-items: flex-start;
-    background: white;
+    background: USI_GROUND;
     border: 1px solid var(--border);
     padding: 1.5rem;
 }

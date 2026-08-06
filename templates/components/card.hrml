@@ -7,7 +7,7 @@
 <?bind var="quote"/?>
 <?style?>
 .card {
-    background: white;
+    background: USI_GROUND;
     border: 1px solid var(--border);
     padding: 1.5rem;
 }
@@ -90,7 +90,7 @@
     transform: translateY(-2px);
 }
 .card-link:hover .card {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px color-mix(in srgb, USI_INK 10%, transparent);
 }
 .card-icon .icon-sm {
     color: var(--primary);

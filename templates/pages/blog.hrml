@@ -72,7 +72,7 @@
 }
 .blog-row:hover .blog-row-img {
     transform: scale(1.02);
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 24px color-mix(in srgb, USI_INK 10%, transparent);
 }
 .blog-row-tags {
     display: flex;

@@ -11,7 +11,7 @@
     gap: 1.5rem;
 }
 .job-card {
-    background: white;
+    background: USI_GROUND;
     border: 1px solid var(--border);
     padding: 1.5rem;
     display: flex;

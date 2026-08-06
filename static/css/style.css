@@ -159,17 +159,17 @@ main > * {
 
 .btn-primary {
     background: var(--primary);
-    color: white;
+    color: USI_GROUND;
     border-color: var(--primary);
 }
 
 .btn-primary:hover {
     background: USI_ACCENT;
-    color: white;
+    color: USI_GROUND;
 }
 
 .btn-secondary {
-    background: white;
+    background: USI_GROUND;
     color: var(--primary);
     border-color: var(--border);
 }
@@ -204,7 +204,7 @@ main > * {
     background: USI_SURFACE;
     color: USI_INK;
     overflow: hidden;
-    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.25);
+    box-shadow: 0 12px 30px color-mix(in srgb, USI_INK 25%, transparent);
 }
 
 .hrml-wasm-window::before {

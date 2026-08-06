@@ -54,12 +54,12 @@
 }
 .nav-cta {
     background: var(--accent);
-    color: white;
+    color: USI_GROUND;
     border-radius: 4px;
 }
 .nav-cta:hover {
     background: var(--brand-accent-1);
-    color: white;
+    color: USI_GROUND;
 }
 .nav-toggle {
     display: none;
