@@ -46,7 +46,7 @@
     white-space: nowrap;
 }
 .nav-link:hover {
-    background: #f3f4f6;
+    background: USI_SURFACE;
     color: var(--accent);
 }
 .nav-cta-link {

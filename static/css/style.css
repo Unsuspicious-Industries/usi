@@ -108,7 +108,8 @@ a {
 }
 
 a:hover {
-    color: var(--brand-accent);
+    color: var(--accent);
+    filter: brightness(0.9);
 }
 
 /* Main content offset for fixed nav */
@@ -163,7 +164,7 @@ main > * {
 }
 
 .btn-primary:hover {
-    background: #111827;
+    background: USI_ACCENT;
     color: white;
 }
 
@@ -174,7 +175,7 @@ main > * {
 }
 
 .btn-secondary:hover {
-    background: #f9fafb;
+    background: USI_SURFACE;
     color: var(--primary);
 }
 
@@ -199,9 +200,9 @@ main > * {
     display: block;
     min-height: 160px;
     margin: 1rem 0;
-    border: 1px solid #0f172a;
-    background: #0f172a;
-    color: #e2e8f0;
+    border: 1px solid USI_RULE;
+    background: USI_SURFACE;
+    color: USI_INK;
     overflow: hidden;
     box-shadow: 0 12px 30px rgba(15, 23, 42, 0.25);
 }
@@ -216,9 +217,9 @@ main > * {
     font-size: 0.75rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #cbd5e1;
-    background: rgba(15, 23, 42, 0.75);
-    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    color: USI_INK_DIM;
+    background: rgba(15, 23, 42, 0.06);
+    border-bottom: 1px solid USI_RULE;
 }
 
 .hrml-wasm-canvas {
@@ -228,14 +229,14 @@ main > * {
 .hrml-wasm-error {
     margin: 0;
     padding: 2.25rem 1rem 1rem;
-    color: #fecaca;
+    color: USI_BAD;
     white-space: pre-wrap;
 }
 
 /* ── Inline code (outside prose-shell) ───────── */
 
 code {
-    background: #f3f4f6;
+    background: USI_SURFACE;
     padding: 0.125rem 0.375rem;
     font-family: 'Fira Mono', 'Liberation Mono', monospace;
     font-size: 0.875em;

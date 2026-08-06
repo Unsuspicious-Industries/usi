@@ -137,14 +137,14 @@
 }
 .prose-shell code {
     font-family: var(--font-mono);
-    background: #f3f4f6;
+    background: USI_SURFACE;
     padding: 0.125rem 0.375rem;
     border-radius: 0.25rem;
 }
 .prose-shell pre {
     overflow-x: auto;
-    background: #111827;
-    color: #f9fafb;
+    background: USI_SURFACE;
+    color: USI_INK;
     padding: 1rem;
     border-radius: 0.5rem;
 }

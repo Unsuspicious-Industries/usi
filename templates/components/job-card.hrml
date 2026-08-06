@@ -39,7 +39,7 @@
 }
 .job-chip.muted {
     border-color: var(--border);
-    background: #f8fafc;
+    background: USI_SURFACE;
     color: var(--text-muted);
 }
 .job-card-title {
