@@ -6,7 +6,7 @@
     left: 0;
     right: 0;
     z-index: 100;
-    background: rgba(255, 255, 255, 0.95);
+    background: color-mix(in srgb, USI_GROUND 95%, transparent);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     padding: 0.875rem 2rem;
@@ -120,7 +120,7 @@
         top: 100%;
         left: 0;
         right: 0;
-        background: rgba(255, 255, 255, 0.98);
+        background: color-mix(in srgb, USI_GROUND 98%, transparent);
         backdrop-filter: blur(12px);
         border-bottom: 1px solid var(--border);
         flex-direction: column;

@@ -8,7 +8,7 @@
     max-width: 80rem;
     padding: 2rem 2rem 2rem 2.5rem;
     border-radius: 12px;
-    background: rgba(84, 0, 91, 0.06);
+    background: color-mix(in srgb, USI_ACCENT 6%, transparent);
     position: relative;
 }
 .short-quote::before {

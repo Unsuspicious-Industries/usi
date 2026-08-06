@@ -218,7 +218,7 @@ main > * {
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: USI_INK_DIM;
-    background: rgba(15, 23, 42, 0.06);
+    background: color-mix(in srgb, USI_ACCENT 6%, transparent);
     border-bottom: 1px solid USI_RULE;
 }
 
