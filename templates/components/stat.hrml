@@ -23,7 +23,7 @@
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: USI_INK_DIM;
+    color: var(--text-muted);
 }
 <?/style?>
 <div class="stat-item">
