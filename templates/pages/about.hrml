@@ -83,6 +83,7 @@
     <?work?>The Fellowship of the Ring<?/work?>
 </?use?>
 
+<?data from="data/people" as="people"?>
 <?use id="section-cmp"?>
     <?block slot="content"?>
         <?use id="section-header"?>
@@ -91,37 +92,19 @@
             <?subtitle?>A small collective. You talk to the people doing the work.<?/subtitle?>
         </?use?>
 
-        <p class="team-sub">Institute Leadership</p>
+        <p class="team-sub">USI members</p>
         <div class="team-grid">
+            <?map over="people" as="person"?>
             <article class="member">
-                <div class="member-mono">CRN</div>
+                <div class="member-mono">$person.initials</div>
                 <div class="member-info">
-                    <h3 class="member-name">CRN</h3>
-                    <p class="member-role">Leadership</p>
-                    <p class="member-bio">Former technology entrepreneur with expertise in edge markets and emergent commercialization.</p>
+                    <h3 class="member-name">$person.name</h3>
+                    <p class="member-role">$person.role</p>
+                    <p class="member-bio">$person.bio</p>
+                    <?if cond="$person.website"?><a class="member-link" href="$person.website" target="_blank" rel="noopener">$person.website →</a><?/if?>
                 </div>
             </article>
-            <article class="member">
-                <div class="member-mono">PKD</div>
-                <div class="member-info">
-                    <h3 class="member-name">PKD</h3>
-                    <p class="member-role">Research Director</p>
-                    <p class="member-bio">Specializing in computational systems, artificial intelligence, and mathematical modeling.</p>
-                    <a class="member-link" href="https://pkd.unsuspicious.org" target="_blank" rel="noopener">pkd.unsuspicious.org →</a>
-                </div>
-            </article>
-        </div>
-
-        <p class="team-sub">Research Faculty &amp; Staff</p>
-        <div class="team-grid">
-            <article class="member">
-                <div class="member-mono">TC</div>
-                <div class="member-info">
-                    <h3 class="member-name">Thomas C.</h3>
-                    <p class="member-role">Research Assistant, Computational Engineering</p>
-                    <p class="member-bio">Engineering student.</p>
-                </div>
-            </article>
+            <?/map?>
         </div>
     </?block?>
 </?use?>
