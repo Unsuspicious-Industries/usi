@@ -8,3 +8,8 @@ dist/
 # Deploy
 deploy.sh
 
+# Written into the served checkout by the fleet from usi.profiles at serve start,
+# never authored here: a committed profile is a tracked file the serve step has to
+# replace, which it refuses to do.
+data/people/*.mdx
+

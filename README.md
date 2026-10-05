@@ -29,10 +29,12 @@ xrml build . --palette "$USI_PALETTE"   # static output to dist/
 `nix build .#site` renders the same tree into a store path with the pinned
 palette; the apex itself is served live from a git checkout rather than from it.
 
-A bare checkout is also not the whole site. `data/people/` is filled by the fleet
-from its identity data and copied into the served checkout, so `/about` here
+A bare checkout is also not the whole site. The fleet replaces `data/people/` at
+serve start with the profiles it projects from its identity data, so `/about` here
 renders an empty team grid while production lists the members; the same holds for
-the generated `static/graphics/corporate.pdf`.
+the generated `static/graphics/corporate.pdf`. Nothing under `data/people/` except
+`.keep` may be committed: the serve step refuses a tracked profile, and `.gitignore`
+keeps a generated one out of the tree.
 
 ## Site files
 
