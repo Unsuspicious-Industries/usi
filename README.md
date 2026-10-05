@@ -34,7 +34,9 @@ serve start with the profiles it projects from its identity data, so `/about` he
 renders an empty team grid while production lists the members; the same holds for
 the generated `static/graphics/corporate.pdf`. Nothing under `data/people/` except
 `.keep` may be committed: the serve step refuses a tracked profile, and `.gitignore`
-keeps a generated one out of the tree.
+keeps a generated one out of the tree. To correct a name, role or biography, edit
+the profile in the ENT - it writes `config/profiles.json` in the fleet repository -
+and the change appears once the fleet activates, not on the next content sync.
 
 ## Site files
 
