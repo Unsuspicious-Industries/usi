@@ -2,26 +2,30 @@
 
 This repository contains the source for [unsuspicious.org](https://unsuspicious.org), built with [HRML](https://github.com/Unsuspicious-Industries/hrml) and its `xrml` command-line tool.
 
-## Install XRML
-
-Install the published Rust package:
-
-```sh
-cargo install xrml
-```
-
-Or run it through Nix, as described in the [XRML README](https://github.com/Unsuspicious-Industries/hrml#run-from-nix).
-
 ## Develop and build
 
-Run these commands from the repository root:
+The generator this repository pins comes from its own flake, so a working copy
+needs no second install:
 
 ```sh
-xrml dev
-xrml build
+nix develop    # xrml on PATH, the revision flake.lock names
+nix run        # serve a dev instance of this checkout, with source reloads
 ```
 
-`xrml dev` serves the site locally with source reloads. `xrml build` writes static output to `dist/`.
+Colour is not in this repository. Templates write `USI_<ROLE>` tokens and the
+generator resolves them from a palette file passed at render time; without one it
+writes the tokens out literally, the browser drops every declaration, and the
+page renders in browser defaults instead of the house palette. The hexes live in
+the `ui` design system; until `ui` publishes them as a flake input, pass the file
+explicitly:
+
+```sh
+xrml serve . --palette <usi-palette-corporate.toml>   # dev server on :8080
+xrml build . --palette <usi-palette-corporate.toml>   # static output to dist/
+USI_PALETTE=<file> nix run                            # the same, through the flake app
+```
+
+`nix build .#site` renders without a palette and so is not a preview of anything.
 
 ## Site files
 
