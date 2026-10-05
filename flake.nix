@@ -35,5 +35,28 @@
       '';
 
       checks.${system}.site = self.packages.${system}.site;
+
+      # The generator this repo's own hrml input pins, on PATH for a working
+      # copy. Colours are NOT here: templates write USI_<ROLE> tokens and the
+      # generator resolves them from a palette file passed at render time, so a
+      # serve without --palette emits the tokens verbatim and the browser drops
+      # every declaration. The hexes live in servers/config/style.nix; see
+      # servers/common/xrml.nix for the file the serve unit passes.
+      devShells.${system}.default = pkgs.mkShell {
+        name = "usi-site";
+        packages = [ xrml ];
+        shellHook = ''
+          cat <<'EOF'
+xrml is on PATH (pinned by this flake's hrml input). Colours are not in this
+repo - pass the fleet palette or the USI_ tokens ship unresolved:
+  xrml serve . --palette <usi-palette-corporate.toml>
+EOF
+        '';
+      };
+
+      apps.${system}.default = {
+        type = "app";
+        program = "${xrml}/bin/xrml";
+      };
     };
 }
