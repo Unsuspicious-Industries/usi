@@ -8,19 +8,17 @@ image: /regex.jpg
 tags: [research-notes, theorem-proving, program-synthesis, automata]
 ---
 
-# A quick overview of RegEx
+# Regular expressions
 
-Regular Expressions ([RegEx](https://en.wikipedia.org/wiki/Regular_expression)) are a very common tool in computer science, often used for search-and-replace operations, finding specific strings or patterns in large files, and validating user input (see the infamous email regex).
+Regular expressions ([RegEx](https://en.wikipedia.org/wiki/Regular_expression)) describe patterns used to search text and validate input. In automata theory, regular expressions correspond to finite automata. Thompson's construction converts a regular expression into an automaton.
 
-In introductory classes to theoretical computer science, we see regular expressions as an example application of automata theory, more precisely finite automata. The process of converting a RegEx into an automaton is called Thompson's construction, and is behind *grep*'s unreal speed.
+# Prefix completion
 
-# The problem at hand
-
-When building [Proposition 7](https://unsuspicious.org/blog/proposition-7), I was struggling with a very peculiar problem in program synthesis and input validation.
+While building [Proposition 7](https://unsuspicious.org/blog/proposition-7), I considered a problem in program synthesis and input validation.
 
 ## Correctness by complete-ability
 
-The **p7** expression parser is based on a very simple principle:
+The **p7** expression parser uses the following acceptance condition:
 
 With $\Sigma$ an alphabet and $L$ a language, we can define a function 
 $$
@@ -35,11 +33,11 @@ $$
 \end{cases}
 $$
 
-Our goal here, for constrained generation, is to ensure that any prefix $s$ of a valid expression can be completed into a valid expression in $L$ and thus lead to a valid program of proof.
+For constrained generation, the goal is to accept a prefix $s$ only when it can be completed into a valid expression in $L$.
 
 ## RegEx sub-problem
 
-Since our language $L$ is defined by complex mechanisms, such as typing rules and recursive grammars, it must be handled by a Turing-complete model in the general case. However, a subset of this problem requires a generalized solution for RegEx.
+The language $L$ may be defined by typing rules and recursive grammars, which require a Turing-complete model in the general case. A subset of the problem can be handled with regular expressions.
 
 Consider the following grammar as an example:
 
@@ -94,7 +92,7 @@ $$
 \end{cases}
 $$
 
-This function bridges the gap between the formal language's alphabet and the model vocabulary, allowing us to validate all possible partial (complete-able) inputs.
+This function maps partial inputs over the model vocabulary to completion status in the formal language's alphabet.
 
 ### $\Sigma_{\text{vocab}}\text{-completeability}$ in $L$
 Now that we have a function relating our model's vocabulary $\Sigma_\text{vocab}$ to the formal language's alphabet $\Sigma$, we can define a function that directly relates the model's vocabulary to the completeability in $L$ noted $\hat{\Phi}$:
@@ -127,7 +125,7 @@ Keeping with our example, `bi` and `bip an` are both $\Sigma_{\text{vocab}}\text
 
 Focusing on the regex aspect of the program, we want to implement $\pi(s)$ for the case where $L_\Sigma$ is defined by a regex $r_\Sigma$. We cannot trivially do this by directly manipulating automata, but need a more general mechanism on the expressions themselves. In short, we need something that can tell us if a string $s \in \Sigma_{\text{vocab}}^*$ is a valid **prefix** of a string in $L_\Sigma$. 
 
-One approach is find the set of suffixes $S = \{ s' \in \Sigma_{\text{vocab}}^* \mid ss' \in L_\Sigma \}$, and check if $S$ is non-empty. The *completing suffix* of $s$ is known as the quotient of $L_\Sigma$ with respect to $s$, and is written $s^{-1}L_\Sigma$. The expression that can produce this set of quotients is known as the Brzozowski derivative of $L_\Sigma$ with respect to $s$, and is written $D_s(L_\Sigma)$.
+One approach is to find the set of suffixes $S = \{ s' \in \Sigma_{\text{vocab}}^* \mid ss' \in L_\Sigma \}$, and check whether $S$ is non-empty. The *completing suffix* of $s$ is known as the quotient of $L_\Sigma$ with respect to $s$, and is written $s^{-1}L_\Sigma$. The expression that can produce this set of quotients is known as the Brzozowski derivative of $L_\Sigma$ with respect to $s$, and is written $D_s(L_\Sigma)$.
 
 
 We work with a standard regular-expression syntax over the alphabet $\Sigma_{\text{vocab}}$ to define $L_\Sigma$:
@@ -240,7 +238,7 @@ pub fn derivative(&self, s: &str) -> Regex {
 }
 ```
 
-In practice, one also applies algebraic simplifications after each construction (e.g., $\emptyset + r = r$, $\emptyset r = \emptyset$, $\varepsilon r = r$) to control expression growth.
+In practice, apply algebraic simplifications after each construction (e.g., $\emptyset + r = r$, $\emptyset r = \emptyset$, $\varepsilon r = r$) to control expression growth.
 
 
 In the real implementation, we use the Brzozowski derivative not only to implement $\pi(s)$, but also as a policy for the sampling system in the constrained decoding core of **Proposition 7**. 
@@ -259,7 +257,7 @@ In a real world implementaiton with grammar defined in EBNF-like format and an i
 
 For the precise use case of constrained generation, $T_{n+1}$ and $r'$ are passed to the sampling system and applied as filters on the model's vocabulary $\Sigma_\text{vocab}$ to only allow tokens that can complete $s$ into a valid expression.
 
-Obviously, this is only a small piece in the puzzle, and a lot of challenges remain with the implementation of $\Phi$ on arbitrary, context-dependent, languages, with context and type dependencies. It's still cool to see how basic concepts like this have deep implications and practical value in real-world systems.
+This addresses only one part of implementing $\Phi$ for arbitrary context-dependent languages with context and type dependencies.
 
 ---
 

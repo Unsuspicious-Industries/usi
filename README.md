@@ -1,65 +1,38 @@
-# Unsuspicious Industries — Website
+# Unsuspicious Industries website
 
-The [unsuspicious.org](https://unsuspicious.org) website, built with [HRML](https://github.com/Unsuspicious-Industries/hrml).
+This repository contains the source for [unsuspicious.org](https://unsuspicious.org), built with [HRML](https://github.com/Unsuspicious-Industries/hrml) and its `xrml` command-line tool.
 
-## Prerequisites
+## Install XRML
 
-Install the `xrml` build tool:
+Install the published Rust package:
 
-```bash
+```sh
 cargo install xrml
 ```
 
-Or from source:
+Or run it through Nix, as described in the [XRML README](https://github.com/Unsuspicious-Industries/hrml#run-from-nix).
 
-```bash
-git clone https://github.com/Unsuspicious-Industries/hrml
-cd hrml
-cargo install --path .
-```
+## Develop and build
 
-## Development
+Run these commands from the repository root:
 
-```bash
+```sh
 xrml dev
-```
-
-Opens a dev server at `http://localhost:8080` with auto-reload.
-
-## Build
-
-```bash
 xrml build
 ```
 
-Static output goes to `dist/`.
+`xrml dev` serves the site locally with source reloads. `xrml build` writes static output to `dist/`.
 
-## Project Structure
+## Site files
 
-```
-usi/
-├── xrml.toml                 # Project config
-├── templates/
-│   ├── layouts/base.hrml     # Master layout
-│   ├── components/            # Reusable components (auto-registered)
-│   └── pages/                 # Page templates → routes
-├── data/
-│   ├── posts/                 # Blog MDX posts
-│   ├── jobs/                  # Job listing JSON
-│   ├── notes/                 # Research notes MDX
-│   └── resources/             # Reference resources TOML
-└── static/
-    ├── css/                   # Global styles
-    ├── images/                # Images
-    ├── fonts/                 # Web fonts
-    └── icons/                 # SVG icons
-```
+- `xrml.toml` configures the site.
+- `templates/layouts/` contains the base layout.
+- `templates/components/` contains reusable components.
+- `templates/pages/` contains page templates; their paths determine routes.
+- `data/posts/` and `data/jobs/` contain the site's MDX content.
+- `static/` contains stylesheets, images, fonts, icons and other assets.
 
-## Adding Pages
-
-1. Create a `.hrml` file in `templates/pages/`
-2. Add a nav link in `templates/components/nav.hrml`
-3. Rebuild
+To add a page, create a `.hrml` file under `templates/pages/`. For example, `templates/pages/research.hrml` defines `/research`. Add a navigation link separately in `templates/components/nav.hrml` if the page should appear in the navigation.
 
 ## License
 

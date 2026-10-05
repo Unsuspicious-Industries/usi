@@ -105,9 +105,9 @@
 <?/style?>
 
 <?use id="hero-cmp"?>
-    <?label?>Thoughts<?/label?>
-    <?title?>Research Notes & Reflections<?/title?>
-    <?description?>Our thoughts on various subjects. Not always an expert's opinion, but always curiosity driven.<?/description?>
+    <?label?>Research notes<?/label?>
+    <?title?>Research notes and articles<?/title?>
+    <?description?>Articles and research notes by members of Unsuspicious Industries.<?/description?>
 </?use?>
 
 <section class="section blog-section">

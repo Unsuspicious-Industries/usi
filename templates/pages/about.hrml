@@ -49,28 +49,28 @@
 
 <?use id="hero-cmp"?>
     <?title?>About Us<?/title?>
-    <?description?>We are an open multidisciplinary research collective focusing on computer science, mathematics, arts and everything else.<?/description?>
+    <?description?>Unsuspicious Industries is a multidisciplinary research collective working in computer science, mathematics and the arts.<?/description?>
 </?use?>
 
 <?use id="section-cmp"?>
     <?block slot="content"?>
         <?use id="section-header"?>
             <?title?>Our Mission<?/title?>
-            <?subtitle?>Advancing human knowledge through stochastic epistemology (intellectual wandering ?)<?/subtitle?>
+            <?subtitle?>Advancing human knowledge through stochastic epistemology.<?/subtitle?>
         </?use?>
         <?use id="card-grid"?>
             <?block slot="content"?>
                 <?use id="card-cmp"?>
                     <?title?>Open Research<?/title?>
-                    <?text?>All our research is open and freely accessible. We believe in the power of open science.<?/text?>
+                    <?text?>Our research is open and freely accessible.<?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
                     <?title?>Multidisciplinary<?/title?>
-                    <?text?>We bring together researchers from diverse backgrounds to tackle complex problems.<?/text?>
+                    <?text?>We work across disciplines on research problems.<?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
                     <?title?>Formal Methods<?/title?>
-                    <?text?>We pursue fundamental questions in type systems, proof synthesis, and computational limits of knowability.<?/text?>
+                    <?text?>Our formal-methods research addresses type systems, proof synthesis and the computational limits of knowability.<?/text?>
                 </?use?>
             </?block?>
         </?use?>
@@ -89,7 +89,7 @@
         <?use id="section-header"?>
             <?label?>The people<?/label?>
             <?title?>Who we are<?/title?>
-            <?subtitle?>A small collective. You talk to the people doing the work.<?/subtitle?>
+            <?subtitle?>A small collective; contact the people doing the work.<?/subtitle?>
         </?use?>
 
         <p class="team-sub">USI members</p>

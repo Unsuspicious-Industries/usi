@@ -11,34 +11,34 @@ tags: [research-notes, theorem-proving, program-synthesis, type-theory, RL, cons
 
 # Grammar, Logic and Meaning
 
-Recent developments in the training of Large Language Models (LLMs) have seen the rise of *prover* models, with deepseek-r1-prover being the pioneer in the domain, and OpenAI quickly following with o3-pro, and even the latest GPT-5-Thinking. These models are highly optimized for logic and proof through Chain-of-Thought (CoT) enabled Reinforcement Learning on hard math problems. While this approach has gathered good results, especially with smaller models developed by companies such as Z.ai or Moonshot AI, it has several fundamental flaws that decrease both accuracy and efficiency.
+Prover models for large language models (LLMs) include DeepSeek-R1-Prover, described here as the pioneer, followed by OpenAI o3-pro and GPT-5-Thinking. These models use Chain-of-Thought (CoT) and reinforcement learning on hard mathematical problems. This approach has produced results, including with smaller models from Z.ai and Moonshot AI, but has limitations that can reduce accuracy and efficiency.
 
-Under the current training paradigm, LLMs have to internalize three very different notions at the same time:
+This training approach asks LLMs to learn three distinct tasks:
  - **Grammar** 
  - **Logic**  
  - **Meaning/Purpose/Creativity** ?
 
-This structure makes the whole pipeline very hard to debug. Failures on benchmarks and evaluations can come from either syntax errors, logical inconsistencies (what Wittgenstein would call *unsinnig*[^1]), or outright limitations of the model's "intelligence".
+A failure may come from a syntax error, a logical inconsistency (what Wittgenstein would call *unsinnig*[^1]), or a limitation of the model's reasoning.
 
-Some companies, like **.txt** (dottxt.co) are developing regex-based sampling solutions to fix the grammar aspect, in order to improve tool integration and augment reliability. This has proven successful, and has shown good results with a significant decrease in compute cost in some applications, but it doesn't go far enough.
+Companies such as **.txt** (dottxt.co) develop regex-based sampling to constrain grammar during inference. The post reports improvements to tool integration and reliability, and reduced compute costs in some applications; this does not address logic.
 
-For one, this approach only covers inference, and doesn't integrate in the training pipeline. And secondly, it doesn't solve the main problem of **logic**.
+Regex-based sampling covers inference, not the training pipeline, and does not solve **logic**.
 
 
 # Proposition 7 (P7)
-At Unsuspicious Industries, we want to go several steps further in the process. In this post, we are introducing [**Proposition 7**](https://github.com/Unsuspicious-Industries/p7), our constrained generation system [WIP] that unifies typed programming, proof building, reasoning and natural language[^4]. 
+[**Proposition 7**](https://github.com/Unsuspicious-Industries/p7) is a work-in-progress constrained-generation system intended to combine typed programming, proof construction, reasoning and natural language[^4].
 
 ## Philosophy
 
-Philosophy is the practice of asking questions. Mathematics is the branch of philosophy in which we can know if our answers are true or false.
+Philosophy asks questions. In mathematics, we can determine whether answers are true or false.
 
 Intelligence is best understood as the capacity to ask good questions, in other words, to make interesting choices. "Interesting" is not the same as "true". We call this ability **taste**: a coherent model of what is beautiful, and worth looking into.[^3] 
 
 Some of what we find interesting is also absurd: we can call it **mysticism**[^2]. Mysticism *is* cool, and we dedicate a lot of time to it, through art, music, literature, and even love, but it's not something machines can/should do. Nevertheless, we cannot work without it, because finding beauty in a theorem needs the same **taste** system as finding beauty in a painting, or a poem.
 
-Being good at mathematics is less about the mechanics of proof (we can trivially prove statements, it's just that most statements are boring) and more about choosing what to prove, and when, to advance a goal.
+Mathematical work involves choosing what to prove and when, not only constructing proofs.
 
-To build intelligent machines, we should optimize for taste, but make sure to stay within the bounds of true statements. 
+The proposal is to optimize for taste while constraining outputs to true statements.
 
 Humans naturally think with vague language, often outrunning strict truth conditions, and it makes sense in a messy world.
 
@@ -48,7 +48,7 @@ Humans naturally think with vague language, often outrunning strict truth condit
 
 In formal reasoning, the tradeoff is different. Our thinking systems must balance **taste** with formality: know which questions *should* be asked while respecting which questions *can* be asked. With constrained generation we want to restrict search space to *formally valid* outputs in a given formal system, and use the broad priors of LLMs as approximations of taste, allowing them to pick which path to explore.  
 
-In such a setup, "hallucination" loses its meaning: truth is enforced by the formal layer, while open-ended association remains contained in latent representations, or alternative channels. By itself this is not enough, and freely pretrained models may stall, so Proposition 7 combines it with a training pipeline that applies a custom loss to formally verified outputs to shape intelligence, and an entropy-based sampling system.
+In this setup, the formal layer enforces truth within a formal system, while open-ended association remains in latent representations or other channels. The WIP design combines constraints with a training pipeline that applies a custom loss to formally verified outputs and an entropy-based sampling system, because freely pretrained models may stall.
 
 ## System Overview
 - Constraint Engine: unified grammar and typing/proof rules that produce only valid moves/ASTs within a formal system.

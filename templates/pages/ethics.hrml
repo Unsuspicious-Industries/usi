@@ -13,25 +13,25 @@
 <?use id="prose-page"?>
     <?label?>Institutional Constraint<?/label?>
     <?title?>Ethics Policy<?/title?>
-    <?description?>How Unsuspicious Industries tries to keep weird research answerable to something larger than itself.<?/description?>
+    <?description?>The policy describes how Unsuspicious Industries approaches research ethics.<?/description?>
     <?meta?>Last updated · 2025-04-08<?/meta?>
     <?block slot="content"?>
-        <p>Unsuspicious Industries is committed to upholding the latest discoveries in ethics and ensuring that all our practices align with the most recent technology in ethics research.</p>
+        <p>Unsuspicious Industries states that its practices should reflect current ethics research.</p>
 
-        <h2>Our Ethics research Division</h2>
-        <p>In order to maximize our moral value, we have established a dedicated Ethics research division. The goal of this division is to discover new moral laws and ensure our practices align with their findings. We employ the most advanced technology, including cutting-edge philosophy, AI-assisted reasoning, polls, twitter threads, and more, to ensure our ethical standards are always up-to-date.</p>
+        <h2>Ethics research</h2>
+        <p>The ethics research division studies ethical questions and reviews the organization's practices. Its methods include philosophical analysis, AI-assisted reasoning, polls and public discussion.</p>
 
         <h2>Ethical Decision-Making</h2>
-        <p>We encourage a culture of ethical decision-making, where employees can launch debates on ethical dilemmas and explore new moral paths.</p>
+        <p>Employees can raise ethical questions and discuss possible responses.</p>
 
         <h2>Reporting Violations</h2>
-        <p>If you believe that our ethical standards have been compromised, or aren't up to date, we encourage you to report your concerns to us. We are committed to investigating all reports promptly and taking appropriate action.</p>
+        <p>Report concerns about the organization's ethical standards to <a href="mailto:contact@unsuspicious.org">contact@unsuspicious.org</a>. The organization states that it will investigate reports promptly and take appropriate action.</p>
 
         <h2>Continuous Improvement</h2>
-        <p>We are dedicated to continuously reviewing and improving our ethics policy and practices to ensure they remain relevant and effective. We actively try to get out of the hegemonic frameworks of traditional ethics by incorporating diverse perspectives and methodologies.</p>
+        <p>The organization reviews its ethics policy and practices and seeks to include perspectives and methods beyond established ethical frameworks.</p>
 
         <h2>Contact Us</h2>
-        <p>If you have any questions or concerns about our Ethics Policy, please contact us at <a href="mailto:contact@unsuspicious.org">contact@unsuspicious.org</a>.</p>
+        <p>For questions about this policy, email <a href="mailto:contact@unsuspicious.org">contact@unsuspicious.org</a>.</p>
     <?/block?>
 </?use?>
 
@@ -55,7 +55,7 @@
 </?use?>
 
 <?use id="cta-section"?>
-    <?title?>Want to work on the hard part?<?/title?>
+    <?title?>Interested in an open role?<?/title?>
     <?primary?>See open roles<?/primary?>
     <?primary-href?>/jobs<?/primary-href?>
     <?secondary?>Talk to us<?/secondary?>

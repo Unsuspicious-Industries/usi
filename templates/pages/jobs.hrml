@@ -6,15 +6,15 @@
 
 <?use id="hero-cmp"?>
     <?label?>Now Hiring<?/label?>
-    <?title?>Build improbable systems with us<?/title?>
-    <?description?>Open briefs from the Unsuspicious Industries archive, spanning ethics, fieldwork, and general intellectual misbehavior.<?/description?>
+    <?title?>Open positions<?/title?>
+    <?description?>Current openings at Unsuspicious Industries.<?/description?>
 </?use?>
 
 <section class="section jobs-section">
     <?use id="section-header"?>
         <?label?>Open Roles<?/label?>
-        <?title?>Current briefs<?/title?>
-        <?subtitle?>Small team, weird constraints, unusually high leverage.<?/subtitle?>
+        <?title?>Open roles<?/title?>
+        <?subtitle?>Review each role's responsibilities and requirements before applying.<?/subtitle?>
     </?use?>
 
     <div class="job-grid">
@@ -34,8 +34,8 @@
 </section>
 
 <?use id="cta-section"?>
-    <?title?>Don't fit the brief but fit the vibe?<?/title?>
-    <?primary?>Write to us<?/primary?>
+    <?title?>Do not see a suitable role?<?/title?>
+    <?primary?>Email us about a role<?/primary?>
     <?primary-href?>mailto:jobs@unsuspicious.org<?/primary-href?>
     <?secondary?>Read our ethics note<?/secondary?>
     <?secondary-href?>/ethics<?/secondary-href?>

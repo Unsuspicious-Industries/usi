@@ -39,7 +39,7 @@
 <?use id="hero-cmp"?>
     <?label?>Products<?/label?>
     <?title?>Open Source Research Tools<?/title?>
-    <?description?>We build tools that we use in our own research, and release them for anyone to use.<?/description?>
+    <?description?>We develop research tools and release them as open source.<?/description?>
 </?use?>
 
 <?use id="section-cmp"?>
@@ -54,7 +54,7 @@
             <div class="prod-feature-body">
                 <p class="prod-feature-flag">Flagship engine</p>
                 <h3 class="prod-feature-title">AUFBAU</h3>
-                <p class="prod-feature-text">A typed prefix-parsing engine for constrained decoding. Generalized Earley-style prefix parsing with an added constraint domain. Rust core with Python bindings (PyO3), MIT-licensed.</p>
+                <p class="prod-feature-text">A typed prefix-parsing engine for constrained decoding. It extends Earley-style prefix parsing with a constraint domain. The Rust core has Python bindings (PyO3) and is licensed under MIT.</p>
                 <div class="prod-feature-links">
                     <a href="https://github.com/Unsuspicious-Industries/aufbau" target="_blank" rel="noopener">GitHub →</a>
                     <a href="/dfs">Details →</a>
@@ -66,7 +66,7 @@
             <div class="prod-feature-body">
                 <p class="prod-feature-flag">Built on AUFBAU</p>
                 <h3 class="prod-feature-title">Proposition 7</h3>
-                <p class="prod-feature-text">System-agnostic, formally constrained generation for LLMs using AUFBAU. Type-aware constrained decoding, a benchmark runner, and built-in typed grammars for STLC, ML, and imperative fragments. Named for the last line of the <em>Tractatus</em>.</p>
+                <p class="prod-feature-text">A system-agnostic constrained-generation system for LLMs, built on AUFBAU. It provides type-aware decoding, a benchmark runner and typed grammars for STLC, ML and imperative fragments. Its name refers to the final proposition of the <em>Tractatus</em>.</p>
                 <div class="prod-feature-links">
                     <a href="https://github.com/Unsuspicious-Industries/p7" target="_blank" rel="noopener">GitHub →</a>
                     <a href="/blog/proposition-7">Blog post →</a>
@@ -86,7 +86,7 @@
         <?use id="section-header"?>
             <?label?>Tooling<?/label?>
             <?title?>Research Software<?/title?>
-            <?subtitle?>Open source tools built for and alongside our research.<?/subtitle?>
+            <?subtitle?>Open-source tools developed alongside our research.<?/subtitle?>
         </?use?>
         <?use id="card-grid"?>
             <?cols?>2<?/cols?>
@@ -95,25 +95,25 @@
                     <?href?>https://github.com/Unsuspicious-Industries/slop</?href?>
                     <?icon?>brain<?/icon?>
                     <?title?>SLOP<?/title?>
-                    <?text?>Infrastructure for low-budget comparative study of AI slop and colonial imagery. Custom difusion models implementations for field probing and latent space exploration.<?/text?>
+                    <?text?>Infrastructure for comparative study of AI slop and colonial imagery, with custom diffusion-model implementations for field probing and latent-space exploration.<?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
                     <?href?>https://crates.io/crates/slut</?href?>
                     <?icon?>flask<?/icon?>
                     <?title?>SLUT<?/title?>
-                    <?text?>Static Linear Untiful Tensors. A Rust crate for working with vectors and matrices with physical dimensions. Basically <code>uom</code> but in a vector space. Zero-runtime code, fully compile-time.<?/text?>
+                    <?text?>Static Linear Untiful Tensors (SLUT) is a Rust crate for working with vectors and matrices with physical dimensions. It applies the <code>uom</code> approach to vector spaces, with dimensional checking at compile time.<?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
                     <?href?>https://github.com/Unsuspicious-Industries/hrml</?href?>
                     <?icon?>code<?/icon?>
                     <?title?>HRML<?/title?>
-                    <?text?>The markup language and framework used to build this website. A custom templating engine with component hoisting, MDX support, and static site generation.<?/text?>
+                    <?text?>The markup language and framework used to build this website. It provides a templating engine, component hoisting, MDX support and static-site generation.<?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
                     <?href?>https://github.com/Unsuspicious-Industries/political-alignement</?href?>
                     <?icon?>chart-line<?/icon?>
                     <?title?>Political Alignment<?/title?>
-                    <?text?>Tools to study LLM political alignment. Automated political bias evaluation on a political compass, and embedding space analysis to measure political distances between concepts.<?/text?>
+                    <?text?>Tools for studying political alignment in LLMs, including political-compass evaluations and embedding-space analysis of distances between concepts.<?/text?>
                 </?use?>
             </?block?>
         </?use?>
@@ -125,7 +125,7 @@
         <?use id="section-header"?>
             <?label?>Open Source<?/label?>
             <?title?>Committed to Open Research<?/title?>
-            <?subtitle?>We believe research tools should be free, accessible, and reproducible.<?/subtitle?>
+            <?subtitle?>Our stated aim is to make research tools freely available and reproducible.<?/subtitle?>
         </?use?>
         <?use id="card-grid"?>
             <?cols?>3<?/cols?>
@@ -133,17 +133,17 @@
                 <?use id="card-cmp"?>
                     <?icon?>book<?/icon?>
                     <?title?>Open by Default<?/title?>
-                    <?text?>Every project we release is open source under MIT. Our research code, tools, and benchmarks are available for anyone to inspect, fork, and build upon.<?/text?>
+                    <?text?>Released projects are MIT-licensed; their code, tools and benchmarks are available for inspection and reuse.<?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
                     <?icon?>users<?/icon?>
                     <?title?>Community Driven<?/title?>
-                    <?text?>We welcome contributions, issues, and discussions. Our repositories are open for collaboration with researchers, engineers, and anyone curious about formal methods.<?/text?>
+                    <?text?>Contributions, issues and discussions are welcome in our public repositories.<?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
                     <?icon?>coffee<?/icon?>
                     <?title?>Reproducible Science<?/title?>
-                    <?text?>Benchmarks come with configs, Docker artifacts, and detailed reproduction instructions. If we published a result, you should be able to verify it.<?/text?>
+                    <?text?>Benchmarks include configurations, Docker artifacts and reproduction instructions.<?/text?>
                 </?use?>
             </?block?>
         </?use?>

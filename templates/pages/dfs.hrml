@@ -177,20 +177,20 @@
 <?use id="hero-cmp"?>
     <?label?>Dynamic Formal Systems<?/label?>
     <?title?>Truth by <span class="highlight">construction</span><?/title?>
-    <?description?>The DFS lab is the main research division at Unusupicious. We bridge formal constructions of the world and it's physical substrate. Trying to close the gap between logic and the unsayable. <?/description?>
+    <?description?>The DFS lab is Unsuspicious Industries' main research division. It studies formal descriptions of the world and their relation to physical systems. <?/description?>
 </?use?>
 
 <section class="section aufbau-section">
     <div class="aufbau">
-        <p class="aufbau-eyebrow">Main developppement product</p>
+        <p class="aufbau-eyebrow">Main development project</p>
         <h2 class="aufbau-name">AUFBAU</h2>
         <p class="aufbau-tag">A typed prefix-parsing engine for constrained decoding.</p>
 
         <div class="aufbau-grid">
             <div class="aufbau-prose">
-                <p>The systems is named after Carnap's <em>Der logische Aufbau der Welt</em>. In the same way he tried to built the whole world on a rather small set of construction rules, AUFBAU makes the wager that LLMs guided by a correct-by-construction constraint layer.  From a dynamically loaded typed grammar it constructs, token by token, only the continuations that keep a partial syntax tree <span class="highlight">well-formed and well-typed</span>.</p>
-                <p>In the technical sense, its a prefix parser for a subset of attribute grammars. </p>
-                <p>The model interface lives in <strong>Proposition 7</strong>, where we use an <em> oracle </em> interface in the generation loop that allows us to verify if a token is a valid continuation of the current input. Validity is not only syntactic derivability but also semantic correctess.</p>
+                <p>AUFBAU is named after Carnap's <em>Der logische Aufbau der Welt</em>. It uses a dynamically loaded typed grammar to construct, token by token, continuations that keep a partial syntax tree <span class="highlight">well-formed and well-typed</span>.</p>
+                <p>In technical terms, AUFBAU is a prefix parser for a subset of attribute grammars. </p>
+                <p>The model interface is in <strong>Proposition 7</strong>. Its oracle interface checks whether a token can continue the current input. The check covers syntactic derivability and semantic correctness.</p>
                 <div class="aufbau-links">
                     <a href="https://github.com/Unsuspicious-Industries/aufbau" target="_blank" rel="noopener">GitHub</a>
                     <a href="https://pypi.org/project/aufbau-rs" target="_blank" rel="noopener">PyPI</a>
@@ -232,10 +232,9 @@ x ∈ Γ
             <div class="p7-band-text">
                 <p class="aufbau-eyebrow">Try it yourself</p>
                 <h3>The playground is live</h3>
-                <p>Two decodes of the same prompt, the same model and the same seed. One runs
-                free; the other may only emit tokens that keep the syntax tree
-                <span class="highlight">well-formed and well-typed</span>. Load one of our
-                grammars or paste your own, and watch which tokens the engine refuses.</p>
+                <p>The playground compares two decodes using the same prompt, model and seed. One runs
+                without constraints; the other may emit only tokens that keep the syntax tree
+                <span class="highlight">well-formed and well-typed</span>. Load a grammar or paste one to inspect which tokens the engine refuses.</p>
             </div>
             <a class="p7-cta" href="https://p7.unsuspicious.org">Open the playground →</a>
         </div>
@@ -303,7 +302,7 @@ x ∈ Γ
     <?block slot="content"?>
         <?use id="section-header"?>
             <?label?>Publications<?/label?>
-            <?title?>What we've put on the record<?/title?>
+            <?title?>Publication<?/title?>
             <?subtitle?>Peer-reviewed work from the lab.<?/subtitle?>
         </?use?>
         <div class="pubs">
@@ -331,7 +330,7 @@ x ∈ Γ
     <?block slot="content"?>
         <?use id="section-header"?>
             <?label?>Research Focus<?/label?>
-            <?title?>What the lab works on<?/title?>
+            <?title?>Research areas<?/title?>
             <?subtitle?>Some of our areas of interest.<?/subtitle?>
         </?use?>
         <?use id="card-grid"?>
@@ -339,22 +338,22 @@ x ∈ Γ
                 <?use id="card-cmp"?>
                     <?glyph?>⊢<?/glyph?>
                     <?title?>Constrained generation<?/title?>
-                    <?text?>We are buiding not only an engine but also a genealized theory of completability in context dependent languages. At the frontier between abstract semantics and concrete applications. <?/text?>
+                    <?text?>We are developing an engine and a generalized theory of completability in context-dependent languages, connecting abstract semantics to applications. <?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
                     <?glyph?>λ<?/glyph?>
                     <?title?>Proofs and Programs<?/title?>
-                    <?text?>Applying computer science techniques to logical reasoning, trying to discover the computational basis of intelligence. <?/text?>
+                    <?text?>Applying computer-science techniques to logical reasoning and studying the computational basis of intelligence. <?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
                     <?glyph?>↓<?/glyph?>
                     <?title?>Physical formalisms<?/title?>
-                    <?text?>Implementing physical dimensional analysis inside rust's type system with the <a href="https://crates.io/crates/slut" target="_blank" rel="noopener">SLUT crate</a>. Used in simulations and scientific computing.<?/text?>
+                    <?text?>Implementing physical dimensional analysis in Rust's type system with the <a href="https://crates.io/crates/slut" target="_blank" rel="noopener">SLUT crate</a>, for use in simulations and scientific computing.<?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
                     <?glyph?>⊨<?/glyph?>
                     <?title?>Meta-typed grammars<?/title?>
-                    <?text?>Making the meta-est theory of typed grammars.<?/text?>
+                    <?text?>Developing a metatheory of typed grammars.<?/text?>
                 </?use?>
                 <?use id="card-cmp"?>
                     <?glyph?>∂<?/glyph?>
@@ -364,7 +363,7 @@ x ∈ Γ
                 <?use id="card-cmp"?>
                     <?glyph?>≡<?/glyph?>
                     <?title?>Interaction Nets and Computation graphs<?/title?>
-                    <?text?>Developpping a compute substrate for ML that uses parralelizable interaction nets.<?/text?>
+                    <?text?>Developing a computing substrate for ML based on parallelizable interaction nets.<?/text?>
                 </?use?>
             </?block?>
         </?use?>
@@ -373,11 +372,11 @@ x ∈ Γ
 
 <?use id="stats-section"?>
     <?label?>State of affairs<?/label?>
-    <?title?>What we've been doing<?/title?>
+    <?title?>Research status<?/title?>
     <?block slot="content"?>
         <?use id="stat-item"?><?number?>3<?/number?><?label?>Engines · AUFBAU, P7 & GAMMA<?/label?></?use?>
         <?use id="stat-item"?><?number?>LMPL '26<?/number?><?label?>Peer-reviewed at ACM SIGPLAN<?/label?></?use?>
-        <?use id="stat-item"?><?number?>MIT<?/number?><?label?>Open Source commitement<?/label?></?use?>
+        <?use id="stat-item"?><?number?>MIT<?/number?><?label?>Open-source license<?/label?></?use?>
         <?use id="stat-item"?><?number?>Rust<?/number?><?label?>Type safety in all our projects<?/label?></?use?>
     </?block?>
 </?use?>
