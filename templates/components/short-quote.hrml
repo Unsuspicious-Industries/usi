@@ -19,7 +19,7 @@
     font-family: var(--font-serif);
     font-size: 4rem;
     line-height: 1;
-    color: var(--brand-accent-1);
+    color: var(--accent);
     opacity: 0.35;
     pointer-events: none;
 }

@@ -36,8 +36,6 @@
     --border: $globals.border;
     --bg-page: $globals.bg_page;
     --bg-section: $globals.bg_section;
-    --brand-accent-1: $globals.brand_accent_1;
-    --brand-accent-2: $globals.brand_accent_2;
     --font-mono: $globals.font_mono;
     --font-serif: $globals.font_serif;
     --font-typewriter: $globals.font_typewriter;

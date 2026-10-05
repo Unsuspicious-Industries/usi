@@ -58,7 +58,7 @@
     border-radius: 4px;
 }
 .nav-cta:hover {
-    background: var(--brand-accent-1);
+    background: var(--accent);
     color: USI_GROUND;
 }
 .nav-toggle {
