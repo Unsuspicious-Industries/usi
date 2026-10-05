@@ -6,7 +6,7 @@
     left: 0;
     right: 0;
     z-index: 100;
-    background: color-mix(in srgb, USI_GROUND 95%, transparent);
+    background: color-mix(in srgb, var(--bg-page) 95%, transparent);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     padding: 0.875rem 2rem;
@@ -46,7 +46,7 @@
     white-space: nowrap;
 }
 .nav-link:hover {
-    background: USI_SURFACE;
+    background: var(--bg-section);
     color: var(--accent);
 }
 .nav-cta-link {
@@ -54,12 +54,12 @@
 }
 .nav-cta {
     background: var(--accent);
-    color: USI_GROUND;
+    color: var(--on-accent);
     border-radius: 4px;
 }
 .nav-cta:hover {
     background: var(--accent);
-    color: USI_GROUND;
+    color: var(--on-accent);
 }
 .nav-toggle {
     display: none;
@@ -120,7 +120,7 @@
         top: 100%;
         left: 0;
         right: 0;
-        background: color-mix(in srgb, USI_GROUND 98%, transparent);
+        background: color-mix(in srgb, var(--bg-page) 98%, transparent);
         backdrop-filter: blur(12px);
         border-bottom: 1px solid var(--border);
         flex-direction: column;

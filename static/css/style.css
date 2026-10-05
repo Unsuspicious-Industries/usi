@@ -159,23 +159,23 @@ main > * {
 
 .btn-primary {
     background: var(--primary);
-    color: USI_GROUND;
+    color: var(--on-accent);
     border-color: var(--primary);
 }
 
 .btn-primary:hover {
     filter: brightness(0.9);
-    color: USI_GROUND;
+    color: var(--on-accent);
 }
 
 .btn-secondary {
-    background: USI_GROUND;
+    background: var(--bg-page);
     color: var(--primary);
     border-color: var(--border);
 }
 
 .btn-secondary:hover {
-    background: USI_SURFACE;
+    background: var(--bg-section);
     color: var(--primary);
 }
 
@@ -200,11 +200,11 @@ main > * {
     display: block;
     min-height: 160px;
     margin: 1rem 0;
-    border: 1px solid USI_RULE;
-    background: USI_SURFACE;
-    color: USI_INK;
+    border: 1px solid var(--border);
+    background: var(--bg-section);
+    color: var(--text-default);
     overflow: hidden;
-    box-shadow: 0 12px 30px color-mix(in srgb, USI_INK 25%, transparent);
+    box-shadow: 0 12px 30px color-mix(in srgb, var(--text-default) 25%, transparent);
 }
 
 .hrml-wasm-window::before {
@@ -217,9 +217,9 @@ main > * {
     font-size: 0.75rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: USI_INK_DIM;
-    background: color-mix(in srgb, USI_ACCENT 6%, transparent);
-    border-bottom: 1px solid USI_RULE;
+    color: var(--text-muted);
+    background: color-mix(in srgb, var(--accent) 6%, transparent);
+    border-bottom: 1px solid var(--border);
 }
 
 .hrml-wasm-canvas {
@@ -229,14 +229,14 @@ main > * {
 .hrml-wasm-error {
     margin: 0;
     padding: 2.25rem 1rem 1rem;
-    color: USI_BAD;
+    color: var(--bad);
     white-space: pre-wrap;
 }
 
 /* ── Inline code (outside prose-shell) ───────── */
 
 code {
-    background: USI_SURFACE;
+    background: var(--bg-section);
     padding: 0.125rem 0.375rem;
     font-family: var(--font-mono);
     font-size: 0.875em;

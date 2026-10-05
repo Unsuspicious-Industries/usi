@@ -22,6 +22,12 @@ text_muted = "USI_INK_DIM"
 border = "USI_RULE"
 bg_page = "USI_GROUND"
 bg_section = "USI_SURFACE"
+ok = "USI_OK"
+warn = "USI_WARN"
+bad = "USI_BAD"
+# White text and rules that sit on an accent fill. Named rather than reused as
+# `bg_page`, so a reader of a component sees an intent and not a coincidence.
+on_accent = "USI_GROUND"
 font_mono = "'Hack', 'Fira Mono', 'Liberation Mono', monospace"
 font_serif = "'Libre Baskerville', 'Crimson Text', 'Georgia', serif"
 font_typewriter = "'Nazi Typewriter', 'Special Elite', 'Courier Prime', monospace"

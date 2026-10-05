@@ -1,0 +1,146 @@
+<?style?>
+.style-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0 2rem;
+}
+.style-role {
+    border: 1px solid var(--border);
+    background: var(--bg-section);
+}
+.style-swatch {
+    height: 5rem;
+    border-bottom: 1px solid var(--border);
+}
+.style-role-meta {
+    padding: 0.85rem 0.95rem 1rem;
+}
+.style-role-name {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-heading);
+}
+.style-role-value {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+}
+.style-role-note {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+}
+<?/style?>
+
+<?use id="prose-page"?>
+    <?label?>Visual identity<?/label?>
+    <?title?>Style<?/title?>
+    <?description?>The palette this site renders with, shown as it is served.<?/description?>
+    <?meta?>Reference · stands where the printed colors.pdf card stood<?/meta?>
+    <?block slot="content"?>
+        <p>
+            Every colour on this site is one of the roles below. Templates and
+            stylesheets name a role and never a hex, and the generator resolves
+            that role from the palette each time a page is rendered — so the
+            swatches here are the live custom properties, not a copy of them, and
+            this page cannot drift from the pages around it.
+        </p>
+
+        <h2>Roles</h2>
+        <div class="style-grid">
+            <div class="style-role">
+                <div class="style-swatch" style="background: var(--bg-page)"></div>
+                <div class="style-role-meta">
+                    <div class="style-role-name">background</div>
+                    <div class="style-role-value">$globals.bg_page</div>
+                </div>
+            </div>
+            <div class="style-role">
+                <div class="style-swatch" style="background: var(--bg-section)"></div>
+                <div class="style-role-meta">
+                    <div class="style-role-name">surface</div>
+                    <div class="style-role-value">$globals.bg_section</div>
+                    <div class="style-role-note">Panels, tinted sections, table stripes.</div>
+                </div>
+            </div>
+            <div class="style-role">
+                <div class="style-swatch" style="background: var(--text-heading)"></div>
+                <div class="style-role-meta">
+                    <div class="style-role-name">heading</div>
+                    <div class="style-role-value">$globals.text_heading</div>
+                </div>
+            </div>
+            <div class="style-role">
+                <div class="style-swatch" style="background: var(--text-default)"></div>
+                <div class="style-role-meta">
+                    <div class="style-role-name">body</div>
+                    <div class="style-role-value">$globals.text_default</div>
+                </div>
+            </div>
+            <div class="style-role">
+                <div class="style-swatch" style="background: var(--text-muted)"></div>
+                <div class="style-role-meta">
+                    <div class="style-role-name">muted</div>
+                    <div class="style-role-value">$globals.text_muted</div>
+                    <div class="style-role-note">Captions, labels, metadata.</div>
+                </div>
+            </div>
+            <div class="style-role">
+                <div class="style-swatch" style="background: var(--border)"></div>
+                <div class="style-role-meta">
+                    <div class="style-role-name">rule</div>
+                    <div class="style-role-value">$globals.border</div>
+                    <div class="style-role-note">Hairlines and borders.</div>
+                </div>
+            </div>
+            <div class="style-role">
+                <div class="style-swatch" style="background: var(--accent)"></div>
+                <div class="style-role-meta">
+                    <div class="style-role-name">accent</div>
+                    <div class="style-role-value">$globals.accent</div>
+                    <div class="style-role-note">The mark, links and emphasis.</div>
+                </div>
+            </div>
+            <div class="style-role">
+                <div class="style-swatch" style="background: var(--accent); color: var(--on-accent); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.8rem;">accent</div>
+                <div class="style-role-meta">
+                    <div class="style-role-name">on accent</div>
+                    <div class="style-role-value">$globals.on_accent</div>
+                    <div class="style-role-note">Text that sits on an accent fill.</div>
+                </div>
+            </div>
+            <div class="style-role">
+                <div class="style-swatch" style="background: var(--ok)"></div>
+                <div class="style-role-meta">
+                    <div class="style-role-name">ok</div>
+                    <div class="style-role-value">$globals.ok</div>
+                </div>
+            </div>
+            <div class="style-role">
+                <div class="style-swatch" style="background: var(--warn)"></div>
+                <div class="style-role-meta">
+                    <div class="style-role-name">warn</div>
+                    <div class="style-role-value">$globals.warn</div>
+                </div>
+            </div>
+            <div class="style-role">
+                <div class="style-swatch" style="background: var(--bad)"></div>
+                <div class="style-role-meta">
+                    <div class="style-role-name">bad</div>
+                    <div class="style-role-value">$globals.bad</div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Rules</h2>
+        <ul>
+            <li>Ask for a role, never a hex. A literal colour in a stylesheet is a bypass: it stays put when the palette is reassigned.</li>
+            <li><code>ok</code>, <code>warn</code> and <code>bad</code> mark state and nothing else. Used decoratively they cost the palette the one thing it is for — saying that something is wrong.</li>
+            <li>Colour is assigned per surface, in one place. Outbound work renders in this palette; internal tools render in a second one, so a screenshot tells you whether a client could see what is in it.</li>
+        </ul>
+    <?/block?>
+</?use?>

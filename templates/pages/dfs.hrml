@@ -57,7 +57,7 @@
 .aufbau-links a:hover { border-bottom-color: var(--accent); }
 .aufbau-links .meta { color: var(--text-muted); }
 .aufbau-code {
-    background: USI_SURFACE;
+    background: var(--bg-section);
     border-radius: 6px;
     padding: 1.2rem 1.5rem;
     overflow-x: auto;
@@ -67,13 +67,13 @@
     font-family: var(--font-mono);
     font-size: 0.85rem;
     line-height: 1.7;
-    color: USI_INK;
+    color: var(--text-default);
     white-space: pre;
     background: transparent;
     padding: 0;
 }
-.aufbau-code .c { color: USI_INK_DIM; }
-.aufbau-code .k { color: USI_ACCENT; }
+.aufbau-code .c { color: var(--text-muted); }
+.aufbau-code .k { color: var(--accent); }
 .aufbau-install {
     margin-top: 1rem;
     font-family: var(--font-mono);
@@ -86,7 +86,7 @@
     max-width: 80rem;
     margin: 3.5rem auto 0;
     border: 1px solid var(--border);
-    background: USI_SURFACE;
+    background: var(--bg-section);
     padding: 2rem 2.25rem;
     display: flex;
     align-items: center;
@@ -112,11 +112,11 @@
     text-decoration: none;
     padding: 0.85rem 1.6rem;
     background: var(--accent);
-    color: USI_GROUND;
+    color: var(--on-accent);
     border: 1px solid var(--accent);
     white-space: nowrap;
 }
-.p7-cta:hover { background: USI_GROUND; color: var(--accent); }
+.p7-cta:hover { background: var(--bg-page); color: var(--accent); }
 
 /* ── Publications ───────────────────────────────────────────────────── */
 .pubs { max-width: 80rem; margin: 0 auto; }
@@ -124,7 +124,7 @@
     border: 1px solid var(--border);
     border-left: 3px solid var(--accent);
     padding: 1.5rem 1.75rem;
-    background: USI_GROUND;
+    background: var(--bg-page);
 }
 .pub-status {
     font-family: var(--font-mono);

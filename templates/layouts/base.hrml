@@ -25,22 +25,6 @@
             }
         });
     </script>
-    <style>
-:root {
-    --primary: $globals.primary;
-    --secondary: $globals.secondary;
-    --accent: $globals.accent;
-    --text-heading: $globals.text_heading;
-    --text-default: $globals.text_default;
-    --text-muted: $globals.text_muted;
-    --border: $globals.border;
-    --bg-page: $globals.bg_page;
-    --bg-section: $globals.bg_section;
-    --font-mono: $globals.font_mono;
-    --font-serif: $globals.font_serif;
-    --font-typewriter: $globals.font_typewriter;
-}
-</style>
     <?styles?>
 </head>
 <body>
