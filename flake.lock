@@ -50,10 +50,45 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1785967620,
+        "narHash": "sha256-IItrdb7Puk05RqOBWZYFC5X6Wl1sJmCfh5MWVHw5iMM=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "b7c2ada94fe99c15b0dbcf4d11fd7850b957a436",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "hrml": "hrml",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "usi-ui": "usi-ui"
+      }
+    },
+    "usi-ui": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1791169890,
+        "narHash": "sha256-kkkr7bOHMIrek3/kTQPPQHLQsMs8HBfobZ9gIY4HCMQ=",
+        "ref": "refs/heads/main",
+        "rev": "ddd6a69b07c4b16d8cbfe94466bcdf3f731c7a2c",
+        "revCount": 14,
+        "type": "git",
+        "url": "ssh://git@github.com/Unsuspicious-Industries/ui.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/Unsuspicious-Industries/ui.git"
       }
     }
   },

@@ -4,28 +4,30 @@ This repository contains the source for [unsuspicious.org](https://unsuspicious.
 
 ## Develop and build
 
-The generator this repository pins comes from its own flake, so a working copy
-needs no second install:
+The generator and the palette both come from this flake, so a working copy needs
+no second install and no arguments:
 
 ```sh
-nix develop    # xrml on PATH, the revision flake.lock names
+nix develop    # xrml on PATH, USI_PALETTE set to the pinned corporate palette
 nix run        # serve a dev instance of this checkout, with source reloads
 ```
 
-Colour is not in this repository. Templates write `USI_<ROLE>` tokens and the
-generator resolves them from a palette file passed at render time; without one it
-writes the tokens out literally, the browser drops every declaration, and the
-page renders in browser defaults instead of the house palette. The hexes live in
-the `ui` design system; until `ui` publishes them as a flake input, pass the file
-explicitly:
+Templates write `USI_<ROLE>` tokens and the generator resolves them from a TOML
+palette at render time; without one it writes the tokens out literally, the
+browser drops every declaration, and the page renders in browser defaults instead
+of the house palette. The palette is a flake input here -
+`usi-ui.lib.paletteFile`, pinned in `flake.lock`, the same helper the fleet's
+serve unit calls - so a dev render and the served site resolve the same file.
+Fetching it needs an ssh key with access to the private USI repositories.
+`USI_PALETTE=<file>` overrides it, which is how you preview another palette:
 
 ```sh
-xrml serve . --palette <usi-palette-corporate.toml>   # dev server on :8080
-xrml build . --palette <usi-palette-corporate.toml>   # static output to dist/
-USI_PALETTE=<file> nix run                            # the same, through the flake app
+xrml serve . --palette "$USI_PALETTE"   # dev server on :8080
+xrml build . --palette "$USI_PALETTE"   # static output to dist/
 ```
 
-`nix build .#site` renders without a palette and so is not a preview of anything.
+`nix build .#site` renders the same tree into a store path with the pinned
+palette; the apex itself is served live from a git checkout rather than from it.
 
 A bare checkout is also not the whole site. `data/people/` is filled by the fleet
 from its identity data and copied into the served checkout, so `/about` here
