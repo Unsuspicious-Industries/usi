@@ -43,6 +43,14 @@ the generated `static/graphics/corporate.pdf`.
 - `data/posts/` and `data/jobs/` contain the site's MDX content.
 - `static/` contains stylesheets, images, fonts, icons and other assets.
 
+## Style reference
+
+`/style` is the palette of record, defined by `templates/pages/style.hrml`: each
+swatch is drawn with the live custom property and each value printed through
+`$globals`, so the page renders the palette the site was served with instead of a
+copy of it. It took the place of the `colors.pdf` card, which was a snapshot and
+could drift from the site it documented.
+
 To add a page, create a `.hrml` file under `templates/pages/`. For example, `templates/pages/research.hrml` defines `/research`. Add a navigation link separately in `templates/components/nav.hrml` if the page should appear in the navigation.
 
 ## License
