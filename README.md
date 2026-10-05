@@ -27,6 +27,11 @@ USI_PALETTE=<file> nix run                            # the same, through the fl
 
 `nix build .#site` renders without a palette and so is not a preview of anything.
 
+A bare checkout is also not the whole site. `data/people/` is filled by the fleet
+from its identity data and copied into the served checkout, so `/about` here
+renders an empty team grid while production lists the members; the same holds for
+the generated `static/graphics/corporate.pdf`.
+
 ## Site files
 
 - `xrml.toml` configures the site.
