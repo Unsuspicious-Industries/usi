@@ -54,9 +54,23 @@ EOF
         '';
       };
 
+      # `nix run` starts a dev instance of this site against the checkout you
+      # are standing in. The palette is a fleet input that this repo may not
+      # depend on (servers depends on this repo, never the reverse), so the run
+      # names it as a requirement and stops when it is absent - a palette-less
+      # render emits every USI_ token literally and looks subtly wrong, which is
+      # the failure this repo must not be able to produce.
+      #
+      # A fleet dev entry point exports it; by hand:
+      #   USI_PALETTE=/nix/store/...-usi-palette-corporate.toml nix run .
       apps.${system}.default = {
         type = "app";
-        program = "${xrml}/bin/xrml";
+        program = "${pkgs.writeShellScript "usi-site-dev" ''
+          set -eu
+          : "''${USI_PALETTE:?USI_PALETTE must name a palette TOML (servers/config/style.nix, written by servers/common/xrml.nix)}"
+          [ "$#" -gt 0 ] || set -- serve .
+          exec ${xrml}/bin/xrml "$@" --palette "$USI_PALETTE"
+        ''}";
       };
     };
 }
