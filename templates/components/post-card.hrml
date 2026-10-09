@@ -22,9 +22,6 @@
     color: var(--text-muted);
     font-size: 0.9375rem;
 }
-.card-text .highlight {
-    color: var(--accent);
-}
 .card-meta {
     font-size: 0.75rem;
     color: var(--text-muted);

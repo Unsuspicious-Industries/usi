@@ -4,10 +4,12 @@
 <?bind var="description"/?>
 <?style?>
 .hero {
-    padding: 6rem 1.5rem 4rem;
+    padding: 3rem 1.5rem 2rem;
     text-align: center;
     background: var(--bg-page);
     position: relative;
+    isolation: isolate;
+    overflow: clip;
 }
 .hero::before {
     content: '';
@@ -20,8 +22,25 @@
     z-index: -1;
 }
 .hero-content {
-    max-width: 56rem;
+    max-width: 68rem;
     margin: 0 auto;
+    position: relative;
+}
+/* The page ground runs under the copy on every page; hold it off with a cloud
+   rather than a box. Three soft white fields overlap, so they go opaque where
+   they meet (behind the label, title and description) and fade to nothing at
+   the edges. */
+.hero-content::before {
+    content: '';
+    position: absolute;
+    inset: -3rem -8rem;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(46% 70% at 30% 46%, var(--bg-page) 0%, var(--bg-page) 30%, transparent 88%),
+        radial-gradient(52% 78% at 68% 44%, var(--bg-page) 0%, var(--bg-page) 30%, transparent 90%),
+        radial-gradient(62% 94% at 50% 56%, var(--bg-page) 0%, var(--bg-page) 40%, transparent 96%);
+    filter: blur(22px);
 }
 .hero-label {
     font-weight: 700;
@@ -32,15 +51,13 @@
     margin-bottom: 1rem;
 }
 .hero-title {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    color: var(--primary);
+    color: var(--secondary);
     line-height: 1.1;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
-.hero-title .highlight {
-    color: var(--accent);
-}
+.hero-title .blur { filter: blur(2px); }
 .hero-description {
     font-size: 1.25rem;
     color: var(--text-muted);
@@ -59,7 +76,7 @@
 }
 @media (max-width: 768px) {
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 1.75rem;
     }
 }
 <?/style?>

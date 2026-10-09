@@ -4,31 +4,61 @@
 <?bind var="image"/?>
 <?bind var="title"/?>
 <?bind var="text"/?>
-<?bind var="quote"/?>
+<?bind var="quote-text"/?>
+<?bind var="quote-author"/?>
+<?bind var="quote-work"/?>
 <?style?>
 .card {
+    position: relative;
     background: var(--bg-page);
     border: 1px solid var(--border);
-    padding: 1.5rem;
+    padding: 1.75rem 1.5rem 1.5rem;
+    overflow: hidden;
+}
+/* Sud-Est livery in the site's blue: a body band over a window band at the
+   head, and a grey skirt at the foot. */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0.625rem;
+    background: linear-gradient(
+        var(--accent) 0 0.375rem,
+        var(--bg-section) 0.375rem 0.625rem
+    );
+}
+.card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0.375rem;
+    background: var(--bg-section);
+}
+.card-head {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
 }
 .card-icon {
     width: 1.5rem;
     height: 1.5rem;
-    color: var(--primary);
-    margin-bottom: 0.5rem;
+    color: var(--accent);
+    margin-left: auto;
+    flex-shrink: 0;
 }
 .card-title {
     font-size: 1.125rem;
     font-weight: 600;
-    color: var(--primary);
-    margin-bottom: 0.5rem;
+    color: var(--text-heading);
 }
 .card-text {
     color: var(--text-muted);
     font-size: 0.9375rem;
-}
-.card-text .highlight {
-    color: var(--accent);
 }
 .card-meta {
     font-size: 0.75rem;
@@ -93,9 +123,8 @@
     box-shadow: 0 8px 16px color-mix(in srgb, var(--text-default) 10%, transparent);
 }
 .card-icon .icon-sm {
-    color: var(--primary);
+    color: var(--accent);
     display: block;
-    margin-bottom: 0.5rem;
 }
 .card-image {
     width: 100%;
@@ -109,23 +138,30 @@
     <?if cond="$image"?>
         <img src="$image" class="card-image" alt="" loading="lazy" decoding="async" />
     <?/if?>
-    <?if cond="$icon"?>
-        <div class="card-icon">
-            <svg class="icon-sm"><use href="#icon-$icon"/></svg>
-        </div>
-    <?/if?>
-    <?if cond="$glyph"?>
-        <div class="card-icon">$glyph</div>
-    <?/if?>
-    <?if cond="$title"?>
-        <h3 class="card-title">$title</h3>
-    <?/if?>
+    <div class="card-head">
+        <?if cond="$title"?>
+            <h3 class="card-title">$title</h3>
+        <?/if?>
+        <?if cond="$icon"?>
+            <div class="card-icon">
+                <svg class="icon-sm"><use href="#icon-$icon"/></svg>
+            </div>
+        <?/if?>
+        <?if cond="$glyph"?>
+            <div class="card-icon">$glyph</div>
+        <?/if?>
+    </div>
     <?if cond="$text"?>
         <p class="card-text">$text</p>
     <?/if?>
-    <?if cond="$quote"?>
+    <div class="card-work"><?slot id="work"?></?slot?></div>
+    <?if cond="$quote-text"?>
         <blockquote class="card-quote">
-            <?slot id="quote"?></?slot?>
+            <p class="card-quote-text">$quote-text</p>
+            <div class="card-quote-attribution">
+                <span class="card-quote-author">$quote-author</span>
+                <span class="card-quote-work">$quote-work</span>
+            </div>
         </blockquote>
     <?/if?>
 </div>
@@ -138,14 +174,16 @@
 <?bind var="image"/?>
 <?bind var="title"/?>
 <?bind var="text"/?>
-<?bind var="quote"/?>
+<?bind var="quote-text"/?>
+<?bind var="quote-author"/?>
+<?bind var="quote-work"/?>
 <?if cond="$href"?>
     <a href="$href" class="card-link"><?use id="card-body"?>
-        <?block slot="quote"?><?slot id="quote"?></?slot?><?/block?>
+        <?block slot="work"?><?slot id="work"?></?slot><?/block?>
     </?use?></a>
 <?else?>
     <?use id="card-body"?>
-        <?block slot="quote"?><?slot id="quote"?></?slot?><?/block?>
+        <?block slot="work"?><?slot id="work"?></?slot><?/block?>
     </?use?>
 <?/if?>
 <?/component?>

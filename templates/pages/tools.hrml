@@ -1,0 +1,205 @@
+<?style?>
+main {
+    background-image: url('/static/images/catacombs-tools.webp');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+main .hero { background: transparent; }
+main .hero::before { display: none; }
+.tools-page .section {
+    max-width: 76rem;
+    padding-top: 2rem;
+}
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+}
+@media (max-width: 768px) {
+    .tools-grid { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+}
+/* Own the figure box so its native Still switch has a containing block.
+   A looping preview needs a stop control, not only an OS motion preference. */
+.tool-demo figure.remblais-demo {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    gap: 1rem;
+    margin: 0;
+    position: relative;
+}
+.remblais-switch {
+    position: absolute;
+    top: 0;
+    right: 2.75rem;
+    accent-color: var(--accent);
+}
+.remblais-switch-label {
+    position: absolute;
+    top: -0.1rem;
+    right: 0;
+    display: flex;
+    align-items: center;
+    min-width: 1.5rem;
+    min-height: 1.5rem;
+    cursor: pointer;
+}
+.remblais-switch:checked ~ .remblais-morph-frame picture { display: none; }
+.remblais-switch:checked ~ .remblais-morph-frame .remblais-static { display: block; }
+@media (prefers-reduced-motion: reduce) {
+    .remblais-switch, .remblais-switch-label { display: none; }
+}
+/* The square transport demo is a square, not a stretched three-frame strip.
+   Keep the native pixel grid legible and supply a still for reduced motion. */
+.remblais-morph-frame {
+    display: grid;
+    place-items: center;
+    flex: 1;
+    min-height: 0;
+}
+.remblais-morph, .remblais-static {
+    display: block;
+    width: 12rem;
+    max-width: 100%;
+    height: auto;
+    image-rendering: pixelated;
+    border: 1px solid var(--border);
+}
+.remblais-static { display: none; }
+/* Stable anchors for the homepage previews (/tools#remblais, #political-alignment).
+   tool-card.hrml owns the article id through its `anchor` slot (it feeds
+   aria-labelledby), so the id sits on the card's first boxed caption and takes
+   main's own fixed-nav offset. */
+#remblais, #political-alignment { scroll-margin-top: 96px; }
+@media (max-width: 768px) {
+    #remblais, #political-alignment { scroll-margin-top: 84px; }
+}
+<?/style?>
+
+<div class="tools-page">
+<?use id="hero-cmp"?>
+    <?label?>Tools<?/label?>
+    <?title?>Research software<?/title?>
+</?use?>
+
+<?use id="section-cmp"?>
+    <?block slot="content"?>
+        <div class="tools-grid">
+            <?use id="tool-card"?>
+                <?anchor?>slut-title<?/anchor?>
+                <?title?>SLUT<?/title?>
+                <?project?>slut<?/project?>
+                <?kind?>Experimental · nightly Rust<?/kind?>
+                <?link?>https://crates.io/crates/slut<?/link?>
+                <?link-label?>SLUT on crates.io<?/link-label?>
+                <?link-text?>crates.io ↗<?/link-text?>
+                <?text?>Vectors and matrices that carry physical dimensions. Incompatible units become compile errors rather than silent arithmetic bugs.<?/text?>
+                <?block slot="demo"?>
+                    <p class="tool-caption">Rust / static analysis</p>
+                    <pre class="tool-code"><code><span class="syntax">let</span> mass = (10.0)
+    .scalar::&lt;<span class="syntax">Kilogram</span>&gt;();
+<span class="syntax">let</span> force = Vec2::&lt;f64, Force&gt;
+    ::new::&lt;<span class="syntax">Newton</span>&gt;([1.0, 2.0]);
+<span class="syntax">let</span> acc = force.scale(mass.inv());</code></pre>
+                    <div class="tool-check"><code>mass + force</code><span>Rejected: incompatible dimensions</span></div>
+                <?/block?>
+            </?use?>
+            <?use id="tool-card"?>
+                <?anchor?>hrml-title<?/anchor?>
+                <?title?>HRML<?/title?>
+                <?project?>hrml<?/project?>
+                <?kind?>Production<?/kind?>
+                <?link?>https://github.com/Unsuspicious-Industries/hrml<?/link?>
+                <?link-label?>HRML on GitHub<?/link-label?>
+                <?link-text?>GitHub ↗<?/link-text?>
+                <?text?>The language this website is built with. A static-site generator with reusable components, component hoisting and MDX support.<?/text?>
+                <?block slot="demo"?>
+                    <p class="tool-caption">Rust / UI module</p>
+                    <div class="tool-sources">
+                        <div>
+                            <p class="tool-caption">Declare</p>
+                            <pre class="tool-code"><code>&lt;?<span class="syntax">component</span> id="badge"?&gt;
+&lt;?<span class="syntax">bind</span> var="text"/&gt;
+&lt;b class="badge"&gt;&#36;text&lt;/b&gt;
+&lt;?/component?&gt;</code></pre>
+                        </div>
+                        <div>
+                            <p class="tool-caption">Use</p>
+                            <pre class="tool-code"><code>&lt;?<span class="syntax">use</span> id="badge"
+  text="Suspicious"/&gt;
+&lt;?<span class="syntax">use</span> id="badge"
+  text="Unsuspicious"/&gt;</code></pre>
+                        </div>
+                    </div>
+                    <div class="tool-render">
+                        <span class="tool-caption">Rendered</span>
+                        <div class="tool-badges">
+                            <!-- A `use` directive with attributes is not taken as
+                                 self-closing here; the open directive runs on and
+                                 eats the closing div. Close it explicitly. -->
+                            <?use id="badge" text="Suspicious"?></?use?>
+                            <?use id="badge" text="Unsuspicious"?></?use?>
+                        </div>
+                    </div>
+                <?/block?>
+            </?use?>
+            <?use id="tool-card"?>
+                <?anchor?>remblais-title<?/anchor?>
+                <?title?>Remblais<?/title?>
+                <?project?>remblais<?/project?>
+                <?kind?>Work in progress<?/kind?>
+                <?link?>https://github.com/Unsuspicious-Industries/remblais<?/link?>
+                <?link-label?>Remblais on GitHub<?/link-label?>
+                <?link-text?>GitHub ↗<?/link-text?>
+                <?text?>Image morphing through optimal transport, not cross-fading. Colour follows transport paths; brightness differences set the budget for created mass.<?/text?>
+                <?block slot="demo"?>
+                    <figure class="remblais-demo">
+                        <figcaption class="tool-caption" id="remblais">Python / Graphics tooling</figcaption>
+                        <input class="remblais-switch" type="checkbox" id="remblais-still" aria-label="Still frame instead of animation">
+                        <label class="tool-caption remblais-switch-label" for="remblais-still">Still</label>
+                        <div class="remblais-morph-frame">
+                            <picture>
+                                <source media="(prefers-reduced-motion: reduce)" srcset="/static/images/remblais-square-still.png">
+                                <img class="remblais-morph" src="/static/images/remblais-square.gif" width="96" height="96" alt="A white square moves and separates into red, green and blue blocks through Remblais transport." loading="lazy" decoding="async">
+                            </picture>
+                            <img class="remblais-static" src="/static/images/remblais-square-still.png" width="96" height="96" alt="A still frame of the white square separating into red, green and blue blocks." loading="lazy" decoding="async">
+                        </div>
+                    </figure>
+                <?/block?>
+            </?use?>
+            <?use id="tool-card"?>
+                <?anchor?>alignment-title<?/anchor?>
+                <?title?>Political Alignment<?/title?>
+                <?project?>political-alignment<?/project?>
+                <?kind?>Experimental<?/kind?>
+                <?link?>https://github.com/Unsuspicious-Industries/political-alignement<?/link?>
+                <?link-label?>Political Alignment on GitHub<?/link-label?>
+                <?link-text?>GitHub ↗<?/link-text?>
+                <?text?>Tools for examining political alignment in language models: political-compass evaluation and analysis of model outputs for pairs of concepts.<?/text?>
+                <?block slot="demo"?>
+                    <p class="tool-caption" id="political-alignment">AI / interpretability</p>
+                    <p class="tool-pair">“marx” ↔ “stalin”</p>
+                    <dl class="tool-results">
+                        <div class="tool-result"><dt>GPT-2 base</dt><dd>1,985</dd></div>
+                        <div class="tool-result"><dt>MarxGPT-2 aligned</dt><dd>2,249</dd></div>
+                    </dl>
+                    <p class="tool-note">README-reported Euclidean distances between mean-pooled output logits, not political scores.</p>
+                <?/block?>
+            </?use?>
+        </div>
+    <?/block?>
+</?use?>
+
+<?use id="section-cmp"?>
+    <?block slot="content"?>
+        <?use id="section-header"?>
+            <?title?>Reproducibility & Nixing<?/title?>
+        </?use?>
+        <div class="nix-space">
+            <!-- Nix tools: one entry per package when the suite lands. -->
+        </div>
+    <?/block?>
+</?use?>
+</div>

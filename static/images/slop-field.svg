@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="760" height="300" role="img" aria-label="The latent bias field: a handful of attractor basins, each pulling nearby prompt trajectories toward the same point regardless of wording">
+  <style>
+    .t   { font-family: 'Fira Code', 'Hack', monospace; font-size: 11px; fill: #1f2937; letter-spacing: 0.14em; }
+    .lbl { font-family: 'Fira Code', 'Hack', monospace; font-size: 12px; fill: #1f2937; }
+    .sub { font-family: 'Fira Code', 'Hack', monospace; font-size: 10px; fill: #6b7280; }
+
+    .flow { stroke-dasharray: 5 6; animation: flow 7s linear infinite; }
+    @keyframes flow { to { stroke-dashoffset: -22; } }
+
+    .ripple { transform-box: fill-box; transform-origin: center; opacity: .3; animation: ripple 8s ease-out infinite; }
+    @keyframes ripple {
+      0%   { transform: scale(.6); opacity: .5; }
+      70%  { opacity: 0; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+
+    .core { transform-box: fill-box; transform-origin: center; animation: core 6s ease-in-out infinite; }
+    @keyframes core { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.22); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .flow, .ripple, .core { animation: none; }
+      .flow { stroke-dasharray: none; }
+      .ripple { opacity: .3; }
+    }
+  </style>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10" fill="none" stroke="#3730a3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <text class="t" x="20" y="22">LATENT BIAS FIELD</text>
+
+  <rect x="20" y="48" width="720" height="160" fill="#f8fafc" stroke="#e5e7eb"/>
+
+  <!-- basin boundaries -->
+  <g fill="none" stroke="#6b7280" stroke-width="1" stroke-dasharray="3 4" opacity=".5">
+    <circle cx="140" cy="120" r="65"/>
+    <circle cx="420" cy="150" r="55"/>
+    <circle cx="630" cy="105" r="50"/>
+  </g>
+
+  <!-- streamlines spiralling into attractor A: each bends inward as it nears the core -->
+  <g fill="none" stroke="#3730a3" stroke-width="1.3" opacity=".75" marker-end="url(#arrow)">
+    <path class="flow" style="animation-delay:0s"   d="M196 120 Q172.8 129 153.2 127"/>
+    <path class="flow" style="animation-delay:.6s"  d="M168 168.5 Q148.6 152.9 140.5 135"/>
+    <path class="flow" style="animation-delay:1.2s" d="M112 168.5 Q115.8 143.9 127.3 127.9"/>
+    <path class="flow" style="animation-delay:1.8s" d="M84 120 Q107.2 111 126.8 113"/>
+    <path class="flow" style="animation-delay:2.4s" d="M112 71.5 Q131.4 87.1 139.5 105"/>
+    <path class="flow" style="animation-delay:3s"   d="M168 71.5 Q164.2 96.1 152.7 112.1"/>
+  </g>
+
+  <!-- streamlines spiralling into attractor B -->
+  <g fill="none" stroke="#3730a3" stroke-width="1.3" opacity=".75" marker-end="url(#arrow)">
+    <path class="flow" style="animation-delay:.2s" d="M468 150 Q448.1 157.2 431.7 155.7"/>
+    <path class="flow" style="animation-delay:.8s" d="M444 191.6 Q427.8 177.9 420.9 163"/>
+    <path class="flow" style="animation-delay:1.4s" d="M396 191.6 Q399.7 170.8 409.2 157.3"/>
+    <path class="flow" style="animation-delay:2s"   d="M372 150 Q391.9 142.8 408.3 144.3"/>
+    <path class="flow" style="animation-delay:2.6s" d="M396 108.4 Q412.2 122.1 419.1 137"/>
+    <path class="flow" style="animation-delay:3.2s" d="M444 108.4 Q440.3 129.2 430.8 142.7"/>
+  </g>
+
+  <!-- streamlines spiralling into attractor C -->
+  <g fill="none" stroke="#3730a3" stroke-width="1.3" opacity=".75" marker-end="url(#arrow)">
+    <path class="flow" style="animation-delay:.3s" d="M674 105 Q655.9 112.7 641.3 111.5"/>
+    <path class="flow" style="animation-delay:.9s" d="M652 143.1 Q636.3 131.3 630 118"/>
+    <path class="flow" style="animation-delay:1.5s" d="M608 143.1 Q610.4 123.6 618.7 111.5"/>
+    <path class="flow" style="animation-delay:2.1s" d="M586 105 Q604.1 97.3 618.7 98.5"/>
+    <path class="flow" style="animation-delay:2.7s" d="M608 66.9 Q623.7 78.7 630 92"/>
+    <path class="flow" style="animation-delay:3.3s" d="M652 66.9 Q649.6 86.4 641.3 98.5"/>
+  </g>
+
+  <!-- stray prompts, drifting in from the open field, bending hard once they cross a basin's rim -->
+  <g fill="none" stroke="#3730a3" stroke-width="1.3" opacity=".6" marker-end="url(#arrow)">
+    <path class="flow" style="animation-delay:.4s" d="M280 60 Q200 60 150 100"/>
+    <path class="flow" style="animation-delay:1s"  d="M270 185 Q190 185 150 145"/>
+    <path class="flow" style="animation-delay:1.6s" d="M520 200 Q460 200 435 168"/>
+    <path class="flow" style="animation-delay:2.2s" d="M560 55 Q600 55 618 88"/>
+  </g>
+
+  <!-- attractor basins -->
+  <g>
+    <circle class="ripple" style="animation-delay:0s"  cx="140" cy="120" r="30" fill="none" stroke="#3730a3" stroke-width="1.2"/>
+    <circle class="ripple" style="animation-delay:4s"  cx="140" cy="120" r="30" fill="none" stroke="#3730a3" stroke-width="1.2"/>
+    <circle class="core"  style="animation-delay:0s"   cx="140" cy="120" r="7" fill="#3730a3"/>
+
+    <circle class="ripple" style="animation-delay:1.3s" cx="420" cy="150" r="26" fill="none" stroke="#3730a3" stroke-width="1.2"/>
+    <circle class="ripple" style="animation-delay:5.3s" cx="420" cy="150" r="26" fill="none" stroke="#3730a3" stroke-width="1.2"/>
+    <circle class="core"  style="animation-delay:1s"    cx="420" cy="150" r="6" fill="#3730a3"/>
+
+    <circle class="ripple" style="animation-delay:2.6s" cx="630" cy="105" r="28" fill="none" stroke="#3730a3" stroke-width="1.2"/>
+    <circle class="ripple" style="animation-delay:6.6s" cx="630" cy="105" r="28" fill="none" stroke="#3730a3" stroke-width="1.2"/>
+    <circle class="core"  style="animation-delay:2s"    cx="630" cy="105" r="6.5" fill="#3730a3"/>
+  </g>
+
+  <text class="lbl" x="20" y="232">bias field</text>
+  <text class="sub" x="20" y="250">basins · attractors · drift</text>
+
+</svg>

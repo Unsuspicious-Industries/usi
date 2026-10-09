@@ -1,0 +1,31 @@
+<?component id="collab-card"?>
+<?bind var="image"/>
+<?bind var="alt"/>
+<?bind var="name"/>
+<?bind var="text"/>
+<?style?>
+.collab {
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+}
+.collab img {
+    height: 2rem;
+    width: auto;
+    display: block;
+    margin-bottom: 0.85rem;
+}
+.collab h3 {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin: 0 0 0.35rem;
+}
+.collab p { color: var(--text-muted); line-height: 1.65; margin: 0; }
+<?/style?>
+<article class="collab">
+    <img src="$image" alt="$alt">
+    <h3>$name</h3>
+    <p>$text</p>
+</article>
+<?/component?>

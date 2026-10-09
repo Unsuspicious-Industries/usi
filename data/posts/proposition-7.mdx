@@ -22,7 +22,7 @@ A failure may come from a syntax error, a logical inconsistency (what Wittgenste
 
 Companies such as **.txt** (dottxt.co) develop regex-based sampling to constrain grammar during inference. The post reports improvements to tool integration and reliability, and reduced compute costs in some applications; this does not address logic.
 
-Regex-based sampling covers inference, not the training pipeline, and does not solve **logic**.
+Regex-based sampling covers simple patterns, and context-free constraints can go futher, up to data specifications like JSON, but none of them solves **logic**.
 
 
 # Proposition 7 (P7)
@@ -30,7 +30,7 @@ Regex-based sampling covers inference, not the training pipeline, and does not s
 
 ## Philosophy
 
-Philosophy asks questions. In mathematics, we can determine whether answers are true or false.
+Philosophy asks questions. Mathematics is when we can determine whether the answers are true or false.
 
 Intelligence is best understood as the capacity to ask good questions, in other words, to make interesting choices. "Interesting" is not the same as "true". We call this ability **taste**: a coherent model of what is beautiful, and worth looking into.[^3] 
 
@@ -48,7 +48,7 @@ Humans naturally think with vague language, often outrunning strict truth condit
 
 In formal reasoning, the tradeoff is different. Our thinking systems must balance **taste** with formality: know which questions *should* be asked while respecting which questions *can* be asked. With constrained generation we want to restrict search space to *formally valid* outputs in a given formal system, and use the broad priors of LLMs as approximations of taste, allowing them to pick which path to explore.  
 
-In this setup, the formal layer enforces truth within a formal system, while open-ended association remains in latent representations or other channels. The WIP design combines constraints with a training pipeline that applies a custom loss to formally verified outputs and an entropy-based sampling system, because freely pretrained models may stall.
+In this setup, the formal layer enforces truth within a formal system, while open-ended association remains in latent representations and a toggleable free-form reasoning. In prelimiary experiments, we've alredy demonstrated that formal constraints can reduce drastically the need for CoT and thus the compute cost.  
 
 ## System Overview
 - Constraint Engine: unified grammar and typing/proof rules that produce only valid moves/ASTs within a formal system.
@@ -96,7 +96,7 @@ The rule file itself is parsed and *checked* before being admitted, and "execute
 Adding features can be done by supplying new constructor symbols alongside rules that relate them. If the meta checker accepts the file, the engine can generate with them without code changes.
 The system never *executes* object rules at meta time, it *simulates* them structurally and uses their inference mecanisms to provide completions, passed as constraints to the model. It's some approximation of abstract interpretation. Notably, this means that the system must have persistent states, unlike CFG approaches like what's done in **Outlines**, adding more complexity to the sampling system. In practical terms, this means we maintain a context registry in the type evaluation tasks. Specific rules allowing variable shadowing and mutability can be defined, opening the door to other languages than "pure" functionals. 
 
-Sampling constraints can be dynamic, and most adapted to the problem you're working with. This means we can easily switch from constraining in one language to another, dynamically.[^5] It also means that we can choose the best formal framework for the task at hand. We could even have algorithms that adapt the language to the problem, improving efficiency and expressiveness tradeoffs.
+Sampling constraints can be dynamic, and most adapted to the problem you're working with. This means we can easily switch from constraining in one language to another, on the fly.[^5] It also means that we can choose the best formal framework for the task at hand. We could even have algorithms that adapt the language to the problem, improving efficiency and expressiveness tradeoffs.
 
 Generation loop: 
  1. Parse input into a Partial AST, with open branches on right-completeable nodes.
@@ -109,7 +109,7 @@ Generation loop:
 
 ## A Paradox
 
-In this project we take the opiniated wager of youg Wittgenstein, or at least some generalization of it. Assuming that there is no "sayable" things outside of the space of constrained reasoning can be a risky take. This is why this project can be seen as an experiment, more than an engineering *solution*. Our primary goal is to study the behavior of constrained reasoning and measure its effects on creativity, entropy and overall intelligence. 
+In this project we take the opiniated wager of young Wittgenstein, or at least some (Carnap inspired) generalization of it. Assuming that there is no "sayable" things outside of the space of constrained reasoning can be a risky take. This is why this project can be seen as an experiment, more than an engineering *solution*. Our primary goal is to study the behavior of constrained reasoning and measure its effects on creativity, entropy and overall intelligence. 
 
 
 ## Architecture

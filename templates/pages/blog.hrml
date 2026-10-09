@@ -2,6 +2,18 @@
 <?sort over="posts" by="publishDate" order="desc" as="posts"?>
 
 <?style?>
+main {
+    background-image: url('/static/images/catacombs-blog.webp');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+main .hero {
+    background: transparent;
+}
+main .hero::before {
+    display: none;
+}
 .blog-list {
     display: flex;
     flex-direction: column;
@@ -13,122 +25,54 @@
 .blog-section {
     padding: 4rem 0 5rem;
 }
-.blog-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: center;
-    padding-bottom: 3rem;
-    border-bottom: 1px solid var(--border);
-    text-decoration: none;
-    color: inherit;
-    transition: border-color 0.2s;
+.blog-contribute {
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: 3rem 2rem 6rem;
+    border-top: 1px solid var(--border);
 }
-.blog-row:last-child {
-    padding-bottom: 0;
-    border-bottom: none;
-}
-.blog-row:hover {
-    border-color: var(--accent);
-}
-.blog-row-text {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-.blog-row-meta {
-    font-size: 0.8125rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--text-muted);
-    font-family: var(--font-mono);
-    margin: 0;
-}
-.blog-row-title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--text-heading);
-    margin: 0;
-    line-height: 1.25;
-    transition: color 0.15s;
+.blog-contribute-title {
     font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--text-heading);
+    margin: 0 0 0.5rem;
 }
-.blog-row:hover .blog-row-title {
-    color: var(--accent);
-}
-.blog-row-excerpt {
-    font-size: 1.0625rem;
+.blog-contribute-text {
     color: var(--text-muted);
-    line-height: 1.65;
+    line-height: 1.7;
     margin: 0;
-}
-.blog-row-img {
-    display: block;
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
-    border-radius: 4px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.blog-row:hover .blog-row-img {
-    transform: scale(1.02);
-    box-shadow: 0 6px 24px color-mix(in srgb, var(--text-default) 10%, transparent);
-}
-.blog-row-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    margin-top: 0.25rem;
-}
-.blog-row-tag {
-    font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    color: var(--text-muted);
-    background: var(--bg-section);
-    padding: 0.15rem 0.5rem;
-    border-radius: 3px;
-    border: 1px solid var(--border);
-}
-@media (max-width: 768px) {
-    .blog-row {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    .blog-row-img {
-        height: auto;
-        max-height: 260px;
-    }
-    .blog-row-title {
-        font-size: 1.375rem;
-    }
 }
 <?/style?>
 
 <?use id="hero-cmp"?>
     <?label?>Research notes<?/label?>
     <?title?>Research notes and articles<?/title?>
-    <?description?>Articles and research notes by members of Unsuspicious Industries.<?/description?>
 </?use?>
 
 <section class="section blog-section">
 
     <div class="blog-list">
         <?map over="posts" as="post"?>
-        <a href="/blog/$post.slug" class="blog-row">
-            <div class="blog-row-text">
-                <p class="blog-row-meta">$post.publishDate · $post.author</p>
-                <h2 class="blog-row-title">$post.title</h2>
-                <p class="blog-row-excerpt">$post.excerpt</p>
+        <?use id="post-row"?>
+            <?slug from="$post.slug"?>
+            <?publish-date from="$post.publishDate"?>
+            <?author from="$post.author"?>
+            <?title from="$post.title"?>
+            <?excerpt from="$post.excerpt"?>
+            <?image from="$post.image"?>
+            <?block slot="tags"?>
                 <?if cond="$post.tags"?>
                 <div class="blog-row-tags">
                     <?map over="$post.tags" as="tag"?><span class="blog-row-tag">$tag</span><?/map?>
                 </div>
                 <?/if?>
-            </div>
-            <img src="/static/images$post.image" class="blog-row-img" loading="lazy" alt="">
-        </a>
+            <?/block?>
+        </?use?>
         <?/map?>
     </div>
 </section>
 
-<br><br>
+<section class="blog-contribute cloud">
+    <h2 class="blog-contribute-title">Wanna contribute</h2>
+    <p class="blog-contribute-text">Posts are data. Add an <code>.mdx</code> file under <code>data/posts/</code> and open a pull request on <a href="https://github.com/Unsuspicious-Industries/usi" target="_blank" rel="noopener">Unsuspicious-Industries/usi</a>.</p>
+</section>

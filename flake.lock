@@ -5,11 +5,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1788454203,
-        "narHash": "sha256-FeCpYLakFUVzrjhk6L0NGmH0luygeCmKBx1l91bVP/U=",
+        "lastModified": 1791172447,
+        "narHash": "sha256-BTxbTdM0cgFdbxjtZZ9UvhDoxfX7wGEXSS4C+tlSmNI=",
         "owner": "Unsuspicious-Industries",
         "repo": "hrml",
-        "rev": "c2cce4419f2e3bc0cd4a0dd8b8f7875a21bfe4f6",
+        "rev": "3c51316f028e62bb26c1ee2285c188d3dd0c4c68",
         "type": "github"
       },
       "original": {
@@ -20,11 +20,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1788614874,
-        "narHash": "sha256-7QYjT2vHLuX9Z1pdxHXDKCbh1CR3D/2rywB9Tx0MPRg=",
+        "lastModified": 1785967620,
+        "narHash": "sha256-IItrdb7Puk05RqOBWZYFC5X6Wl1sJmCfh5MWVHw5iMM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c043004d1c6985732bcc1cbc5a9c9aecbbb4e0f0",
+        "rev": "b7c2ada94fe99c15b0dbcf4d11fd7850b957a436",
         "type": "github"
       },
       "original": {
@@ -78,11 +78,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1791169890,
-        "narHash": "sha256-kkkr7bOHMIrek3/kTQPPQHLQsMs8HBfobZ9gIY4HCMQ=",
+        "lastModified": 1791512685,
+        "narHash": "sha256-6d00pDQWiyh73lYHHRq93nGUr7Dexex2vc2j5h89lGU=",
         "ref": "refs/heads/main",
-        "rev": "ddd6a69b07c4b16d8cbfe94466bcdf3f731c7a2c",
-        "revCount": 14,
+        "rev": "8a6d984536c97403a30ea855df44a1ae7f58bc35",
+        "revCount": 15,
         "type": "git",
         "url": "ssh://git@github.com/Unsuspicious-Industries/ui.git"
       },

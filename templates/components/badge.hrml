@@ -1,0 +1,14 @@
+<?component id="badge"?>
+<?bind var="text"?>
+<?style?>
+.badge {
+    display: inline-block;
+    border: 1px solid var(--accent);
+    padding: 0.35rem 0.65rem;
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+<?/style?>
+<b class="badge">$text</b>
+<?/component?>

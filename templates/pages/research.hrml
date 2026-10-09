@@ -1,0 +1,155 @@
+<?data from="data/publications" as="publications"?>
+<?sort over="publications" by="order" as="publications"?>
+
+<?style?>
+/* Fixed-nav offset for the in-page anchors the homepage previews link to.
+   main already reserves 96px under the fixed .site-nav (84px on mobile), so a
+   scroll target needs the same margin or it lands beneath the bar. */
+.feature-anchor { scroll-margin-top: 96px; }
+/* Inline KARL figure: it stays with the page that grounds it, no static asset. */
+.karl-path { display: block; width: 100%; height: auto; border: 1px solid var(--border); }
+.karl-path .karl-t { font-family: var(--font-mono); font-size: 13px; font-weight: 600; fill: var(--text-heading); }
+.karl-path .karl-s { font-family: var(--font-mono); font-size: 11px; fill: var(--text-muted); }
+@media (max-width: 768px) {
+    .feature-anchor { scroll-margin-top: 84px; }
+}
+<?/style?>
+
+<?use id="hero-cmp"?>
+    <?label?>Research<?/label?>
+    <?title?> Studying complex systems with <?accent?>formal tools<?/accent?> and <?accent?>weird ideas<?/accent?>.<?/title?>
+</?use?>
+
+<div id="aufbau" class="feature-anchor">
+<?use id="feature"?>
+    <?eyebrow?>Formally verified AI<?/eyebrow?>
+    <?name?>AUFBAU<?/name?>
+    <?project?>aufbau<?/project?>
+    <?tagline?>A decoder enforcing <?accent?>semantic</?accent?> constraints on LLMs.<?/tagline?>
+    <?block slot="prose"?>
+        <p>In many workflows LLMs will violate semantic guidelines, thus preventing them from acomplishing their task. For example, agents will sometimes forget the shape of their tool calls, mistake the type of an in-context variable, or perform unauthorized operations on data.</p>
+        <p>AUFBAU builds, token by token, continuations that keep a partial syntax tree <?accent?>well-formed and well-typed<?/accent?> according to user-definable attributes on a context free surface. These attributes are generic, from type constraints to relational rules between objects. </p>
+        <p>In short, you can give <?accent?>hard rules</?accent?> your LLMs will <?accent?>always</?accent?> follow. </p>
+    <?/block?>
+    <?block slot="figure"?>
+        <?use id="grammar-block"?></?use?>
+    <?/block?>
+    <?block slot="links"?>
+        <a href="https://github.com/Unsuspicious-Industries/aufbau" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://pypi.org/project/aufbau-rs" target="_blank" rel="noopener">PyPI</a>
+        <span class="meta">Rust core · Python bindings (PyO3) · MIT</span>
+        <!-- Playground: add the live-demo link here when the demo exists. -->
+    <?/block?>
+</?use?>
+</div>
+
+<!-- KARL. Facts read read-only on 2026-10-09 from the private repository
+     Unsuspicious-Industries/karl (local checkout /home/pkd/code/autoprop):
+     README.md ("Une base internationale, un post-entraînement situé"; the SFT
+     pairs made backwards, answer = published article) and STATE.md (document
+     versus file counting). No corpus count is quoted in the copy: the README
+     and STATE.md disagree (76,000 vs 52,154 documents), and the site does not
+     need an internal number to make the point.
+     The Hugging Face organization https://huggingface.co/dfslab is public, but
+     its anonymous state lists zero models and zero datasets on 2026-10-09, and
+     no KARL model card exists anywhere. This feature therefore links the
+     organization and states there is no public release; do not add a model or
+     dataset name until one is public. The public notes at
+     gilles.unsuspicious.org/#karl-presentation (4-9 Sept 2026) describe an
+     earlier RAG+LoRA+DPO assistant, not the repository's current
+     continued-pretraining line; the copy below keeps to the design principle
+     both dates share, and the link line dates the notes. -->
+<div id="karl" class="feature-anchor">
+<?use id="feature"?>
+    <?eyebrow?>Revolutionary text corpus<?/eyebrow?>
+    <?name?>KARL<?/name?>
+    <?project?>karl<?/project?>
+    <?tagline?>A corpus of revolutionary press, and a training design that keeps an <?accent?>international base<?/accent?> separate from a <?accent?>situated post-training<?/accent?>.<?/tagline?>
+    <?block slot="prose"?>
+        <p>KARL assembles a corpus of revolutionary press and archives to train a writing model on an intended base of Marxist classics in several languages. The unit is the article or the whole chapter, never an arbitrary chunk, and the political line is set in post-training rather than in the pretraining data.</p>
+        <p>SFT pairs are built backwards: the response targets are published texts, not generated answers, and only the question that elicits each text is produced. The corpus and pipeline are in progress; the code is private and there are no public checkpoints or datasets yet.</p>
+    <?/block?>
+    <?block slot="figure"?>
+        <figure class="feature-figure">
+            <svg class="karl-path" viewBox="0 0 620 256" role="img" aria-label="KARL training design: an international base of classics in many languages from marxists.org, then unsupervised pretraining on chapters, then a situated post-training whose SFT answer is the published article and whose question is generated.">
+                <defs>
+                    <marker id="karl-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                        <path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/>
+                    </marker>
+                </defs>
+                <line x1="14" y1="46" x2="14" y2="212" stroke="var(--accent)" stroke-width="2" marker-end="url(#karl-arrow)"/>
+                <rect x="30" y="16" width="570" height="64" fill="none" stroke="var(--border)"/>
+                <text x="46" y="42" class="karl-t">international base</text>
+                <text x="46" y="62" class="karl-s">classics from marxists.org, in many languages</text>
+                <rect x="30" y="96" width="570" height="64" fill="none" stroke="var(--border)"/>
+                <text x="46" y="122" class="karl-t">unsupervised pretraining</text>
+                <text x="46" y="142" class="karl-s">chapters, no instruction format</text>
+                <rect x="30" y="176" width="570" height="64" fill="none" stroke="var(--accent)"/>
+                <text x="46" y="202" class="karl-t">situated post-training</text>
+                <text x="46" y="222" class="karl-s">SFT: the published article is the answer; only the question is generated</text>
+            </svg>
+            <figcaption>An international base, a situated post-training. The design keeps the politics in the second stage and the training signal in the published texts.</figcaption>
+        </figure>
+    <?/block?>
+    <?block slot="links"?>
+        <a href="https://huggingface.co/dfslab" target="_blank" rel="noopener">Hugging Face · dfslab</a>
+        <a href="https://gilles.unsuspicious.org/#karl-presentation" target="_blank" rel="noopener">Project notes</a>
+        <span class="meta">No public models or datasets yet · notes dated Sept 2026</span>
+    <?/block?>
+</?use?>
+</div>
+
+<div id="slop" class="feature-anchor">
+<?use id="feature"?>
+    <?eyebrow?>Critical AI & Information research<?/eyebrow?>
+    <?name?>SLOP<?/name?>
+    <?project?>slop<?/project?>
+    <?tagline?>A framework that queries diffusion models in their own <?accent?>latent space</?accent?>.<?/tagline?>
+    <?block slot="prose"?>
+        <p>SLOP queries a diffusion model directly in its latent space. It captures latents, noise predictions and embeddings as the model generates. It measures how the model renders identity, geography and politics, and where those biases sit as geometry in that space.</p>
+        <p>Inference runs on restricted HPC. The client tunnels a binary protocol over SSH to a GPU node with no open ports. Stable Diffusion and Flux are supported. A distilled-checkpoint registry keeps a sweep affordable.</p>
+        <p>SLOP produced the visualisations used in the <?accent?>Holy Slop<?/accent?> installation. It was shown in <em>The World Through AI</em> at SCHIRN, and in <em>Hidden Layers</em> at UC Berkeley.</p>
+    <?/block?>
+    <?block slot="figure"?>
+        <figure class="feature-figure">
+            <img src="/static/images/slop-distill.svg" alt="Local latent distillation: the student's latent space is gridded, a cell's embedding becomes tokens, and the teacher corrects that cell">
+            <figcaption>To study a closed source model, we distill <em>local</em> elements of it's latent space using grid based sampling and embedding reconstruction by combining tokens.</figcaption>
+        </figure>
+        <figure class="feature-figure">
+            <img src="/static/images/slop-field.svg" alt="The latent bias field: a handful of attractor basins, each pulling nearby seeds">
+            <figcaption>In a given diffusion field (parametrized by a prompt) we identify low-dimensional attractors relating to concepts</figcaption>
+        </figure>
+    <?/block?>
+    <?block slot="links"?>
+        <a href="https://github.com/Unsuspicious-Industries/slop" target="_blank" rel="noopener">GitHub</a>
+    <?/block?>
+</?use?>
+</div>
+
+<?use id="section-cmp"?>
+    <?block slot="content"?>
+        <?use id="section-header"?>
+            <?title?>Publications<?/title?>
+        </?use?>
+        <div class="pubs">
+            <?map over="publications" as="pub"?>
+            <?use id="publication"?>
+                <?status from="$pub.status"?>
+                <?title from="$pub.title"?>
+                <?authors from="$pub.authors"?>
+                <?venue from="$pub.venue"?>
+                <?block slot="logos"?>
+                    <?for in="l in pub.logos"?>
+                    <a href="$l.href" target="_blank" rel="noopener"><img src="$l.src" alt="$l.alt"></a>
+                    <?/for?>
+                <?/block?>
+                <?block slot="meta"?>
+                    <?for in="m in pub.meta"?>
+                    <span><?if cond="$m.href"?><a href="$m.href" target="_blank" rel="noopener">$m.text</a><?else?>$m.text<?/if?></span>
+                    <?/for?>
+                <?/block?>
+            </?use?>
+            <?/map?>
+        </div>
+    <?/block?>
+</?use?>

@@ -1,0 +1,44 @@
+<?component id="style-swatch"?>
+<?bind var="token"/>
+<?bind var="name"/>
+<?bind var="value"/>
+<?style?>
+.style-role {
+    border: 1px solid var(--border);
+    background: var(--bg-section);
+}
+.style-swatch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--on-accent);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+}
+.style-role-meta {
+    padding: 0.85rem 0.95rem 1rem;
+}
+.style-role-name {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-heading);
+}
+.style-role-value {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+}
+<?/style?>
+<div class="style-role">
+    <div class="style-swatch" style="background: var(--$token)"><?if cond="$sample"?>$sample<?/if?></div>
+    <div class="style-role-meta">
+        <div class="style-role-name">$name</div>
+        <div class="style-role-value">$value</div>
+    </div>
+</div>
+<?/component?>

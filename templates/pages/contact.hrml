@@ -39,12 +39,6 @@
                     <?title?>Location<?/title?>
                     <?text?>Paris, France<?/text?>
                 </?use?>
-                <?use id="card-cmp"?>
-                    <?href?>/about<?/href?>
-                    <?icon?>book<?/icon?>
-                    <?title?>About Unsuspicious Industries<?/title?>
-                    <?text?>Research areas and team.<?/text?>
-                </?use?>
             </?block?>
         </?use?>
     </?block?>
@@ -58,6 +52,18 @@
 </?use?>
 
 <?style?>
+main {
+    background-image: url('/static/images/catacombs-contact.webp');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+main .hero {
+    background: transparent;
+}
+main .hero::before {
+    display: none;
+}
 .contact-actions {
     display: flex;
     gap: 1rem;

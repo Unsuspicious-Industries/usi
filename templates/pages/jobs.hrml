@@ -2,21 +2,26 @@
 <?sort over="jobs" by="priority" order="desc" as="jobs"?>
 
 <?style?>
+main {
+    background-image: url('/static/images/catacombs-jobs.webp');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+main .hero {
+    background: transparent;
+}
+main .hero::before {
+    display: none;
+}
 <?/style?>
 
 <?use id="hero-cmp"?>
     <?label?>Now Hiring<?/label?>
     <?title?>Open positions<?/title?>
-    <?description?>Current openings at Unsuspicious Industries.<?/description?>
 </?use?>
 
 <section class="section jobs-section">
-    <?use id="section-header"?>
-        <?label?>Open Roles<?/label?>
-        <?title?>Open roles<?/title?>
-        <?subtitle?>Review each role's responsibilities and requirements before applying.<?/subtitle?>
-    </?use?>
-
     <div class="job-grid">
         <?map over="jobs" as="job"?>
         <?use id="job-card"?>
@@ -33,10 +38,3 @@
     </div>
 </section>
 
-<?use id="cta-section"?>
-    <?title?>Do not see a suitable role?<?/title?>
-    <?primary?>Email us about a role<?/primary?>
-    <?primary-href?>mailto:jobs@unsuspicious.org<?/primary-href?>
-    <?secondary?>Read our ethics note<?/secondary?>
-    <?secondary-href?>/ethics<?/secondary-href?>
-</?use?>

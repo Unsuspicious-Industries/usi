@@ -1,3 +1,18 @@
+<?style?>
+main {
+    background-image: url('/static/images/catacombs-blog-post.webp');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+main .hero {
+    background: transparent;
+}
+main .hero::before {
+    display: none;
+}
+<?/style?>
+
 <?data from="data/posts/$slug.mdx" as="post"?>
 
 <?use id="prose-page"?>

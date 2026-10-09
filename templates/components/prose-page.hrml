@@ -35,9 +35,7 @@
     color: var(--primary);
     line-height: 1.1;
     margin-bottom: 1.5rem;
-}
-.hero-title .highlight {
-    color: var(--accent);
+    overflow-wrap: anywhere;
 }
 .hero-description {
     font-size: 1.25rem;
@@ -86,6 +84,7 @@
     color: var(--text-heading);
     line-height: 1.15;
     margin-top: 2rem;
+    overflow-wrap: anywhere;
 }
 .prose-shell h1 {
     font-size: 2.5rem;
@@ -141,6 +140,12 @@
     padding: 0.125rem 0.375rem;
     border-radius: 0.25rem;
 }
+.prose-shell .math-inline {
+    display: inline-block;
+    max-width: 100%;
+    overflow-x: auto;
+    vertical-align: middle;
+}
 .prose-shell pre {
     overflow-x: auto;
     background: var(--bg-section);
@@ -168,6 +173,6 @@
     </div>
 </section>
 <section class="section prose-section">
-    <article class="prose-shell"><?slot id="content"?></?slot?></article>
+    <article class="prose-shell cloud"><?slot id="content"?></?slot?></article>
 </section>
 <?/component?>

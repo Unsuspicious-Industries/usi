@@ -1,0 +1,46 @@
+<?component id="member-card"?>
+<?bind var="initials"/>
+<?bind var="name"/>
+<?bind var="role"/>
+<?bind var="bio"/>
+<?bind var="website"/>
+<?style?>
+.member {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    background: var(--bg-page);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
+}
+.member-mono {
+    flex-shrink: 0;
+    width: 3.25rem;
+    height: 3.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-section);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: var(--accent);
+}
+.member-name { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 700; color: var(--text-heading); margin: 0; }
+.member-role { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin: 0.15rem 0 0.6rem; }
+.member-bio { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin: 0; }
+.member-link { display: inline-block; margin-top: 0.6rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+.member-link:hover { border-bottom-color: var(--accent); }
+<?/style?>
+<article class="member">
+    <div class="member-mono">$initials</div>
+    <div class="member-info">
+        <h3 class="member-name">$name</h3>
+        <p class="member-role">$role</p>
+        <p class="member-bio">$bio</p>
+        <?if cond="$website"?><a class="member-link" href="$website" target="_blank" rel="noopener">$website →</a><?/if?>
+    </div>
+</article>
+<?/component?>

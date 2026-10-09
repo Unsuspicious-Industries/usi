@@ -1,0 +1,33 @@
+<?component id="grammar-block"?>
+<?style?>
+.code-block .g-n { color: var(--text-heading); font-weight: 600; }
+.code-block .g-o { color: var(--accent); }
+.code-block .g-t { color: var(--text-muted); }
+.code-block .g-v { color: var(--accent); font-style: italic; }
+.code-block .g-c { color: var(--text-muted); }
+<?/style?>
+<figure class="code-block">
+    <figcaption>grammar</figcaption>
+    <pre><code><span class="g-n">Variable</span>(var) <span class="g-o">::=</span> <span class="g-n">Identifier</span><span class="g-v">[x]</span>
+<span class="g-n">BaseType</span> <span class="g-o">::=</span> <span class="g-n">Identifier</span> <span class="g-o">|</span> <span class="g-t">'('</span> <span class="g-n">Type</span> <span class="g-t">')'</span>
+<span class="g-n">AtomicType</span> <span class="g-o">::=</span> <span class="g-n">BaseType</span> <span class="g-o">|</span> <span class="g-t">'('</span> <span class="g-n">Type</span> <span class="g-t">')'</span>
+<span class="g-n">FunctionType</span> <span class="g-o">::=</span> <span class="g-n">AtomicType</span> <span class="g-t">'->'</span> <span class="g-n">Type</span>
+<span class="g-n">Type</span> <span class="g-o">::=</span> <span class="g-n">AtomicType</span> <span class="g-o">|</span> <span class="g-n">FunctionType</span>
+<span class="g-n">Lambda</span>(lambda) <span class="g-o">::=</span> <span class="g-t">'λ'</span> <span class="g-n">Identifier</span><span class="g-v">[a]</span> <span class="g-t">':'</span> <span class="g-n">Type</span><span class="g-v">[τ]</span> <span class="g-t">'.'</span> <span class="g-n">Expression</span><span class="g-v">[e]</span>
+<span class="g-n">AtomicExpression</span> <span class="g-o">::=</span> <span class="g-n">Variable</span> <span class="g-o">|</span> <span class="g-t">'('</span> <span class="g-n">Expression</span> <span class="g-t">')'</span> <span class="g-o">|</span> <span class="g-n">Lambda</span>
+<span class="g-n">Application</span>(app) <span class="g-o">::=</span> <span class="g-n">Expression</span><span class="g-v">[l]</span> <span class="g-n">AtomicExpression</span><span class="g-v">[r]</span>
+<span class="g-n">Expression</span> <span class="g-o">::=</span> <span class="g-n">AtomicExpression</span> <span class="g-o">|</span>  <span class="g-n">Application</span>
+
+<span class="g-c">x</span> <span class="g-o">∈</span> <span class="g-c">Γ</span>
+<span class="g-c">----------- (var)</span>
+<span class="g-c">Γ(x)</span>
+
+<span class="g-c">Γ[a:τ]</span> <span class="g-o">⊢</span> <span class="g-c">e : ?B</span>
+<span class="g-c">--------------------------- (lambda)</span>
+<span class="g-c">τ</span> <span class="g-o">→</span> <span class="g-c">?B</span>
+
+<span class="g-c">Γ</span> <span class="g-o">⊢</span> <span class="g-c">l : ?A → ?B,</span> <span class="g-c">Γ</span> <span class="g-o">⊢</span> <span class="g-c">r : ?A</span>
+<span class="g-c">--------------------------------- (app)</span>
+<span class="g-c">?B</span></code></pre>
+</figure>
+<?/component?>

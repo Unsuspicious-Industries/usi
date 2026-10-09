@@ -1,0 +1,108 @@
+<?component id="post-row"?>
+<?bind var="slug"/>
+<?bind var="publish-date"/>
+<?bind var="author"/>
+<?bind var="title"/>
+<?bind var="excerpt"/>
+<?bind var="image"/>
+<?style?>
+.blog-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s;
+}
+.blog-row:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+.blog-row:hover {
+    border-color: var(--accent);
+}
+.blog-row-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+.blog-row-meta {
+    font-size: 0.8125rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    margin: 0;
+}
+.blog-row-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-heading);
+    margin: 0;
+    line-height: 1.25;
+    transition: color 0.15s;
+    font-family: var(--font-serif);
+}
+.blog-row:hover .blog-row-title {
+    color: var(--accent);
+}
+.blog-row-excerpt {
+    font-size: 1.0625rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    margin: 0;
+}
+.blog-row-img {
+    display: block;
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border-radius: 4px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.blog-row:hover .blog-row-img {
+    transform: scale(1.02);
+    box-shadow: 0 6px 24px color-mix(in srgb, var(--text-default) 10%, transparent);
+}
+.blog-row-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+}
+.blog-row-tag {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    color: var(--text-muted);
+    background: var(--bg-section);
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    border: 1px solid var(--border);
+}
+@media (max-width: 768px) {
+    .blog-row {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .blog-row-img {
+        height: auto;
+        max-height: 260px;
+    }
+    .blog-row-title {
+        font-size: 1.375rem;
+    }
+}
+<?/style?>
+<a href="/blog/$slug" class="blog-row">
+    <div class="blog-row-text cloud">
+        <p class="blog-row-meta">$publish-date · $author</p>
+        <h2 class="blog-row-title">$title</h2>
+        <p class="blog-row-excerpt">$excerpt</p>
+        <?slot id="tags"?>
+    </div>
+    <img src="/static/images$image" class="blog-row-img" loading="lazy" alt="">
+</a>
+<?/component?>

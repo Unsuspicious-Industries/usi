@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" role="img" aria-label="Political compass">
+  <rect x="30" y="30" width="180" height="180" fill="#f8fafc" stroke="#e5e7eb"/>
+  <g stroke="#e5e7eb" stroke-width="1">
+    <line x1="30" y1="90" x2="210" y2="90"/>
+    <line x1="30" y1="150" x2="210" y2="150"/>
+    <line x1="90" y1="30" x2="90" y2="210"/>
+    <line x1="150" y1="30" x2="150" y2="210"/>
+  </g>
+  <line x1="120" y1="30" x2="120" y2="210" stroke="#1f2937" stroke-width="1.5"/>
+  <line x1="30" y1="120" x2="210" y2="120" stroke="#1f2937" stroke-width="1.5"/>
+  <g font-family="monospace" font-size="9" fill="#6b7280" text-anchor="middle">
+    <text x="120" y="20">Authoritarian</text>
+    <text x="120" y="230">Libertarian</text>
+  </g>
+  <text transform="translate(20 120) rotate(-90)" font-family="monospace" font-size="9" fill="#6b7280" text-anchor="middle">Economic Left</text>
+  <text transform="translate(226 120) rotate(90)" font-family="monospace" font-size="9" fill="#6b7280" text-anchor="middle">Economic Right</text>
+</svg>

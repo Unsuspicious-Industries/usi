@@ -1,5 +1,17 @@
 
 <?style?>
+main {
+    background-image: url('/static/images/catacombs-ethics.webp');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+main .hero {
+    background: transparent;
+}
+main .hero::before {
+    display: none;
+}
 .prose-shell,
 .prose-shell p,
 .prose-shell h1,
@@ -13,7 +25,7 @@
 <?use id="prose-page"?>
     <?label?>Institutional Constraint<?/label?>
     <?title?>Ethics Policy<?/title?>
-    <?description?>The policy describes how Unsuspicious Industries approaches research ethics.<?/description?>
+    <?description?>How we approach research ethics.<?/description?>
     <?meta?>Last updated · 2025-04-08<?/meta?>
     <?block slot="content"?>
         <p>Unsuspicious Industries states that its practices should reflect current ethics research.</p>
@@ -54,10 +66,3 @@
     <?work?>Le Joli Mai<?/work?>
 </?use?>
 
-<?use id="cta-section"?>
-    <?title?>Interested in an open role?<?/title?>
-    <?primary?>See open roles<?/primary?>
-    <?primary-href?>/jobs<?/primary-href?>
-    <?secondary?>Talk to us<?/secondary?>
-    <?secondary-href?>/contact<?/secondary-href?>
-</?use?>

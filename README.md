@@ -57,6 +57,71 @@ could drift from the site it documented.
 
 To add a page, create a `.hrml` file under `templates/pages/`. For example, `templates/pages/research.hrml` defines `/research`. Add a navigation link separately in `templates/components/nav.hrml` if the page should appear in the navigation.
 
+## Tool previews
+
+`templates/pages/tools.hrml` puts examples above the descriptions so each card
+shows what the tool produces, and each card is one `<?use id="tool-card"?>` over
+`templates/components/tool-card.hrml`. The HRML badge lives in
+`templates/components/badge.hrml`; the preview is drawn by that component rather
+than a separate HTML mockup, and the snippet above it is a copy of its
+declaration.
+
+The Remblais demo uses `static/images/remblais-square.gif`, copied unchanged
+from `morph_big.gif` in Remblais at `3b57978`. It shows a white square separating
+into red, green and blue blocks. Its SHA-256 is
+`f78bffb74c9c55430092e363d21f4d64920aea6bdfe4a671a6b6e3098e948f57`.
+No new GPU render or conservation measurement was performed. A reduced-motion
+`<picture>` source uses frame 95 as `remblais-square-still.png`. A native **Still**
+checkbox lets other readers stop the visible loop without changing system
+preferences; it swaps in that frame, rather than freezing the current one.
+The still was extracted with ImageMagick 7.1.2-31 on MIST:
+
+```sh
+magick morph_big.gif -coalesce -delete 0-94,96--1 remblais-square-still.png
+```
+
+Project identity marks are separate from previews. Their source is the
+`usi-ui` flake input: `components/brand/project-icons.hrml` (geometry),
+`project-icon.hrml` (renderer) and `lib/project-icons.nix` (stable project ids).
+This checkout keeps exact component snapshots so raw `xrml serve` works;
+`nix build .#site` rejects a snapshot that differs from the pinned library and
+checks every rendered project-icon reference. Redesign icons in `usi-ui`, not
+in the snapshots. To refresh them after updating the input:
+
+```sh
+nix flake update usi-ui
+icons=$(nix build .#project-icons --no-link --print-out-paths)
+cp "$icons"/*.hrml templates/components/
+```
+
+Add a project to the shared registry and sprite together. Use `project-icon`
+with its registered id wherever its identity is shown; keep explanatory diagrams
+and animation previews local to the page. While previewing untracked additions,
+build with `nix build "path:$PWD#site"`: Git-flake `.#site` excludes untracked files.
+
+Political Alignment's values come from its
+[README at ff88c4d](https://github.com/Unsuspicious-Industries/political-alignement/blob/ff88c4dd2648d18112b85252e3864eb5be86b2e7/README.md),
+rounded to whole units. Its `embedding.py` computes Euclidean distance between
+mean-pooled output logits. These examples were not reproduced here and do not
+establish political scores or cross-model comparability.
+
+## Checks
+
+```sh
+nix flake check "path:$PWD"
+nix run "path:$PWD#check-browser" -- http://localhost:8080
+# Optional screenshots and the assertion trace:
+CHECK_ARTIFACTS=/tmp/usi-check nix run "path:$PWD#check-browser" -- http://localhost:8080
+```
+
+The browser runner is optional, pinned with its Chromium binary, and kept in
+`tools/check-site.cjs`. It checks responsive layout, decoded images, project
+marks and links, page anchors, keyboard menu operation, the GIF's playback and
+native Still control, and reduced-motion selection. It prints the machine and
+tool versions. Supply a different base URL to test a served build. These are
+static and browser assertions plus visual inspection, not a proof of
+accessibility or of what the diagrams represent.
+
 ## License
 
 MIT

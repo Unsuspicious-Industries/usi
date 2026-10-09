@@ -1,0 +1,18 @@
+order = 2
+status = "Exhibition · 2026"
+title = "Holy Slop! A Generative Atlas of Slopaganda in Palestine"
+venue = "Using our SLOP framework we produced visualizations used in a piece of the <em>World Through AI</em> exhibition at SCHIRN Kunsthalle in Frankfurt, later shown in <em>Hidden Layers</em> at UC Berkeley. The piece displayed visualizations of differential diffusion fields between <em>neutral</em> embeddings and a <em>Palestinian</em> identity prompt. We identified racist and orientalist representations that matched to attracting areas of the diffusion field."
+
+[[logos]]
+src = "/static/images/schirn.svg"
+alt = "SCHIRN Kunsthalle Frankfurt"
+href = "https://www.schirn.de/en/exhibition/the-world-through-ai/"
+
+[[logos]]
+src = "/static/images/berkeley.svg"
+alt = "University of California, Berkeley"
+href = "https://www.berkeley.edu/"
+
+[[meta]]
+text = "SCHIRN"
+href = "https://www.schirn.de/en/exhibition/the-world-through-ai/"

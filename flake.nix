@@ -36,15 +36,34 @@
       # `xrml build` exits 0 and writes every USI_<ROLE> token out literally,
       # which the browser then drops, so the export would look plausible and be
       # wrong.
-      packages.${system}.site = pkgs.runCommand "usi-site" {
-        nativeBuildInputs = [ xrml ];
-      } ''
-        cp -r ${self}/. ./source
-        chmod -R u+w ./source
-        cd ./source
-        xrml build --palette ${palette} >/dev/null
-        cp -r dist $out
-      '';
+      # Checked snapshots let the live checkout work with raw xrml, which
+      # cannot import components outside its project tree. Geometry is owned by
+      # usi-ui: changing these copies locally must fail, never fork silently.
+      packages.${system} = {
+        project-icons = pkgs.runCommand "usi-project-icons" { } ''
+          mkdir -p $out
+          cp ${usi-ui.lib.projectIconsSprite} $out/project-icons.hrml
+          cp ${usi-ui.lib.projectIconComponent} $out/project-icon.hrml
+        '';
+
+        site = pkgs.runCommand "usi-site" {
+          nativeBuildInputs = [ xrml pkgs.python3 pkgs.diffutils ];
+        } ''
+          cp -r ${self}/. ./source
+          chmod -R u+w ./source
+          cd ./source
+          cmp templates/components/project-icons.hrml ${usi-ui.lib.projectIconsSprite}
+          cmp templates/components/project-icon.hrml ${usi-ui.lib.projectIconComponent}
+          xrml build --palette ${palette} >/dev/null
+          python3 ${usi-ui}/tools/check-project-icons.py \
+            --sprite templates/components/project-icons.hrml \
+            --component templates/components/project-icon.hrml \
+            --layout templates/layouts/base.hrml \
+            --scan dist \
+            ${pkgs.lib.concatMapStringsSep " " (id: "--expect ${id}") usi-ui.lib.projectIconIds}
+          cp -r dist $out
+        '';
+      };
 
       checks.${system}.site = self.packages.${system}.site;
 
@@ -65,13 +84,27 @@ EOF
       # $PWD, not in the flake's store copy, or dev would serve a snapshot.
       # USI_PALETTE overrides the pinned palette; the default is an input, so
       # there is nothing to pass by hand and nothing to forget.
-      apps.${system}.default = {
-        type = "app";
-        program = "${pkgs.writeShellScript "usi-site-dev" ''
-          set -eu
-          [ "$#" -gt 0 ] || set -- serve .
-          exec ${xrml}/bin/xrml "$@" --palette "''${USI_PALETTE:-${palette}}"
-        ''}";
+      apps.${system} = {
+        default = {
+          type = "app";
+          program = "${pkgs.writeShellScript "usi-site-dev" ''
+            set -eu
+            [ "$#" -gt 0 ] || set -- serve .
+            exec ${xrml}/bin/xrml "$@" --palette "''${USI_PALETTE:-${palette}}"
+          ''}";
+        };
+        # Optional end-to-end checks: keep the browser out of the ordinary site
+        # build, but pin its runner and binary together for repeatable assertions.
+        check-browser = {
+          type = "app";
+          meta.description = "Check the served site with pinned Chromium and Playwright";
+          program = "${pkgs.writeShellScript "usi-check-browser" ''
+            set -eu
+            export PLAYWRIGHT_CORE=${pkgs.playwright-driver}
+            export PLAYWRIGHT_BROWSERS_PATH=${pkgs.playwright-driver.browsers-chromium}
+            exec ${pkgs.nodejs}/bin/node ${self}/tools/check-site.cjs "$@"
+          ''}";
+        };
       };
     };
 }

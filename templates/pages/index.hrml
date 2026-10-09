@@ -1,151 +1,285 @@
+<?style?>
+/* Page ground: one section of the catacombs survey. The hero drops its own
+   fill so the map reads behind it. */
+main {
+    background-image: url('/static/images/catacombs-index.webp');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+main .hero {
+    background: transparent;
+}
+main .hero::before {
+    display: none;
+}
+
+/* A department card's evidence row: one compact graphic per artifact, plus a
+   named link. No card is an anchor; the link is the artifact. */
+.card-previews {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+.card-preview {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.4rem 0.55rem;
+    border: 1px solid var(--border);
+    background: var(--bg-section);
+    text-decoration: none;
+    color: inherit;
+}
+a.card-preview:hover {
+    border-color: var(--accent);
+}
+a.card-preview:hover .card-preview-name {
+    text-decoration: underline;
+}
+.card-preview-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.25rem;
+    height: 2rem;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: var(--bg-page);
+    border: 1px solid var(--border);
+    color: var(--accent);
+}
+.card-preview-media .project-icon {
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.card-preview-body {
+    min-width: 0;
+}
+.card-preview-name {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.card-preview-note {
+    display: block;
+    margin-top: 0.1rem;
+    font-size: 0.66rem;
+    line-height: 1.4;
+    color: var(--text-muted);
+}
+.card-preview-arrow {
+    margin-left: auto;
+    padding-left: 0.5rem;
+    color: var(--accent);
+    font-size: 0.8rem;
+}
+.card-preview.is-pending {
+    border-style: dashed;
+}
+.card-preview.is-pending .card-preview-name {
+    color: var(--text-muted);
+}
+<?/style?>
+
+<?component id="card-preview"?>
+<?bind var="href"/?>
+<?bind var="name"/?>
+<?bind var="note"/?>
+<?if cond="$href"?>
+    <a class="card-preview" href="$href">
+        <span class="card-preview-media"><?slot id="media"?></span>
+        <span class="card-preview-body">
+            <span class="card-preview-name">$name</span>
+            <?if cond="$note"?>
+                <span class="card-preview-note">$note</span>
+            <?/if?>
+        </span>
+        <span class="card-preview-arrow" aria-hidden="true">↗</span>
+    </a>
+<?else?>
+    <!-- No verified public URL: the row names the artifact without a
+         destination rather than inventing one. -->
+    <span class="card-preview is-pending">
+        <span class="card-preview-media"><?slot id="media"?></span>
+        <span class="card-preview-body">
+            <span class="card-preview-name">$name</span>
+            <?if cond="$note"?>
+                <span class="card-preview-note">$note</span>
+            <?/if?>
+        </span>
+    </span>
+<?/if?>
+<?/component?>
+
 <?use id="hero-cmp"?>
-    <?label?>Research at the boundaries<?/label?>
-    <?title?>Research in computer science, critical theory and natural sciences<?/title?>
-    <?description?><span>Unsuspicious Industries</span> is a research collective working across computer science, critical theory and the natural sciences.<?/description?>
+    <?label?>Research at the boundaries of sense<?/label?>
+    <?title?>Formal Systems with <span class="blur text-accent">blurred</span> edges<?/title?>
+    <?description?><?accent?>Unsuspicious Industries</?accent?> is a research collective working across computer science, critical theory and the natural sciences.<?/description?>
 </?use?>
 
 <?use id="section-cmp"?>
     <?block slot="content"?>
-        <?use id="section-header"?>
-            <?label?>Research Divisions<?/label?>
-            <?title?>Currently investigating<?/title?>
-            <?subtitle?>Research areas<?/subtitle?>
-        </?use?>
         <?use id="card-grid"?>
             <?cols?>2<?/cols?>
             <?block slot="content"?>
                 <?use id="card-cmp"?>
-                    <?href?>/dfs<?/href?>
                     <?icon?>code<?/icon?>
-                    <?title?>Dynamic Formal Systems lab<?/title?>
+                    <?title?>Dynamic & Formal Systems lab<?/title?>
                     <?text?>Research on proof systems, strong normalization and applied type theory.<?/text?>
-                    <?quote?>1<?/quote?>
-                    <?block slot="quote"?>
-                        <p class="card-quote-text">philosophy courses should teach how to use proof assistants</p>
-                        <div class="card-quote-attribution">
-                            <span class="card-quote-author">Alcuin</span>
-                            <span class="card-quote-work">𝕏, @scheminglunatic</span>
+                    <?quote-text?>philosophy courses should teach how to use proof assistants<?/quote-text?>
+                    <?quote-author?>Alcuin<?/quote-author?>
+                    <?quote-work?>𝕏, @scheminglunatic<?/quote-work?>
+                    <?block slot="work"?>
+                        <div class="card-previews">
+                            <?use id="card-preview"?>
+                                <?href?>/research#karl<?/href?>
+                                <?name?>KARL<?/name?>
+                                <?note?>Revolutionary-text corpus & model<?/note?>
+                                <?block slot="media"?>
+                                    <?use id="project-icon"?><?id?>karl<?/id?></?use?>
+                                <?/block?>
+                            </?use?>
+                            <?use id="card-preview"?>
+                                <?href?>/tools#remblais<?/href?>
+                                <?name?>Remblais<?/name?>
+                                <?note?>Optimal-transport image morphing<?/note?>
+                                <?block slot="media"?>
+                                    <?use id="project-icon"?><?id?>remblais<?/id?></?use?>
+                                <?/block?>
+                            </?use?>
                         </div>
-                    </?block?>
-                </?use?>
+                    <?/block?>
+                                    </?use?>
                 <?use id="card-cmp"?>
-                    <?href?>/ethics<?/href?>
                     <?icon?>cpu<?/icon?>
                     <?title?>Axiomatic Elaboration team<?/title?>
                     <?text?>
                         Research on formal approaches to ethics and rational thought.
                     <?/text?>
-                    <?quote?>1<?/quote?>
-                    <?block slot="quote"?>
-                        <p class="card-quote-text">Ethics and æsthetics are one</p>
-                        <div class="card-quote-attribution">
-                            <span class="card-quote-author">Wittgenstein</span>
-                            <span class="card-quote-work">6.421</span>
+                    <?quote-text?>Ethics and æsthetics are one<?/quote-text?>
+                    <?quote-author?>Wittgenstein<?/quote-author?>
+                    <?quote-work?>6.421<?/quote-work?>
+                    <?block slot="work"?>
+                        <div class="card-previews">
+                            <?use id="card-preview"?>
+                                <?href?>/tools#political-alignment<?/href?>
+                                <?name?>Political Alignment<?/name?>
+                                <?note?>Bias probes in language models<?/note?>
+                                <?block slot="media"?>
+                                    <?use id="project-icon"?><?id?>political-alignment<?/id?></?use?>
+                                <?/block?>
+                            </?use?>
                         </div>
-                    </?block?>
-                </?use?>
+                    <?/block?>
+                                    </?use?>
                 <?use id="card-cmp"?>
-                    <?icon?>brain<?/icon?>
-                    <?title?>Diffused Consciousness research<?/title?>
-                    <?text?>Research on non-atomic models of consciousness and learning.<?/text?>
-                    <?quote?>1<?/quote?>
-                    <?block slot="quote"?>
-                        <p class="card-quote-text">I think I might have been stupid in some respects, if it weren't for my psychedelic experiences.</p>
-                        <div class="card-quote-attribution">
-                            <span class="card-quote-author">Kary Mullis</span>
-                            <span class="card-quote-work">MAPS</span>
+                    <?icon?>cpu<?/icon?>
+                    <?title?>Industrial Infrastructure<?/title?>
+                    <?text?>Runtime and transport infrastructure for large-scale computation.<?/text?>
+                    <?block slot="work"?>
+                        <div class="card-previews">
+                            <?use id="card-preview"?>
+                                <?href?>/infra#mpi-rma<?/href?>
+                                <?name?>mpi-rma<?/name?>
+                                <?note?>Typed MPI one-sided transport<?/note?>
+                                <?block slot="media"?>
+                                    <?use id="project-icon"?><?id?>mpi-rma<?/id?></?use?>
+                                <?/block?>
+                            </?use?>
+                            <?use id="card-preview"?>
+                                <?href?>/infra#trame<?/href?>
+                                <?name?>trame<?/name?>
+                                <?note?>Portable execution backends<?/note?>
+                                <?block slot="media"?>
+                                    <?use id="project-icon"?><?id?>trame<?/id?></?use?>
+                                <?/block?>
+                            </?use?>
                         </div>
-                    </?block?>
+                    <?/block?>
+                    <!-- This card replaces the former Diffused Consciousness card;
+                         its Kary Mullis quote was about consciousness and does not
+                         belong here, so no quotation is shown. -->
                 </?use?>
                 <?use id="card-cmp"?>
                     <?icon?>chart-line<?/icon?>
                     <?title?>Macroeconomics formalization department<?/title?>
                     <?text?>
-                    Formalizing economics research with high-performance computing and formal systems; modeling emergent market behavior from first principles.
+                        Formalizing economics research with high-performance computing and formal systems; modeling emergent market behavior from first principles.
                     <?/text?>
-                    <?quote?>1<?/quote?>
-                    <?block slot="quote"?>
-                        <p class="card-quote-text">In the long run we are all dead</p>
-                        <div class="card-quote-attribution">
-                            <span class="card-quote-author">J.M Keynes</span>
-                            <span class="card-quote-work">A Tract on Monetary Reform (1923)</span>
+                    <?quote-text?>In the long run we are all dead<?/quote-text?>
+                    <?quote-author?>J.M Keynes<?/quote-author?>
+                    <?quote-work?>A Tract on Monetary Reform (1923)<?/quote-work?>
+                    <?block slot="work"?>
+                        <div class="card-previews">
+                            <?use id="card-preview"?>
+                                <?href?>https://gilles.unsuspicious.org/#lab-economics<?/href?>
+                                <?name?>Gilles Economics lab<?/name?>
+                                <?note?>Class-based utility & revolt-potential model<?/note?>
+                                <?block slot="media"?>
+                                    <?use id="project-icon"?><?id?>gilles-economics<?/id?></?use?>
+                                <?/block?>
+                            </?use?>
                         </div>
-                    </?block?>
-                </?use?>
+                    <?/block?>
+                                    </?use?>
                 <?use id="card-cmp"?>
                     <?icon?>leaf<?/icon?>
                     <?title?>Automated Reasoning division<?/title?>
                     <?text?>Developing automated tools to support human reasoning and discovery.<?/text?>
-                    <?quote?>1<?/quote?>
-                    <?block slot="quote"?>
-                        <p class="card-quote-text">
+                    <?quote-text?>
                             La connaissance est devenue force productive immédiate, 
                             et, par suite, [...] les conditions du processus vital de la société sont elles-mêmes passées sous le contrôle de l'
-                            <span class="text-normal">intellect général</span>, 
+                            <span class="text-default">intellect général</span>, 
                             et sont réorganisées conformément à lui. 
-                        </p>
-                        <div class="card-quote-attribution">
-                            <span class="card-quote-author">Karl Marx</span>
-                            <span class="card-quote-work">Grundrisse</span>
+                        <?/quote-text?>
+                    <?quote-author?>Karl Marx<?/quote-author?>
+                    <?quote-work?>Grundrisse<?/quote-work?>
+                    <?block slot="work"?>
+                        <div class="card-previews">
+                            <?use id="card-preview"?>
+                                <?href?>/research#aufbau<?/href?>
+                                <?name?>AUFBAU<?/name?>
+                                <?note?>Constrained decoding<?/note?>
+                                <?block slot="media"?>
+                                    <?use id="project-icon"?><?id?>aufbau<?/id?></?use?>
+                                <?/block?>
+                            </?use?>
                         </div>
-                    </?block?>
-                </?use?>
+                    <?/block?>
+                                    </?use?>
                 <?use id="card-cmp"?>
                     <?icon?>palette<?/icon?>
                     <?title?>LSH Department<?/title?>
                     <?text?>Research on history, art and literature.<?/text?>
-                    <?quote?>1<?/quote?>
-                    <?block slot="quote"?>
-                        <p class="card-quote-text">
+                    <?quote-text?>
                             Les Hommes ont inventé la Naphthaline de la Beauté, cela s'appelle l'Art. 
                             C'est quelque fois un peu erratique dans ses formes, mais c'est quelque fois très beau.
-                        </p>
-                        <div class="card-quote-attribution">
-                            <span class="card-quote-author">Chris Marker</span>
-                            <span class="card-quote-work">Le joli Mai</span>
+                        <?/quote-text?>
+                    <?quote-author?>Chris Marker<?/quote-author?>
+                    <?quote-work?>Le joli Mai<?/quote-work?>
+                    <?block slot="work"?>
+                        <div class="card-previews">
+                            <?use id="card-preview"?>
+                                <?href?>/research#slop<?/href?>
+                                <?name?>SLOP<?/name?>
+                                <?note?>Diffusion latent space<?/note?>
+                                <?block slot="media"?>
+                                    <?use id="project-icon"?><?id?>slop<?/id?></?use?>
+                                <?/block?>
+                            </?use?>
                         </div>
-                    </?block?>
-                </?use?>
-            </?block?>
+                    <?/block?>
+                                    </?use?>
+            <?/block?>
         </?use?>
-    </?block?>
-</?use?>
-
-<?use id="stats-section"?>
-    <?label?>Research statistics<?/label?>
-    <?title?>Research activity<?/title?>
-    <?block slot="content"?>
-        <?use id="stat-item"?>
-            <?icon?>flask<?/icon?>
-            <?size?>md<?/size?>
-            <?number?>25+<?/number?>
-            <?label?>Active research projects<?/label?>
-        </?use?>
-        <?use id="stat-item"?>
-            <?icon?>users<?/icon?>
-            <?size?>md<?/size?>
-            <?number?>2<?/number?>
-            <?label?>Research centers<?/label?>
-        </?use?>
-        <?use id="stat-item"?>
-            <?icon?>check<?/icon?>
-            <?size?>md<?/size?>
-            <?number?>+90%<?/number?>
-            <?label?>Mechanized proofs<?/label?>
-        </?use?>
-        <?use id="stat-item"?>
-            <?icon?>coffee<?/icon?>
-            <?size?>md<?/size?>
-            <?number?>5000+<?/number?>
-            <?label?>Cups of coffee<?/label?>
-        </?use?>
-    </?block?>
-</?use?>
-
-<?use id="cta-section"?>
-    <?title?>Collaborate with us<?/title?>
-    <?primary?>Discuss research collaboration<?/primary?>
-    <?primary-href?>/contact<?/primary-href?>
-    <?secondary?>About the Team<?/secondary?>
-    <?secondary-href?>/about<?/secondary-href?>
+    <?/block?>
 </?use?>

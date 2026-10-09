@@ -1,0 +1,9 @@
+<?component id="code-block"?>
+<?bind var="lang"/?>
+<figure class="code-block">
+    <?if cond="$lang"?>
+    <figcaption>$lang</figcaption>
+    <?/if?>
+    <pre><code><?slot id="content"?></code></pre>
+</figure>
+<?/component?>

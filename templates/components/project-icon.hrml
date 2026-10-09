@@ -1,0 +1,32 @@
+<!-- One canonical project identity mark, looked up by registry id.
+
+     The geometry lives in project-icons.hrml (the sprite); this component only
+     names a symbol, so a page never repeats a path and a redesigned mark lands
+     in one file. The id must be one of `usi-ui.lib.projectIconIds`; a typo
+     renders an empty <use> silently, which is why the repo check scans for
+     refs that name no symbol (see tools/check-project-icons.py).
+
+     `label` is the accessible name. Pass it when the mark is the only identity
+     for a project; when a visible name sits next to it, omit it and the mark is
+     aria-hidden, which is the usual case in a labelled row.
+
+     `size` reuses the shared icon classes: sm 1.5rem (default), md 2.5rem,
+     lg 4rem. Colour comes from `currentColor`, so the mark follows the palette
+     of whatever surface it sits on with no per-site override. -->
+<?component id="project-icon"?>
+<?bind var="id"/?>
+<?bind var="label"/?>
+<?bind var="size" default="sm"/>
+<?style?>
+.project-icon {
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+}
+<?/style?>
+<?if cond="$label"?>
+<svg class="project-icon icon-$size" viewBox="0 0 24 24" role="img" aria-label="$label"><use href="#project-$id"/></svg>
+<?else?>
+<svg class="project-icon icon-$size" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#project-$id"/></svg>
+<?/if?>
+<?/component?>

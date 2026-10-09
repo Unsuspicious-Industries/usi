@@ -1,0 +1,20 @@
+order = 1
+status = "Published · October 2026"
+title = "Semantic Prefix Oracles for LLM Decoding: Contracts and Differential Validation"
+authors = "Paul Kronlund-Drouault"
+venue = "In <em>Proceedings of the 2nd ACM SIGPLAN International Workshop on Language Models and Programming Languages</em> (LMPL '26), October 4–9, 2026, Oakland, CA, USA, pages 13–23."
+
+[[logos]]
+src = "/static/images/acm.svg"
+alt = "Association for Computing Machinery"
+href = "https://dl.acm.org/doi/10.1145/3843750.3843841"
+
+[[meta]]
+text = "ACM Digital Library"
+href = "https://dl.acm.org/doi/10.1145/3843750.3843841"
+
+[[meta]]
+text = "DOI 10.1145/3843750.3843841"
+
+[[meta]]
+text = "CC BY 4.0 — open access"

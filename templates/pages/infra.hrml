@@ -1,0 +1,126 @@
+<!-- /infra. Facts read read-only on 2026-10-09:
+     mpi-rma — /home/pkd/code/nerve/mpi-rma/README.md (HEAD 1fbea2d) and
+       BENCHMARKS.md; public links verified: github.com/PKD667/mpi-rma (MIT;
+       its crates.io `repository` field still says /pkd/mpi-rma, stale),
+       crates.io/crates/mpi-rma (0.1.0), docs.rs/mpi-rma.
+     trame — /home/pkd/code/nerve/trame/README.md, backend.md (the contract)
+       and execution.md ("Recorded implementation checks establish only the
+       coverage they exercised"); public link verified: github.com/PKD667/trame
+       (no licence file, so no reuse permission is stated). The NERVE runtime
+       itself (github.com/PKD667/nerve) is private; do not link it, and do not
+       imply its source is public.
+     No performance/benchmark numbers here: the sketches are conceptual and the
+     descriptions are current. Keep it that way; mpi-rma's "almost 4x" headline
+     is contradicted by its own table above 4 KiB. -->
+<?style?>
+/* Local to /infra. Fixed-nav offset for the /infra anchors; same margin as
+   main's own padding-top under the fixed .site-nav. */
+.infra-anchor { scroll-margin-top: 96px; }
+.infra-svg { display: block; width: 100%; height: auto; border: 1px solid var(--border); }
+.infra-svg text { font-family: var(--font-mono); }
+.infra-svg .l { font-size: 12px; font-weight: 600; fill: var(--text-heading); }
+.infra-svg .s { font-size: 10px; fill: var(--text-muted); }
+@media (max-width: 768px) {
+    .infra-anchor { scroll-margin-top: 84px; }
+}
+<?/style?>
+
+<?use id="hero-cmp"?>
+    <?label?>Infrastructure<?/label?>
+    <?title?>Shared systems for <?accent?>research and compute<?/accent?>.<?/title?>
+<?/use?>
+
+<div id="mpi-rma" class="infra-anchor">
+<?use id="feature"?>
+    <?eyebrow?>HPC / Rust<?/eyebrow?>
+    <?name?>mpi-rma<?/name?>
+    <?project?>mpi-rma<?/project?>
+    <?tagline?>Typed, safe MPI one-sided communication for Rust, with a <?accent?>fixed-slot ring<?/accent?> transport.<?/tagline?>
+    <?block slot="prose"?>
+        <p>MPI one-sided communication (RMA) lets a process write into a peer's memory window directly. mpi-rma puts a typed Rust API over rsmpi and adds a ring transport: payloads go into pre-allocated slots, polling reads local memory, and no sender waits for the receiver.</p>
+        <p>Safe mode gates the sender with a cumulative ack counter, and a send that would overwrite an unacknowledged slot is refused with <code>Error::Full</code>. Raw mode never refuses: it overwrites and reports the gap through <code>lost()</code>. Slots carry a sequence, length and CRC32, so loss and corruption are observable rather than silent.</p>
+        <p>Published under MIT. The repository's measurements were taken on a single node; the README warns the advantage may not hold across nodes.</p>
+    <?/block?>
+    <?block slot="figure"?>
+        <figure class="feature-figure">
+            <svg class="infra-svg" viewBox="0 0 640 220" role="img" aria-label="A row of pre-allocated RMA slots. A put writes from the sender into the receiver's window; a poll reads the slots from local memory; in safe mode an ack advances the reusable window.">
+                <defs>
+                    <marker id="ir-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                        <path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/>
+                    </marker>
+                </defs>
+                <text x="24" y="30" class="l">sender</text>
+                <text x="24" y="46" class="s">rank 0</text>
+                <text x="616" y="30" text-anchor="end" class="l">receiver</text>
+                <text x="616" y="46" text-anchor="end" class="s">rank 1 · memory window</text>
+                <text x="320" y="86" text-anchor="middle" class="s">pre-allocated slots · seq · len · crc32</text>
+                <rect x="136" y="100" width="48" height="48" fill="none" stroke="var(--border)"/>
+                <rect x="200" y="100" width="48" height="48" fill="none" stroke="var(--border)"/>
+                <rect x="264" y="100" width="48" height="48" fill="none" stroke="var(--border)"/>
+                <rect x="328" y="100" width="48" height="48" fill="none" stroke="var(--border)"/>
+                <rect x="392" y="100" width="48" height="48" fill="var(--accent)" fill-opacity="0.14" stroke="var(--accent)"/>
+                <rect x="456" y="100" width="48" height="48" fill="none" stroke="var(--border)"/>
+                <line x1="24" y1="124" x2="128" y2="124" stroke="var(--accent)" stroke-width="2" marker-end="url(#ir-arrow)"/>
+                <text x="24" y="116" class="s">put</text>
+                <line x1="512" y1="124" x2="616" y2="124" stroke="var(--accent)" stroke-width="2" marker-end="url(#ir-arrow)"/>
+                <text x="616" y="116" text-anchor="end" class="s">poll (local read)</text>
+                <line x1="616" y1="176" x2="24" y2="176" stroke="var(--text-muted)" stroke-width="1.5" stroke-dasharray="6 5" marker-end="url(#ir-arrow)"/>
+                <text x="320" y="198" text-anchor="middle" class="s">safe ack advances reuse; raw mode overwrites and reports the gap</text>
+            </svg>
+            <figcaption>Fixed-slot ring: pre-allocated slots, a poll that is just a local read, and an ack that gates reuse in safe mode.</figcaption>
+        </figure>
+    <?/block?>
+    <?block slot="links"?>
+        <a href="https://crates.io/crates/mpi-rma" target="_blank" rel="noopener">crates.io</a>
+        <a href="https://docs.rs/mpi-rma" target="_blank" rel="noopener">docs.rs</a>
+        <a href="https://github.com/PKD667/mpi-rma" target="_blank" rel="noopener">GitHub</a>
+        <span class="meta">Rust · MPI · MIT</span>
+    <?/block?>
+</?use?>
+</div>
+
+<div id="trame" class="infra-anchor">
+<?use id="feature"?>
+    <?eyebrow?>Runtime contract<?/eyebrow?>
+    <?name?>trame<?/name?>
+    <?project?>trame<?/project?>
+    <?tagline?>One contract for the NERVE runtime, with the backend <?accent?>selected at build time<?/accent?>.<?/tagline?>
+    <?block slot="prose"?>
+        <p>trame is the transport and execution layer of the NERVE neuromorphic runtime. It defines one contract — launches, deployments, frames, lanes, processes and steps — and chooses its implementation when the crate is built: a single process with no transport, an MPI backend, or one CUDA warp per rank.</p>
+        <p>Because the choice is a Cargo feature, callers and verification fixtures are written once against the same functions, macros and bounds. The device backend is opt-in, so an ordinary build links no CUDA stack.</p>
+        <p>The contract is a model, not a proof. The repository's conformance run exercises a claim-by-backend table and records only the coverage it exercised, so the implementation qualification is narrower than the contract text.</p>
+    <?/block?>
+    <?block slot="figure"?>
+        <figure class="feature-figure">
+            <svg class="infra-svg" viewBox="0 0 640 220" role="img" aria-label="One trame contract branching at build time into three backends: none, a single process with no transport; mpi, with RMA lanes and message batches; nv, one CUDA warp per rank.">
+                <defs>
+                    <marker id="tr-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                        <path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/>
+                    </marker>
+                </defs>
+                <rect x="180" y="16" width="280" height="64" fill="none" stroke="var(--accent)"/>
+                <text x="320" y="46" text-anchor="middle" class="l">trame::contract</text>
+                <text x="320" y="64" text-anchor="middle" class="s">launch · frames · lanes · steps</text>
+                <polyline points="320,80 320,100 110,100 110,116" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#tr-arrow)"/>
+                <line x1="320" y1="80" x2="320" y2="116" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#tr-arrow)"/>
+                <polyline points="320,80 320,100 530,100 530,116" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#tr-arrow)"/>
+                <rect x="30" y="116" width="160" height="64" fill="none" stroke="var(--border)"/>
+                <text x="110" y="144" text-anchor="middle" class="l">none</text>
+                <text x="110" y="164" text-anchor="middle" class="s">one process, no transport</text>
+                <rect x="240" y="116" width="160" height="64" fill="none" stroke="var(--border)"/>
+                <text x="320" y="144" text-anchor="middle" class="l">mpi</text>
+                <text x="320" y="164" text-anchor="middle" class="s">RMA lanes · message batches</text>
+                <rect x="450" y="116" width="160" height="64" fill="none" stroke="var(--border)"/>
+                <text x="530" y="144" text-anchor="middle" class="l">nv</text>
+                <text x="530" y="164" text-anchor="middle" class="s">one CUDA warp per rank</text>
+                <text x="320" y="206" text-anchor="middle" class="s">selected by Cargo feature at build time; callers are written once</text>
+            </svg>
+            <figcaption>One contract, three implementations. The backend is a compile-time feature, not a run-time choice.</figcaption>
+        </figure>
+    <?/block?>
+    <?block slot="links"?>
+        <a href="https://github.com/PKD667/trame" target="_blank" rel="noopener">GitHub</a>
+        <span class="meta">Part of the NERVE runtime · Rust 2024 · no licence file yet</span>
+    <?/block?>
+</?use?>
+</div>

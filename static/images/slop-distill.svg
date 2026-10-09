@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" width="760" height="300" role="img" aria-label="The grid distillation process: a grid laid over the student's latent space, each cell's embedding converted to tokens, sent to the teacher, and the correction written back to only that cell">
+  <style>
+    .t   { font-family: 'Fira Code', 'Hack', monospace; font-size: 11px; fill: #1f2937; letter-spacing: 0.14em; }
+    .lbl { font-family: 'Fira Code', 'Hack', monospace; font-size: 12px; fill: #1f2937; }
+    .sub { font-family: 'Fira Code', 'Hack', monospace; font-size: 10px; fill: #6b7280; }
+
+    .flow { stroke-dasharray: 7 7; animation: flow 2.4s linear infinite; }
+    @keyframes flow { to { stroke-dashoffset: -28; } }
+
+    .draw { stroke-dasharray: 120; stroke-dashoffset: 120; animation: draw 3.2s ease-in-out infinite; }
+    @keyframes draw {
+      0% { stroke-dashoffset: 120; }
+      45% { stroke-dashoffset: 0; }
+      80% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: 120; }
+    }
+
+    .grow { transform-box: fill-box; transform-origin: center; opacity: 0; animation: grow 6.4s ease-in-out infinite; }
+    @keyframes grow {
+      0%, 10% { opacity: 0; transform: scale(.4); }
+      30%, 88% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(.4); }
+    }
+
+    .pulse { opacity: .3; animation: pulse 3.2s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity: .25; } 50% { opacity: 1; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .flow, .draw, .grow, .pulse { animation: none; }
+      .flow { stroke-dasharray: none; }
+      .draw { stroke-dasharray: none; stroke-dashoffset: 0; }
+      .grow { opacity: 1; transform: none; }
+      .pulse { opacity: .7; }
+    }
+  </style>
+
+  <text class="t" x="20" y="22">GRID DISTILLATION</text>
+
+  <g stroke="#6b7280" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <line class="flow" x1="172" y1="128" x2="202" y2="128"/><path d="M196 123 l7 5 -7 5"/>
+    <line class="flow" x1="372" y1="128" x2="402" y2="128"/><path d="M396 123 l7 5 -7 5"/>
+    <line class="flow" x1="572" y1="128" x2="602" y2="128"/><path d="M596 123 l7 5 -7 5"/>
+  </g>
+
+  <!-- 1. student latent grid -->
+  <rect x="20" y="48" width="152" height="160" fill="#f8fafc" stroke="#e5e7eb"/>
+  <g fill="none" stroke="#1f2937" stroke-width="1.2" opacity=".6">
+    <rect class="grow" style="animation-delay:0s"   x="40" y="70"  width="32" height="32"/>
+    <rect class="grow" style="animation-delay:.1s"  x="80" y="70"  width="32" height="32"/>
+    <rect class="grow" style="animation-delay:.2s"  x="120" y="70" width="32" height="32"/>
+    <rect class="grow" style="animation-delay:.3s"  x="40" y="110" width="32" height="32"/>
+    <rect class="grow" style="animation-delay:.5s"  x="120" y="110" width="32" height="32"/>
+    <rect class="grow" style="animation-delay:.6s"  x="40" y="150" width="32" height="32"/>
+    <rect class="grow" style="animation-delay:.7s"  x="80" y="150" width="32" height="32"/>
+    <rect class="grow" style="animation-delay:.8s"  x="120" y="150" width="32" height="32"/>
+  </g>
+  <rect class="pulse" x="80" y="110" width="32" height="32" fill="#3730a3" stroke="#3730a3" stroke-width="1.2"/>
+  <text class="lbl" x="20" y="232">student</text>
+  <text class="sub" x="20" y="250">grid over latent space</text>
+
+  <!-- 2. embedding -> tokens -->
+  <rect x="212" y="48" width="160" height="160" fill="#f8fafc" stroke="#e5e7eb"/>
+  <g fill="none" stroke="#1f2937" stroke-width="1.4">
+    <path d="M240 92 h-8 v64 h8"/>
+    <path d="M266 92 h8 v64 h-8"/>
+  </g>
+  <g class="pulse" stroke="#3730a3" stroke-width="1.6" stroke-linecap="round">
+    <line style="animation-delay:0s"  x1="248" y1="110" x2="258" y2="110"/>
+    <line style="animation-delay:.3s" x1="248" y1="124" x2="258" y2="124"/>
+    <line style="animation-delay:.6s" x1="248" y1="138" x2="258" y2="138"/>
+  </g>
+  <path d="M282 124 h14" stroke="#6b7280" stroke-width="1.2" fill="none"/>
+  <path d="M290 119 l7 5 -7 5" stroke="#6b7280" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="none" stroke="#3730a3" stroke-width="1.6">
+    <rect class="grow" style="animation-delay:0s"  x="306" y="104" width="16" height="32" rx="2"/>
+    <rect class="grow" style="animation-delay:.2s" x="328" y="104" width="16" height="32" rx="2"/>
+    <rect class="grow" style="animation-delay:.4s" x="306" y="144" width="16" height="32" rx="2"/>
+    <rect class="grow" style="animation-delay:.6s" x="328" y="144" width="16" height="32" rx="2"/>
+  </g>
+  <text class="lbl" x="212" y="232">embed → tokens</text>
+  <text class="sub" x="212" y="250">cell → vector → text</text>
+
+  <!-- 3. teacher -->
+  <rect x="412" y="48" width="160" height="160" fill="#f8fafc" stroke="#e5e7eb"/>
+  <rect x="456" y="88" width="72" height="72" fill="none" stroke="#1f2937" stroke-width="2"/>
+  <g stroke="#1f2937" stroke-width="1.2">
+    <line x1="456" y1="124" x2="528" y2="124"/>
+    <line x1="492" y1="88" x2="492" y2="160"/>
+  </g>
+  <text class="lbl" x="412" y="232">teacher</text>
+  <text class="sub" x="412" y="250">reads the tokens</text>
+
+  <!-- 4. localized correction -->
+  <rect x="612" y="48" width="128" height="160" fill="#f8fafc" stroke="#e5e7eb"/>
+  <g fill="none" stroke="#1f2937" stroke-width="1.2" opacity=".4">
+    <rect x="628" y="70"  width="28" height="28"/>
+    <rect x="662" y="70"  width="28" height="28"/>
+    <rect x="628" y="104" width="28" height="28"/>
+    <rect x="628" y="138" width="28" height="28"/>
+    <rect x="662" y="138" width="28" height="28"/>
+    <rect x="696" y="138" width="28" height="28"/>
+    <rect x="696" y="70"  width="28" height="28"/>
+  </g>
+  <rect class="pulse" x="696" y="104" width="28" height="28" fill="#3730a3" stroke="#3730a3" stroke-width="1.2"/>
+  <path class="draw" d="M710 56 v40" stroke="#3730a3" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+  <path d="M704 90 l6 8 6 -8" stroke="#3730a3" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <text class="lbl" x="612" y="232">local fix</text>
+  <text class="sub" x="612" y="250">only that cell updates</text>
+
+</svg>

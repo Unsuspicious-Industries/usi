@@ -1,6 +1,18 @@
 <?data from="data/jobs/$slug.mdx" as="job"?>
 
 <?style?>
+main {
+    background-image: url('/static/images/catacombs-job-post.webp');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+main .hero {
+    background: transparent;
+}
+main .hero::before {
+    display: none;
+}
 .hero, .hero *, .prose-shell, .prose-shell * {
     font-family: var(--font-typewriter) !important;
 }

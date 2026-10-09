@@ -4,6 +4,7 @@
 .jobs-section {
     max-width: 72rem;
     margin: 0 auto;
+    padding: 3rem 2rem;
 }
 .job-grid {
     display: grid;
