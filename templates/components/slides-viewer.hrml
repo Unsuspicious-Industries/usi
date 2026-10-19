@@ -1,0 +1,37 @@
+<!-- A slide deck played in the page, as pdfpc plays it. `src` is a directory made by
+     `nix run .#slides` (page pictures and manifest.json), `pdf` the PDF inside it.
+     Pages with a duration advance by themselves, the others wait for the reader.
+     Without JavaScript the first slide and the PDF link remain. Logic: static/js/slides.js. -->
+<?component id="slides-viewer"?>
+<?bind var="src"/?>
+<?bind var="pdf"/?>
+<?bind var="label"/?>
+<?style?>
+.slides { margin: 0; scroll-margin-top: 5rem; }
+.slides-stage { position: relative; background: var(--bg-page); border: 1px solid var(--border); outline-offset: 3px; }
+.slides-img { display: block; width: 100%; height: auto; cursor: pointer; }
+.slides-stage:fullscreen { display: flex; align-items: center; justify-content: center; background: #000; border: 0; }
+.slides-stage:fullscreen .slides-img { width: auto; max-width: 100%; max-height: 100%; }
+.slides-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; margin-top: 0.6rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); }
+.slides-bar button, .slides-bar a { font: inherit; color: var(--text-default); background: var(--bg-page); border: 1px solid var(--border); padding: 0.3rem 0.65rem; cursor: pointer; text-decoration: none; }
+.slides-bar button:hover, .slides-bar a:hover { border-color: var(--accent); color: var(--accent); }
+.slides-range { flex: 1 1 8rem; min-width: 0; accent-color: var(--accent); }
+.slides-count { min-width: 5.5em; text-align: right; }
+.slides-pdf { margin-left: auto; }
+<?/style?>
+<section class="slides" data-src="$src">
+    <div class="slides-stage" tabindex="0" role="group" aria-label="$label. Arrow keys change slide, f toggles full screen, p pauses.">
+        <img class="slides-img" src="$src/p001.webp" alt="$label, first slide" width="1600" height="900">
+    </div>
+    <div class="slides-bar">
+        <button type="button" data-act="prev" hidden>Prev</button>
+        <button type="button" data-act="play" hidden>Pause</button>
+        <button type="button" data-act="next" hidden>Next</button>
+        <input class="slides-range" type="range" min="1" max="1" value="1" step="1" aria-label="Slide" hidden>
+        <span class="slides-count" aria-live="polite" hidden></span>
+        <button type="button" data-act="full" hidden>Full screen</button>
+        <a class="slides-pdf" href="$src/$pdf" download>PDF</a>
+    </div>
+    <script src="/static/js/slides.js" defer></script>
+</section>
+<?/component?>

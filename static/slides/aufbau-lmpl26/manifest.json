@@ -1,0 +1,500 @@
+{
+ "title": "Semantic Prefix Oracles for LLM Decoding - Contracts and Differential Validation",
+ "pdf": "lmpl26-slides.pdf",
+ "pdf_sha256": "ee367c2448d9a2ab13e9e7a51364b4aadca5e3c19cc315bf3643f51cc3f2828e",
+ "source_rev": "561357bfef6bdf95efd1158fc9e5a01c9ca80d3e",
+ "width": 1600,
+ "height": 900,
+ "tools": {
+  "pdftoppm": "pdftoppm version 26.06.0",
+  "cwebp": "1.6.0",
+  "pypdf": "6.15.0"
+ },
+ "pages": [
+  {
+   "img": "p001.webp",
+   "dur": null,
+   "text": "Semantic Prefix Oracles for LLM Decoding Contracts and Differential Validation Paul Kronlund-Drouault ENS de Lyon · Unsuspicious Industries LMPL ’26"
+  },
+  {
+   "img": "p002.webp",
+   "dur": null,
+   "text": "Three levels Syntax (grammar) Is the token string well-formed? Semantics (logic) Does it obey some logic rules ? Meaning (reference) Is it useful ? We can help them for the first two ! 2 / 28"
+  },
+  {
+   "img": "p003.webp",
+   "dur": null,
+   "text": "7 Whereof one cannot speak, thereof one must be silent. Ludwig Wittgenstein Tractatus Logico-Philosophicus"
+  },
+  {
+   "img": "p004.webp",
+   "dur": null,
+   "text": "What comes next? LLM 4 / 28"
+  },
+  {
+   "img": "p005.webp",
+   "dur": 0.12,
+   "text": "What comes next? let LLM 4 / 28"
+  },
+  {
+   "img": "p006.webp",
+   "dur": 0.12,
+   "text": "What comes next? let y LLM 4 / 28"
+  },
+  {
+   "img": "p007.webp",
+   "dur": 0.12,
+   "text": "What comes next? let y: LLM 4 / 28"
+  },
+  {
+   "img": "p008.webp",
+   "dur": 0.12,
+   "text": "What comes next? let y: Bool LLM 4 / 28"
+  },
+  {
+   "img": "p009.webp",
+   "dur": 0.12,
+   "text": "What comes next? let y: Bool = LLM 4 / 28"
+  },
+  {
+   "img": "p010.webp",
+   "dur": 0.12,
+   "text": "What comes next? let y: Bool = true LLM 4 / 28"
+  },
+  {
+   "img": "p011.webp",
+   "dur": 0.12,
+   "text": "What comes next? let y: Bool = true; LLM 4 / 28"
+  },
+  {
+   "img": "p012.webp",
+   "dur": 0.12,
+   "text": "What comes next? let y: Bool = true; let LLM 4 / 28"
+  },
+  {
+   "img": "p013.webp",
+   "dur": 0.12,
+   "text": "What comes next? let y: Bool = true; let z LLM 4 / 28"
+  },
+  {
+   "img": "p014.webp",
+   "dur": 0.12,
+   "text": "What comes next? let y: Bool = true; let z: LLM 4 / 28"
+  },
+  {
+   "img": "p015.webp",
+   "dur": 0.12,
+   "text": "What comes next? let y: Bool = true; let z: Int LLM 4 / 28"
+  },
+  {
+   "img": "p016.webp",
+   "dur": 0.12,
+   "text": "What comes next? let y: Bool = true; let z: Int = LLM 4 / 28"
+  },
+  {
+   "img": "p017.webp",
+   "dur": 0.12,
+   "text": "What comes next? let y: Bool = true; let z: Int = 42 LLM 4 / 28"
+  },
+  {
+   "img": "p018.webp",
+   "dur": 0.12,
+   "text": "What comes next? let y: Bool = true; let z: Int = 42; LLM 4 / 28"
+  },
+  {
+   "img": "p019.webp",
+   "dur": 0.12,
+   "text": "What comes next? let y: Bool = true; let z: Int = 42; let LLM 4 / 28"
+  },
+  {
+   "img": "p020.webp",
+   "dur": 0.12,
+   "text": "What comes next? let y: Bool = true; let z: Int = 42; let x LLM 4 / 28"
+  },
+  {
+   "img": "p021.webp",
+   "dur": 0.12,
+   "text": "What comes next? let y: Bool = true; let z: Int = 42; let x: LLM 4 / 28"
+  },
+  {
+   "img": "p022.webp",
+   "dur": 0.12,
+   "text": "What comes next? let y: Bool = true; let z: Int = 42; let x: Int LLM 4 / 28"
+  },
+  {
+   "img": "p023.webp",
+   "dur": 0.12,
+   "text": "What comes next? let y: Bool = true; let z: Int = 42; let x: Int = LLM 4 / 28"
+  },
+  {
+   "img": "p024.webp",
+   "dur": null,
+   "text": "What comes next? let y: Bool = true; let z: Int = 42; let x: Int = LLM 4 / 28"
+  },
+  {
+   "img": "p025.webp",
+   "dur": null,
+   "text": "What comes next? let y: Bool = true; let z: Int = 42; let x: Int = LLM ) true; m; y; z; 67; 4 / 28"
+  },
+  {
+   "img": "p026.webp",
+   "dur": 0.1,
+   "text": "What comes next? let y: Bool = true; let z: Int = 42; let x: Int = LLM I ) true; m; y; z; 67; 4 / 28"
+  },
+  {
+   "img": "p027.webp",
+   "dur": 0.1,
+   "text": "What comes next? let y: Bool = true; let z: Int = 42; let x: Int = LLM I ) true; m; y; z; 67; 4 / 28"
+  },
+  {
+   "img": "p028.webp",
+   "dur": 0.1,
+   "text": "What comes next? let y: Bool = true; let z: Int = 42; let x: Int = LLM I ) true; m; y; z; 67; 4 / 28"
+  },
+  {
+   "img": "p029.webp",
+   "dur": 0.1,
+   "text": "What comes next? let y: Bool = true; let z: Int = 42; let x: Int = I LLM ) true; m; y; z; 67; 4 / 28"
+  },
+  {
+   "img": "p030.webp",
+   "dur": 0.1,
+   "text": "What comes next? let y: Bool = true; let z: Int = 42; let x: Int = I LLM ) true; m; y; z; 67; 4 / 28"
+  },
+  {
+   "img": "p031.webp",
+   "dur": 0.35,
+   "text": "What comes next? let y: Bool = true; let z: Int = 42; let x: Int = I LLM ) true; m; y; z; 67; 4 / 28"
+  },
+  {
+   "img": "p032.webp",
+   "dur": null,
+   "text": "What comes next? let y: Bool = true; let z: Int = 42; let x: Int = ) invalid I LLM ) true; m; y; z; 67; 4 / 28"
+  },
+  {
+   "img": "p033.webp",
+   "dur": null,
+   "text": "Add syntax. let y: Bool = true; let z: Int = 42; let x: Int = LLM 5 / 28"
+  },
+  {
+   "img": "p034.webp",
+   "dur": null,
+   "text": "Add syntax. let y: Bool = true; let z: Int = 42; let x: Int = LLM ) true; m; y; z; 67; 5 / 28"
+  },
+  {
+   "img": "p035.webp",
+   "dur": null,
+   "text": "Add syntax. let y: Bool = true; let z: Int = 42; let x: Int = LLM ) true; m; y; z; 67; 5 / 28"
+  },
+  {
+   "img": "p036.webp",
+   "dur": 0.12,
+   "text": "Add syntax. let y: Bool = true; let z: Int = 42; let x: Int = LLM I ) true; m; y; z; 67; 5 / 28"
+  },
+  {
+   "img": "p037.webp",
+   "dur": 0.12,
+   "text": "Add syntax. let y: Bool = true; let z: Int = 42; let x: Int = LLM I ) true; m; y; z; 67; 5 / 28"
+  },
+  {
+   "img": "p038.webp",
+   "dur": 0.12,
+   "text": "Add syntax. let y: Bool = true; let z: Int = 42; let x: Int = LLM I ) true; m; y; z; 67; 5 / 28"
+  },
+  {
+   "img": "p039.webp",
+   "dur": 0.12,
+   "text": "Add syntax. let y: Bool = true; let z: Int = 42; let x: Int = I LLM ) true; m; y; z; 67; 5 / 28"
+  },
+  {
+   "img": "p040.webp",
+   "dur": 0.35,
+   "text": "Add syntax. let y: Bool = true; let z: Int = 42; let x: Int = I LLM ) true; m; y; z; 67; 5 / 28"
+  },
+  {
+   "img": "p041.webp",
+   "dur": null,
+   "text": "Add syntax. let y: Bool = true; let z: Int = 42; let x: Int = true; I LLM ) true; m; y; z; 67; 5 / 28"
+  },
+  {
+   "img": "p042.webp",
+   "dur": null,
+   "text": "Add syntax. let y: Bool = true; let z: Int = 42; let x: Int = true; Grammatical. But true has type Bool, not Int. I LLM ) true; m; y; z; 67; 5 / 28"
+  },
+  {
+   "img": "p043.webp",
+   "dur": null,
+   "text": "Use the context. let y: Bool = true; let z: Int = 42; let x: Int = Γ y : Bool z : Int LLM 6 / 28"
+  },
+  {
+   "img": "p044.webp",
+   "dur": null,
+   "text": "Use the context. let y: Bool = true; let z: Int = 42; let x: Int = LLM Γ y : Bool z : Int ) true; m; y; z; 67; 6 / 28"
+  },
+  {
+   "img": "p045.webp",
+   "dur": null,
+   "text": "Use the context. let y: Bool = true; let z: Int = 42; let x: Int = LLM Γ y : Bool z : Int ) true; m; y; z; 67; 6 / 28"
+  },
+  {
+   "img": "p046.webp",
+   "dur": 0.16,
+   "text": "Use the context. let y: Bool = true; let z: Int = 42; let x: Int = LLM I Γ y : Bool z : Int ) true; m; y; z; 67; 6 / 28"
+  },
+  {
+   "img": "p047.webp",
+   "dur": 0.16,
+   "text": "Use the context. let y: Bool = true; let z: Int = 42; let x: Int = LLM I Γ y : Bool z : Int ) true; m; y; z; 67; 6 / 28"
+  },
+  {
+   "img": "p048.webp",
+   "dur": 0.35,
+   "text": "Use the context. let y: Bool = true; let z: Int = 42; let x: Int = LLM I Γ y : Bool z : Int ) true; m; y; z; 67; 6 / 28"
+  },
+  {
+   "img": "p049.webp",
+   "dur": null,
+   "text": "Use the context. let y: Bool = true; let z: Int = 42; let x: Int = z; LLM I Γ y : Bool z : Int ) true; m; y; z; 67; 6 / 28"
+  },
+  {
+   "img": "p050.webp",
+   "dur": null,
+   "text": "Use the context. let y: Bool = true; let z: Int = 42; let x: Int = z; Γ y : Bool z : Int A valid complete program. LLM I ) true; m; y; z; 67; 6 / 28"
+  },
+  {
+   "img": "p051.webp",
+   "dur": null,
+   "text": "Semantic prefix grammars Attributed context-free grammars with first-order unification. Application(app) ::= Expression[l] Expression[r ] Variable(var) ::= Identifier[x] Type∗ ::= Identifier | Type → Type | ( Type ) Γ`l :A→B B Γ`r :A (app) "
+  },
+  {
+   "img": "p052.webp",
+   "dur": null,
+   "text": "User-defined type algebra B x:B y :B C + C Constructors + → 8 / 28"
+  },
+  {
+   "img": "p053.webp",
+   "dur": null,
+   "text": "User-defined type algebra B x:B y :B C + C Constructors + → rule at x ··· T 8 / 28"
+  },
+  {
+   "img": "p054.webp",
+   "dur": null,
+   "text": "User-defined type algebra B x:B y :B C + C Constructors + → ? B≃T rule at x ··· T 8 / 28"
+  },
+  {
+   "img": "p055.webp",
+   "dur": null,
+   "text": "User-defined type algebra B x :T y :T C + C Constructors + → ? B≃T rule at x ··· T 8 / 28"
+  },
+  {
+   "img": "p056.webp",
+   "dur": null,
+   "text": "User-defined type algebra B x :T y :T C + C Constructors + → ? B≃T rule at x rule at y ··· T ··· T + (A → D ) 8 / 28"
+  },
+  {
+   "img": "p057.webp",
+   "dur": null,
+   "text": "User-defined type algebra B x :T y :T C + + C → ? ? B≃T Constructors rule at x rule at y ··· T ··· C ≃ (A → D) T + (A → D ) 8 / 28"
+  },
+  {
+   "img": "p058.webp",
+   "dur": null,
+   "text": "User-defined type algebra B x :T y : T + (A → D ) Constructors + → ? ? B≃T C rule at x rule at y ··· T ··· C ≃ (A → D) T + (A → D ) 8 / 28"
+  },
+  {
+   "img": "p059.webp",
+   "dur": null,
+   "text": "Three verdicts λx:int. x Satisfied Lam (lam) : int→int body Var (var) : int λx:int. Live Lam (lam) : int→ B body λx:int. y Lam (lam) : int body e Pending x 7→ int in Γ = [x:int] (a) Lost body Var (var) y∈ /Γ Γ = [x:int] (b) (c) y fails look"
+  },
+  {
+   "img": "p060.webp",
+   "dur": null,
+   "text": "Correctness contracts Safe pruning Never reject a prefix with a valid completion. Dead-end freedom Every retained prefix has a valid completion. Together, these contracts make decoding complete and sound. 10 / 28"
+  },
+  {
+   "img": "p061.webp",
+   "dur": null,
+   "text": "Safe pruning Rigid constructor clash let x: Int = true; Empty regular leaf Occurs check failure Failed lookup 11 / 28"
+  },
+  {
+   "img": "p062.webp",
+   "dur": null,
+   "text": "Safe pruning Rigid constructor clash Empty regular leaf Occurs check failure let x: Int = true; expected Int produced ? ≃ Bool × Failed lookup 11 / 28"
+  },
+  {
+   "img": "p063.webp",
+   "dur": null,
+   "text": "Safe pruning Rigid constructor clash Empty regular leaf Occurs check failure Failed lookup let x: Int = true; expected Int produced ? ≃ Bool × These constructors cannot unify. More input cannot change either one. 11 / 28"
+  },
+  {
+   "img": "p064.webp",
+   "dur": null,
+   "text": "Safe pruning Rigid constructor clash Empty regular leaf Occurs check failure Failed lookup R = [a-z]+ S = a(b|c) D a (R ) D a (S ) Da (R ) ∩ Da (S ) grammar leaf constraint = = = a [a-z]* b|c b|c 12 / 28"
+  },
+  {
+   "img": "p065.webp",
+   "dur": null,
+   "text": "Safe pruning Rigid constructor clash Empty regular leaf Occurs check failure Failed lookup R = [a-z]+ S = a(b|c) Dad (R ) Dad (S ) grammar ad leaf constraint Dad (R ) ∩ Dad (S ) = [a-z]* = ∅ ∅ = 12 / 28"
+  },
+  {
+   "img": "p066.webp",
+   "dur": null,
+   "text": "Safe pruning Rigid constructor clash Empty regular leaf Occurs check failure Failed lookup R = [a-z]+ S = a(b|c) Dad (R ) Dad (S ) grammar ad leaf constraint = [a-z]* = ∅ ∅ Dad (R ) ∩ Dad (S ) = Dw (∅) = ∅ for any suffix w 12 / 28"
+  },
+  {
+   "img": "p067.webp",
+   "dur": null,
+   "text": "Safe pruning Rigid constructor clash (λf . f f ) Empty regular leaf Occurs check failure Failed lookup 13 / 28"
+  },
+  {
+   "img": "p068.webp",
+   "dur": null,
+   "text": "Safe pruning Rigid constructor clash Empty regular leaf (λf . f f ) ? A ≃ (A → B) Occurs check failure Failed lookup 13 / 28"
+  },
+  {
+   "img": "p069.webp",
+   "dur": null,
+   "text": "Safe pruning Rigid constructor clash (λf . f f ) Empty regular leaf Occurs check failure Failed lookup ? A ≃ (A → B) A→B A contains A This would require an infinite type. 13 / 28"
+  },
+  {
+   "img": "p070.webp",
+   "dur": null,
+   "text": "Safe pruning Rigid constructor clash Empty regular leaf Occurs check failure let x: Int = m; fixed left context Γ y : Bool z : Int Failed lookup 14 / 28"
+  },
+  {
+   "img": "p071.webp",
+   "dur": null,
+   "text": "Safe pruning Rigid constructor clash Empty regular leaf Occurs check failure let x: Int = m; fixed left context Γ y : Bool z : Int m∈ /Γ Failed lookup 14 / 28"
+  },
+  {
+   "img": "p072.webp",
+   "dur": null,
+   "text": "Safe pruning Rigid constructor clash Empty regular leaf Occurs check failure Failed lookup let x: Int = m; fixed left context Γ y : Bool z : Int m∈ /Γ let m: Int = 67; Too late for that earlier lookup. 14 / 28"
+  },
+  {
+   "img": "p073.webp",
+   "dur": null,
+   "text": "Safe pruning Rigid constructor clash Empty regular leaf A prefix is Lost only when every compatible branch is Lost. Occurs check failure Failed lookup Never discard a prefix with a valid completion. 14 / 28"
+  },
+  {
+   "img": "p074.webp",
+   "dur": null,
+   "text": "Dead-end freedom We found that it holds under the following conditions on the grammar: (P) Surface productivity Every reachable nonterminal can terminate. (T) Type coverage Every demanded type has a closed realizer. (F) Left-to-right flow C"
+  },
+  {
+   "img": "p075.webp",
+   "dur": null,
+   "text": "Type coverage (T) (T) fails (T) holds λf :A→ B. f ( (f: Int => Bool) => f(0) A has no closed term literals cover every base type Live, no completion Int, Bool, Float Base-type literals establish (T). 16 / 28"
+  },
+  {
+   "img": "p076.webp",
+   "dur": null,
+   "text": "Compiler cross-check • Compilers (ocamlc, cc) grade whole programs. • The oracle grades prefixes. • The harness detects valid programs rejected by the oracle. Compilers share no code with the oracle. 17 / 28"
+  },
+  {
+   "img": "p077.webp",
+   "dur": null,
+   "text": "Python interface P7 controller feed(token) verdict Aufbau oracle 18 / 28"
+  },
+  {
+   "img": "p078.webp",
+   "dur": null,
+   "text": "Controller verdicts Lost Live Satisfied Reject. Resample. Accept. Continue. Accept. 19 / 28"
+  },
+  {
+   "img": "p079.webp",
+   "dur": null,
+   "text": "Full architecture LLM model token P7 controller feed(token) verdict Aufbau oracle resample Lost exclude and resample Live commit and continue Satisfied commit 20 / 28"
+  },
+  {
+   "img": "p080.webp",
+   "dur": null,
+   "text": "Aligning to tokens TOKEN SPELLING GENERATED TEXT \"le\" le 21 / 28"
+  },
+  {
+   "img": "p081.webp",
+   "dur": null,
+   "text": "Aligning to tokens TOKEN SPELLING GENERATED TEXT \"le\" le \"t x: I\" let x: I 21 / 28"
+  },
+  {
+   "img": "p082.webp",
+   "dur": null,
+   "text": "Aligning to tokens TOKEN SPELLING GENERATED TEXT \"le\" le \"t x: I\" let x: I \"nt = 4\" let x: Int = 4 21 / 28"
+  },
+  {
+   "img": "p083.webp",
+   "dur": null,
+   "text": "Aligning to tokens TOKEN SPELLING GENERATED TEXT \"le\" le \"t x: I\" let x: I \"nt = 4\" \"2;\" let x: Int = 4 let x: Int = 42; 21 / 28"
+  },
+  {
+   "img": "p084.webp",
+   "dur": null,
+   "text": "Token coverage V : ordinary text tokens ∗ Exact spelling: ` : V −→ ΣG ΣG : grammar characters LV = {`(v ) | v ∈ V } 22 / 28"
+  },
+  {
+   "img": "p085.webp",
+   "dur": null,
+   "text": "Token coverage V : ordinary text tokens ∗ Exact spelling: ` : V −→ ΣG Coverage: ΣG ⊆ L∗V Σ∗G ⊆ L∗V ΣG : grammar characters LV = {`(v ) | v ∈ V } Every grammar character is spellable. So is every character-level completion. 22 / 28"
+  },
+  {
+   "img": "p086.webp",
+   "dur": null,
+   "text": "Token coverage V : ordinary text tokens ∗ Exact spelling: ` : V −→ ΣG Coverage: ΣG ⊆ L∗V Σ∗G ⊆ L∗V ΣG : grammar characters LV = {`(v ) | v ∈ V } Every grammar character is spellable. So is every character-level completion. Example: ΣG = {l,"
+  },
+  {
+   "img": "p087.webp",
+   "dur": null,
+   "text": "Median validation time (ms) Oracle cost 102 101 Arithmetic flat sum Arithmetic nested C declarations STLC application chain 100 100 101 102 Expression size (tokens) Log–log slopes 1.1–1.4. Largest inputs: about 130 ms. 23 / 28"
+  },
+  {
+   "img": "p088.webp",
+   "dur": null,
+   "text": "Models and modes 5 decoding modes 12 models Qwen3.5 Instruct: 0.8B, 2B, 4B, 9B Base: 2B, 4B, 9B Qwen3.6-27B Phi-4-mini gpt-oss-20b gemma-4-26b Pythia-1.4B no-instruction floor 52 tasks · 3,693 graded attempts · greedy 24 / 28"
+  },
+  {
+   "img": "p089.webp",
+   "dur": null,
+   "text": "Models and modes 5 decoding modes 12 models Qwen3.5 Instruct: 0.8B, 2B, 4B, 9B Base: 2B, 4B, 9B Unconstrained Free emission Qwen3.6-27B Phi-4-mini gpt-oss-20b gemma-4-26b Pythia-1.4B no-instruction floor 52 tasks · 3,693 graded attempts · g"
+  },
+  {
+   "img": "p090.webp",
+   "dur": null,
+   "text": "Models and modes 5 decoding modes 12 models Qwen3.5 Instruct: 0.8B, 2B, 4B, 9B Base: 2B, 4B, 9B Qwen3.6-27B Phi-4-mini gpt-oss-20b gemma-4-26b Pythia-1.4B Unconstrained Free emission Syntactic only Grammar mask no-instruction floor 52 tasks"
+  },
+  {
+   "img": "p091.webp",
+   "dur": null,
+   "text": "Models and modes 5 decoding modes 12 models Qwen3.5 Instruct: 0.8B, 2B, 4B, 9B Base: 2B, 4B, 9B Qwen3.6-27B Phi-4-mini gpt-oss-20b gemma-4-26b Pythia-1.4B Unconstrained Free emission Syntactic only Grammar mask Constrained direct Grammar + "
+  },
+  {
+   "img": "p092.webp",
+   "dur": null,
+   "text": "Models and modes 5 decoding modes 12 models Qwen3.5 Instruct: 0.8B, 2B, 4B, 9B Base: 2B, 4B, 9B Qwen3.6-27B Phi-4-mini gpt-oss-20b gemma-4-26b Pythia-1.4B Unconstrained Free emission Syntactic only Grammar mask Constrained direct Grammar + "
+  },
+  {
+   "img": "p093.webp",
+   "dur": null,
+   "text": "Models and modes 5 decoding modes 12 models Qwen3.5 Instruct: 0.8B, 2B, 4B, 9B Base: 2B, 4B, 9B Qwen3.6-27B Phi-4-mini gpt-oss-20b gemma-4-26b Pythia-1.4B no-instruction floor Unconstrained Free emission Syntactic only Grammar mask Constrai"
+  },
+  {
+   "img": "p094.webp",
+   "dur": null,
+   "text": "Generation cost and task performance thinking mixed Task performance Generation cost Q3.5 0.8B Q3.5 2B Q3.5 4B Q3.5 9B Q3.6 27B Phi-4-mini gpt-oss-20b 30 100 300 1,000 mean generated tokens 3,000 25 50 75 100 pass rate (%) Thinking: free em"
+  },
+  {
+   "img": "p095.webp",
+   "dur": null,
+   "text": "Rejection and entropy pre-mask entropy (bits) (a) model uncertainty: entropy where the mask fires 6 5 4 token accepted token rejected (retried) 3 2 1 0 0.8B 2B 4B 9B 27B gpt-oss 26 / 28"
+  },
+  {
+   "img": "p096.webp",
+   "dur": null,
+   "text": "Future work 1. More types (Sum, Refinement, maybe proof types even) 2. Mechanizing the contract proofs 3. Constrained chain-of-thought ? 27 / 28"
+  },
+  {
+   "img": "p097.webp",
+   "dur": null,
+   "text": "Thank you Paul Kronlund-Drouault · ENS de Lyon · Unsuspicious Industries Semantic Prefix Oracles for LLM Decoding: Contracts and Differential Validation ACM DL · 10.1145/3843750.3843841 P7 · github.com/Unsuspicious-Industries/p7"
+  }
+ ]
+}

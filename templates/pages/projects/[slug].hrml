@@ -1,7 +1,21 @@
 <?block slot="head"?><?data from="data/projects/$slug.mdx" as="proj"?><?title value="$proj.name · USI"?><?meta name="description" content="$proj.summary"?><?og name="title" content="$proj.name · Unsuspicious Industries"?><?og name="description" content="$proj.summary"?><?/block?>
 <?block slot="content"?>
+<?style?>
+.project-slides { padding: 1rem 5rem 4rem; }
+.project-slides h2 { font-family: var(--font-serif); font-size: 1.75rem; margin: 0 0 0.25rem; color: var(--text-heading); }
+.project-slides-note { margin: 0 0 1rem; color: var(--text-muted); font-size: 0.85rem; max-width: 40rem; }
+.project-slides .slides { max-width: 62rem; }
+@media (max-width: 768px) { .project-slides { padding: 1rem 1rem 3rem; } }
+<?/style?>
 <?data from="data/projects/$slug.mdx" as="proj"?>
 <?use id="project-feature" pid="$proj.id" name="$proj.name" icon="$proj.icon" eyebrow="$proj.eyebrow" tagline="$proj.tagline" status="$proj.status" meta="$proj.meta" caveat="$proj.caveat" made="$proj.made_with" repro="$proj.repro"?>
     <?block slot="prose"?>$proj.body<?/block?>
 </?use?>
+<?if cond="$proj.slides"?>
+<section class="project-slides" id="slides">
+    <h2>Slides</h2>
+    <p class="project-slides-note">$proj.slides_title. Timed pages advance by themselves, as in a presenter console.</p>
+    <?use id="slides-viewer" src="/static/slides/$proj.slides" pdf="$proj.slides_pdf" label="$proj.slides_title"?></?use?>
+</section>
+<?/if?>
 <?/block?>

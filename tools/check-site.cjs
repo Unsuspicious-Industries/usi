@@ -104,6 +104,19 @@ async function run() {
             await page.goto(url(href), { waitUntil: 'networkidle' });
             if (href.includes('#')) assert.equal(await page.locator(`[id="${href.split('#')[1]}"]`).count(), 1, `missing anchor ${href}`);
         }
+        // The slides viewer: the script loaded the manifest, a key moves one page, and the
+        // committed PDF is the one the manifest was made from.
+        await page.goto(url('/projects/aufbau'), { waitUntil: 'networkidle' });
+        const deck = path.join(__dirname, '..', 'static', 'slides', 'aufbau-lmpl26');
+        const manifest = JSON.parse(fs.readFileSync(path.join(deck, 'manifest.json'), 'utf8'));
+        assert.equal(require('node:crypto').createHash('sha256').update(fs.readFileSync(path.join(deck, manifest.pdf))).digest('hex'),
+            manifest.pdf_sha256, 'slides PDF differs from the one the pictures were made from');
+        assert.equal(await page.locator('.slides-count').textContent(), `1 / ${manifest.pages.length}`);
+        await page.locator('.slides-stage').focus();
+        await page.keyboard.press('ArrowRight');
+        assert.equal(await page.locator('.slides-count').textContent(), `2 / ${manifest.pages.length}`);
+        await page.waitForFunction(() => document.querySelector('.slides-img').src.endsWith('p002.webp'));
+        assert.ok(await page.locator('main a[href="/projects/aufbau#slides"]').count(), 'no link to the slides');
         await page.goto(url('/projects/remblais'), { waitUntil: 'networkidle' });
         const gif = page.locator('.remblais-morph');
         await gif.scrollIntoViewIfNeeded();

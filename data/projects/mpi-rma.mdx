@@ -13,6 +13,9 @@ caveat: "Measured on one node over shared memory. The repository warns the resul
 icon: mpi-rma
 made_with: nixsci
 repro: "nix build github:PKD667/mpi-rma/333d559496258e12960d72b621be6aee5ba6a155#perf"
+slides: ""
+slides_title: ""
+slides_pdf: ""
 ---
 
 MPI one-sided communication lets a process write into a peer's memory window. mpi-rma puts a typed Rust API over rsmpi and adds a ring transport. Payloads go into pre-allocated slots, polling reads local memory, and no sender waits for the receiver.

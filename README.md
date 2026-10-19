@@ -68,7 +68,9 @@ A page with no `head` block gets the layout's default title. A page with a `head
 
 ## Projects
 
-Each project is one file, `data/projects/<id>.mdx`. The front matter holds scalars only (`id`, `name`, `order`, `section`, `department`, `eyebrow`, `status`, `tagline`, `summary`, `meta`, `caveat`, `icon`, and `external` for a project that lives on another site). The body is the prose, ending with a line of links. A list in the front matter is not parsed.
+Each project is one file, `data/projects/<id>.mdx`. The front matter holds scalars only (`id`, `name`, `order`, `section`, `department`, `eyebrow`, `status`, `tagline`, `summary`, `meta`, `caveat`, `icon`, `made_with`, `repro`, `slides`, `slides_title`, `slides_pdf`, and `external` for a project that lives on another site). The body is the prose, ending with a line of links. A list in the front matter is not parsed.
+
+Every key must be declared in every file, with `""` when it is unused. xrml does not treat a missing key as empty. It substitutes the raw data object followed by the key name, which is truthy, so a `<?if?>` on it shows its branch with garbage inside. `tools/check-site.cjs` fails on that text.
 
 `section` decides where a project appears. `research` projects fill `/research`, with their anchors (`/research#karl`). `tools` and `infra` projects appear as cards on `/projects`, and every one has its own page at `/projects/<id>`. The home page cards come from the departments in `data/departments/` and link to those pages by hand.
 
@@ -91,7 +93,19 @@ The still was extracted with ImageMagick 7.1.2-31 on MIST:
 magick morph_big.gif -coalesce -delete 0-94,96--1 remblais-square-still.png
 ```
 
-The measured figure on `/projects/mpi-rma` is `static/images/mpi-rma-perf.svg`, a copy of what `nix build github:PKD667/mpi-rma/<rev>#perf` produces. The command and its revision are printed on that page. The runs behind it are sealed by hash in the mpi-rma repository's `lab.lock`, they were taken on one laptop, and they are not yet fetchable from a shared store.
+The measured figures on `/projects/mpi-rma` are `static/images/mpi-rma-ring.svg` (the card on `/projects`) and `static/images/mpi-rma-curves.svg` (the project page), copies of what `nix build github:PKD667/mpi-rma/<rev>#perf` produces. `made_with: nixsci` and `repro: "<that command>"` in the project file put a made-with line under the figure, drawn by `templates/components/made-with.hrml`. `made_with` can be any project id in the icon registry, and the footer uses it for `hrml`. The runs behind it are sealed by hash in the mpi-rma repository's `lab.lock`, they were taken on one laptop, and they are not yet fetchable from a shared store.
+
+## Slides
+
+A project with `slides: "<id>"` shows its deck under the text, played by `templates/components/slides-viewer.hrml` and `static/js/slides.js`. A page whose PDF carries a duration (`/Dur`, which LaTeX Beamer's timed overlays write) advances by itself after that time, and the others wait for the reader, as in pdfpc. Keys: arrows, space, `Home`, `End`, `f` for full screen, `p` to pause. With reduced motion set, timed runs are skipped and only the stopping pages show. Without JavaScript the first slide and the PDF link remain.
+
+The pictures are made from the PDF by `tools/slides.py`:
+
+```sh
+nix run "path:$PWD#slides" -- deck.pdf static/slides/<id> --rev <deck source revision>
+```
+
+It writes one WebP per page (1600 px wide, about 23 KB each for `aufbau-lmpl26`), `manifest.json` with the durations, page text and the PDF's SHA-256, and a copy of the PDF. All of it is committed, because the site is served from a checkout. `check-site` fails if the PDF and the manifest part ways. The `aufbau-lmpl26` deck is built from the `papers` repository at `561357b`. A raster of a vector deck is a copy. Text is not selectable in it and the PDF is the document.
 
 Project identity marks are separate from previews. Their source is the
 `usi-ui` flake input: `components/brand/project-icons.hrml` (geometry),

@@ -106,6 +106,15 @@ EOF
             exec ${pkgs.nodejs}/bin/node ${self}/tools/check-site.cjs "$@"
           ''}";
         };
+        slides = {
+          type = "app";
+          meta.description = "Turn a slide deck PDF into the page images and manifest the slides viewer plays";
+          program = "${pkgs.writeShellScript "usi-slides" ''
+            set -eu
+            export PATH=${pkgs.lib.makeBinPath [ pkgs.poppler-utils pkgs.libwebp ]}:$PATH
+            exec ${pkgs.python3.withPackages (p: [ p.pypdf ])}/bin/python ${self}/tools/slides.py "$@"
+          ''}";
+        };
         render = {
           type = "app";
           meta.description = "Full-page renders of the served site with pinned Chromium (default /tmp/usi-renders)";
