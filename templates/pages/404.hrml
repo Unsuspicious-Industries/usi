@@ -1,4 +1,4 @@
-<?block slot="head"?><?title value="Not found · Unsuspicious Industries"?><?meta name="description" content="This address does not exist."?><?og name="title" content="Not found · Unsuspicious Industries"?><?og name="description" content="This address does not exist."?><?/block?>
+<?block slot="head"?><?title value="Not found · USI"?><?meta name="description" content="This address does not exist."?><?og name="title" content="Not found · Unsuspicious Industries"?><?og name="description" content="This address does not exist."?><?/block?>
 <?block slot="content"?>
 <?use id="hero-cmp"?>
     <?label?>404<?/label?>

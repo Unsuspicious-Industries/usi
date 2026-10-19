@@ -1,4 +1,4 @@
-<?block slot="head"?><?title value="Contact · Unsuspicious Industries"?><?meta name="description" content="Email or a 15-minute call. Based in Paris."?><?og name="title" content="Contact · Unsuspicious Industries"?><?og name="description" content="Email or a 15-minute call. Based in Paris."?><?/block?>
+<?block slot="head"?><?title value="Contact · USI"?><?meta name="description" content="Email or a 15-minute call. Based in Paris."?><?og name="title" content="Contact · Unsuspicious Industries"?><?og name="description" content="Email or a 15-minute call. Based in Paris."?><?/block?>
 <?block slot="content"?>
 <?style?>
 main {

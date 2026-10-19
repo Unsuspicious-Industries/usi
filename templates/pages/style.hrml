@@ -1,4 +1,4 @@
-<?block slot="head"?><?title value="Style · Unsuspicious Industries"?><?meta name="description" content="The palette of record, drawn from the live custom properties."?><?og name="title" content="Style · Unsuspicious Industries"?><?og name="description" content="The palette of record, drawn from the live custom properties."?><?/block?>
+<?block slot="head"?><?title value="Style · USI"?><?meta name="description" content="The palette of record, drawn from the live custom properties."?><?og name="title" content="Style · Unsuspicious Industries"?><?og name="description" content="The palette of record, drawn from the live custom properties."?><?/block?>
 <?block slot="content"?>
 <?style?>
 main {

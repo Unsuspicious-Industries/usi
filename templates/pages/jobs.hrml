@@ -1,4 +1,4 @@
-<?block slot="head"?><?title value="Jobs · Unsuspicious Industries"?><?meta name="description" content="Open positions."?><?og name="title" content="Jobs · Unsuspicious Industries"?><?og name="description" content="Open positions."?><?/block?>
+<?block slot="head"?><?title value="Jobs · USI"?><?meta name="description" content="Open positions."?><?og name="title" content="Jobs · Unsuspicious Industries"?><?og name="description" content="Open positions."?><?/block?>
 <?block slot="content"?>
 <?data from="data/jobs" as="jobs"?>
 <?sort over="jobs" by="priority" order="desc" as="jobs"?>

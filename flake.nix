@@ -60,6 +60,7 @@
             --component templates/components/project-icon.hrml \
             --layout templates/layouts/base.hrml \
             --scan dist \
+            ${pkgs.lib.concatMapStringsSep " " (id: "--colour ${id}") usi-ui.lib.projectColourIconIds} \
             ${pkgs.lib.concatMapStringsSep " " (id: "--expect ${id}") usi-ui.lib.projectIconIds}
           cp -r dist $out
         '';

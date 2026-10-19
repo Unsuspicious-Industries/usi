@@ -48,6 +48,7 @@ async function run() {
                     scroll: document.documentElement.scrollWidth,
                     navBottom: document.querySelector('nav').getBoundingClientRect().bottom,
                     mainPadding: parseFloat(getComputedStyle(document.querySelector('main')).paddingTop),
+                    leaked: /\{"[a-z_]+":|\}\.[a-z_]+\b|\$[a-z]+\.[a-z_]+/.exec(document.body.innerText)?.[0] ?? null,
                     badImages: [...document.images].filter(i => !i.complete || !i.naturalWidth).map(i => i.src),
                     features: [...document.querySelectorAll('.feature-prose')].map(e => {
                         const box = e.getBoundingClientRect();
@@ -62,6 +63,7 @@ async function run() {
                 assert.ok(result.scroll <= width + 1, `${route}: document overflow at ${width}`);
                 assert.ok(result.navBottom <= result.mainPadding + 1, `${route}: nav covers content at ${width}`);
                 assert.deepEqual(result.badImages, [], `${route}: broken images`);
+                assert.equal(result.leaked, null, `${route}: unresolved template variable in the page text`);
                 if (width <= 768) for (const box of result.features) {
                     assert.ok(box.left >= 15 && box.right <= width - 15,
                         `${route}: missing feature gutters ${JSON.stringify(box)}`);

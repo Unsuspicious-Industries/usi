@@ -1,4 +1,4 @@
-<?block slot="head"?><?title value="Projects · Unsuspicious Industries"?><?meta name="description" content="Research software and infrastructure: SLUT, HRML, Remblais, Political Alignment, mpi-rma, trame and nixsci."?><?og name="title" content="Projects · Unsuspicious Industries"?><?/block?>
+<?block slot="head"?><?title value="Projects · USI"?><?meta name="description" content="Research software and infrastructure: SLUT, HRML, Remblais, Political Alignment, mpi-rma, trame and nixsci."?><?og name="title" content="Projects · Unsuspicious Industries"?><?/block?>
 <?block slot="content"?>
 <?data from="data/projects" as="projects"?>
 <?sort over="projects" by="order" as="projects"?>

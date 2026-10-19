@@ -1,4 +1,4 @@
-<?block slot="head"?><?data from="data/jobs/$slug.mdx" as="job"?><?title value="$job.title · Unsuspicious Industries"?><?meta name="description" content="$job.subtitle"?><?og name="title" content="$job.title · Unsuspicious Industries"?><?/block?>
+<?block slot="head"?><?data from="data/jobs/$slug.mdx" as="job"?><?title value="$job.title · USI"?><?meta name="description" content="$job.subtitle"?><?og name="title" content="$job.title · Unsuspicious Industries"?><?/block?>
 <?block slot="content"?>
 <?data from="data/jobs/$slug.mdx" as="job"?>
 

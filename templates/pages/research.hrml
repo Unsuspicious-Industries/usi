@@ -1,4 +1,4 @@
-<?block slot="head"?><?title value="Research · Unsuspicious Industries"?><?meta name="description" content="Formal tools, language models and diffusion models: AUFBAU, KARL and SLOP, with publications."?><?og name="title" content="Research · Unsuspicious Industries"?><?/block?>
+<?block slot="head"?><?title value="Research · USI"?><?meta name="description" content="Formal tools, language models and diffusion models: AUFBAU, KARL and SLOP, with publications."?><?og name="title" content="Research · Unsuspicious Industries"?><?/block?>
 <?block slot="content"?>
 <?data from="data/projects" as="projects"?>
 <?sort over="projects" by="order" as="projects"?>

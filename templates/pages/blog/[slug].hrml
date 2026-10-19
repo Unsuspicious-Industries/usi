@@ -1,4 +1,4 @@
-<?block slot="head"?><?data from="data/posts/$slug.mdx" as="post"?><?title value="$post.title · Unsuspicious Industries"?><?meta name="description" content="$post.excerpt"?><?og name="title" content="$post.title · Unsuspicious Industries"?><?/block?>
+<?block slot="head"?><?data from="data/posts/$slug.mdx" as="post"?><?title value="$post.title · USI"?><?meta name="description" content="$post.excerpt"?><?og name="title" content="$post.title · Unsuspicious Industries"?><?/block?>
 <?block slot="content"?>
 <?style?>
 main {
