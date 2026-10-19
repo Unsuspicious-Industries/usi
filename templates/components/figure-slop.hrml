@@ -1,0 +1,10 @@
+<?component id="figure-slop"?>
+<figure class="feature-figure">
+            <img src="/static/images/slop-distill.svg" alt="Local latent distillation: the student's latent space is gridded, a cell's embedding becomes tokens, and the teacher corrects that cell">
+            <figcaption>To study a closed source model, we distill <em>local</em> elements of it's latent space using grid based sampling and embedding reconstruction by combining tokens.</figcaption>
+        </figure>
+<figure class="feature-figure">
+            <img src="/static/images/slop-field.svg" alt="The latent bias field: a handful of attractor basins, each pulling nearby seeds">
+            <figcaption>In a given diffusion field (parametrized by a prompt) we identify low-dimensional attractors relating to concepts</figcaption>
+        </figure>
+<?/component?>

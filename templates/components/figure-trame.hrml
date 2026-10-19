@@ -1,0 +1,34 @@
+<?component id="figure-trame"?>
+<?style?>
+.infra-svg { display: block; width: 100%; height: auto; border: 1px solid var(--border); }
+.infra-svg text { font-family: var(--font-mono); }
+.infra-svg .l { font-size: 12px; font-weight: 600; fill: var(--text-heading); }
+.infra-svg .s { font-size: 10px; fill: var(--text-muted); }
+<?/style?>
+<figure class="feature-figure">
+            <svg class="infra-svg" viewBox="0 0 640 220" role="img" aria-label="One trame contract branching at build time into three backends: none, a single process with no transport; mpi, with RMA lanes and message batches; nv, one CUDA warp per rank.">
+                <defs>
+                    <marker id="tr-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                        <path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/>
+                    </marker>
+                </defs>
+                <rect x="180" y="16" width="280" height="64" fill="none" stroke="var(--accent)"/>
+                <text x="320" y="46" text-anchor="middle" class="l">trame::contract</text>
+                <text x="320" y="64" text-anchor="middle" class="s">launch · frames · lanes · steps</text>
+                <polyline points="320,80 320,100 110,100 110,116" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#tr-arrow)"/>
+                <line x1="320" y1="80" x2="320" y2="116" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#tr-arrow)"/>
+                <polyline points="320,80 320,100 530,100 530,116" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#tr-arrow)"/>
+                <rect x="30" y="116" width="160" height="64" fill="none" stroke="var(--border)"/>
+                <text x="110" y="144" text-anchor="middle" class="l">none</text>
+                <text x="110" y="164" text-anchor="middle" class="s">one process, no transport</text>
+                <rect x="240" y="116" width="160" height="64" fill="none" stroke="var(--border)"/>
+                <text x="320" y="144" text-anchor="middle" class="l">mpi</text>
+                <text x="320" y="164" text-anchor="middle" class="s">RMA lanes · message batches</text>
+                <rect x="450" y="116" width="160" height="64" fill="none" stroke="var(--border)"/>
+                <text x="530" y="144" text-anchor="middle" class="l">nv</text>
+                <text x="530" y="164" text-anchor="middle" class="s">one CUDA warp per rank</text>
+                <text x="320" y="206" text-anchor="middle" class="s">selected by Cargo feature at build time; callers are written once</text>
+            </svg>
+            <figcaption>One contract, three implementations. The backend is a compile-time feature, not a run-time choice.</figcaption>
+        </figure>
+<?/component?>

@@ -1,0 +1,7 @@
+<?component id="figure-mpi-rma"?>
+<?style?>
+.rma-figure { margin: 0; }
+.rma-figure img { display: block; width: 100%; height: auto; border: 1px solid var(--border); }
+<?/style?>
+<figure class="rma-figure"><img src="/static/images/mpi-rma-curves.svg" alt="mpi-rma ring against MPI_Send: throughput and one-way latency by payload size." width="634" height="490"></figure>
+<?/component?>

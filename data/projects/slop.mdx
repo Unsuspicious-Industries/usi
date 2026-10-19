@@ -1,0 +1,22 @@
+---
+id: slop
+name: "SLOP"
+order: 3
+section: research
+department: "LSH Department"
+eyebrow: "Critical AI & Information research"
+status: "experimental"
+tagline: "A framework that queries diffusion models in their own latent space."
+summary: "Queries diffusion models in latent space to find where biases sit as geometry."
+meta: "Stable Diffusion · Flux"
+caveat: ""
+icon: slop
+---
+
+SLOP queries a diffusion model directly in its latent space. It captures latents, noise predictions and embeddings while the model generates, and measures how the model renders identity, geography and politics. It also locates where those biases sit as geometry in that space.
+
+Inference runs on restricted HPC. The client tunnels a binary protocol over SSH to a GPU node with no open ports. A distilled-checkpoint registry keeps a sweep affordable.
+
+SLOP produced the visualisations of the *Holy Slop* installation, shown in *The World Through AI* at SCHIRN and in *Hidden Layers* at UC Berkeley.
+
+[GitHub](https://github.com/Unsuspicious-Industries/slop)

@@ -11,12 +11,16 @@ const { chromium } = require(core);
 const base = new URL(process.argv[2] || 'http://localhost:8080');
 const artifacts = process.env.CHECK_ARTIFACTS;
 if (artifacts) fs.mkdirSync(artifacts, { recursive: true });
-const routes = ['/', '/research', '/tools', '/infra', '/about', '/contact',
+const tools = ['slut', 'hrml', 'remblais', 'political-alignment'];
+const infra = ['mpi-rma', 'trame', 'nixsci'];
+const research = ['aufbau', 'karl', 'slop'];
+const routes = ['/', '/research', '/projects', ...[...tools, ...infra].map(id => `/projects/${id}`), '/about', '/contact',
     '/ethics', '/jobs', '/blog', '/blog/completing-regex',
     '/blog/proposition-7', '/jobs/itinerant-polymath'];
-const expectedIcons = { '/': 8, '/tools': 4, '/research': 3, '/infra': 2 };
-const expectedLinks = ['/research#karl', '/tools#remblais', '/research#aufbau',
-    '/research#slop', '/tools#political-alignment', '/infra#mpi-rma', '/infra#trame'];
+const expectedIcons = { '/': 8, '/research': 3, '/projects': 7 };
+// The home cards link research projects to their anchors on /research and the rest to their own pages.
+const expectedLinks = [...research.map(id => `/research#${id}`),
+    ...['remblais', 'political-alignment', 'mpi-rma', 'trame'].map(id => `/projects/${id}`)];
 const url = route => new URL(route, base).href;
 
 async function run() {
@@ -76,7 +80,7 @@ async function run() {
             console.log(`viewport ${width} CSS px: PASS`);
         }
         assert.deepEqual([...ids].sort(), ['aufbau', 'gilles-economics', 'hrml', 'karl',
-            'mpi-rma', 'political-alignment', 'remblais', 'slop', 'slut', 'trame'].sort());
+            'mpi-rma', 'nixsci', 'political-alignment', 'remblais', 'slop', 'slut', 'trame'].sort());
         await page.setViewportSize({ width: 390, height: 1000 });
         await page.goto(url('/'), { waitUntil: 'networkidle' });
         const cards = page.locator('main .card');
@@ -90,14 +94,15 @@ async function run() {
         await page.keyboard.press('Tab');
         assert.equal(await page.evaluate(() => document.activeElement.id), 'nav-toggle');
         await page.keyboard.press('Space');
-        assert.ok(await page.locator('.nav-links a[href="/infra"]').isVisible());
+        assert.ok(await page.locator('.nav-links a[href="/projects"]').isVisible());
+        assert.equal(await page.locator('.nav-links a[href="/research"]').count(), 1);
         await page.keyboard.press('Space');
         assert.equal(await page.locator('.nav-links').isVisible(), false);
         for (const href of expectedLinks) {
             await page.goto(url(href), { waitUntil: 'networkidle' });
-            assert.equal(await page.locator(`[id="${href.split('#')[1]}"]`).count(), 1, `missing anchor ${href}`);
+            if (href.includes('#')) assert.equal(await page.locator(`[id="${href.split('#')[1]}"]`).count(), 1, `missing anchor ${href}`);
         }
-        await page.goto(url('/tools#remblais'), { waitUntil: 'networkidle' });
+        await page.goto(url('/projects/remblais'), { waitUntil: 'networkidle' });
         const gif = page.locator('.remblais-morph');
         await gif.scrollIntoViewIfNeeded();
         await gif.evaluate(image => image.decode());
@@ -106,37 +111,16 @@ async function run() {
         const first = await gif.screenshot();
         await page.waitForTimeout(1300);
         assert.equal(first.equals(await gif.screenshot()), false, 'animation does not advance');
-        const toggle = page.locator('#remblais-still');
-        await toggle.focus();
-        await page.keyboard.press('Space');
-        assert.ok(await toggle.isChecked(), 'Space does not select Still');
-        assert.equal(await gif.isVisible(), false, 'animation remains visible');
-        const still = page.locator('.remblais-static');
-        assert.ok(await still.isVisible());
-        await still.evaluate(image => image.decode());
-        const stopped = await still.screenshot();
-        await page.waitForTimeout(1300);
-        assert.ok(stopped.equals(await still.screenshot()), 'Still frame changes');
-        await page.keyboard.press('Space');
-        assert.ok(await gif.isVisible(), 'Space does not restore animation');
-        const label = page.locator('label[for="remblais-still"]');
-        const target = await label.boundingBox();
-        assert.ok(target.width >= 24 && target.height >= 24, 'Still label has a small pointer target');
-        await label.click();
-        assert.ok(await still.isVisible(), 'Still label does not stop animation');
-        await label.click();
-        assert.ok(await gif.isVisible(), 'Still label does not restore animation');
         const reduced = await browser.newPage({ viewport: { width: 390, height: 1000 }, reducedMotion: 'reduce' });
         reduced.on('pageerror', error => errors.push(error.message));
-        await reduced.goto(url('/tools#remblais'), { waitUntil: 'networkidle' });
+        await reduced.goto(url('/projects/remblais'), { waitUntil: 'networkidle' });
         await reduced.locator('.remblais-morph').scrollIntoViewIfNeeded();
         await reduced.locator('.remblais-morph').evaluate(image => image.decode());
         assert.ok((await reduced.locator('.remblais-morph').evaluate(image => image.currentSrc)).endsWith('remblais-square-still.png'));
-        assert.equal(await reduced.locator('#remblais-still').isVisible(), false, 'redundant Still switch under reduced motion');
         assert.deepEqual(errors, [], 'browser errors');
         if (artifacts) fs.writeFileSync(path.join(artifacts, 'results.json'),
-            JSON.stringify({ metadata, records, errors, animation: true, stillSwitch: true, reducedMotion: true }, null, 2));
-        console.log('PASS: layout, decoded images, project marks/links, anchors, keyboard menu, GIF, Still switch, reduced motion');
+            JSON.stringify({ metadata, records, errors, animation: true, reducedMotion: true }, null, 2));
+        console.log('PASS: layout, decoded images, project marks/links, anchors, keyboard menu, GIF, reduced motion');
     } finally {
         await browser.close();
     }

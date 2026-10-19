@@ -1,0 +1,6 @@
+<?component id="figure-nixsci"?>
+<?style?>
+.nixsci-mark { display: block; width: 100%; max-width: 11rem; height: auto; margin: 0 auto; }
+<?/style?>
+<img class="nixsci-mark" src="/static/images/nixsci.svg" alt="nixsci" width="256" height="256">
+<?/component?>

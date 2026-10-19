@@ -1,3 +1,5 @@
+<?block slot="head"?><?title value="Unsuspicious Industries"?><?meta name="description" content="A research collective working across computer science, critical theory and the natural sciences."?><?og name="title" content="Unsuspicious Industries"?><?og name="description" content="A research collective working across computer science, critical theory and the natural sciences."?><?/block?>
+<?block slot="content"?>
 <?style?>
 /* Page ground: one section of the catacombs survey. The hero drops its own
    fill so the map reads behind it. */
@@ -121,7 +123,6 @@ a.card-preview:hover .card-preview-name {
 <?/component?>
 
 <?use id="hero-cmp"?>
-    <?label?>Research at the boundaries of sense<?/label?>
     <?title?>Formal Systems with <span class="blur text-accent">blurred</span> edges<?/title?>
     <?description?><?accent?>Unsuspicious Industries</?accent?> is a research collective working across computer science, critical theory and the natural sciences.<?/description?>
 </?use?>
@@ -149,7 +150,7 @@ a.card-preview:hover .card-preview-name {
                                 <?/block?>
                             </?use?>
                             <?use id="card-preview"?>
-                                <?href?>/tools#remblais<?/href?>
+                                <?href?>/projects/remblais<?/href?>
                                 <?name?>Remblais<?/name?>
                                 <?note?>Optimal-transport image morphing<?/note?>
                                 <?block slot="media"?>
@@ -171,7 +172,7 @@ a.card-preview:hover .card-preview-name {
                     <?block slot="work"?>
                         <div class="card-previews">
                             <?use id="card-preview"?>
-                                <?href?>/tools#political-alignment<?/href?>
+                                <?href?>/projects/political-alignment<?/href?>
                                 <?name?>Political Alignment<?/name?>
                                 <?note?>Bias probes in language models<?/note?>
                                 <?block slot="media"?>
@@ -185,10 +186,13 @@ a.card-preview:hover .card-preview-name {
                     <?icon?>cpu<?/icon?>
                     <?title?>Industrial Infrastructure<?/title?>
                     <?text?>Runtime and transport infrastructure for large-scale computation.<?/text?>
+                    <?quote-text?>It is a, uh, bright object and it's, uh, obviously rotating because it's flashing. It's, uh, way out in the distance, apparently rotating in a very rhythmic fashion because the, uh, flashes come around, uh, almost on time.<?/quote-text?>
+                    <?quote-author?>Gene Cernan<?/quote-author?>
+                    <?quote-work?>Apollo 17, 1972<?/quote-work?>
                     <?block slot="work"?>
                         <div class="card-previews">
                             <?use id="card-preview"?>
-                                <?href?>/infra#mpi-rma<?/href?>
+                                <?href?>/projects/mpi-rma<?/href?>
                                 <?name?>mpi-rma<?/name?>
                                 <?note?>Typed MPI one-sided transport<?/note?>
                                 <?block slot="media"?>
@@ -196,7 +200,7 @@ a.card-preview:hover .card-preview-name {
                                 <?/block?>
                             </?use?>
                             <?use id="card-preview"?>
-                                <?href?>/infra#trame<?/href?>
+                                <?href?>/projects/trame<?/href?>
                                 <?name?>trame<?/name?>
                                 <?note?>Portable execution backends<?/note?>
                                 <?block slot="media"?>
@@ -223,7 +227,7 @@ a.card-preview:hover .card-preview-name {
                             <?use id="card-preview"?>
                                 <?href?>https://gilles.unsuspicious.org/#lab-economics<?/href?>
                                 <?name?>Gilles Economics lab<?/name?>
-                                <?note?>Class-based utility & revolt-potential model<?/note?>
+                                <?note?>Economics research<?/note?>
                                 <?block slot="media"?>
                                     <?use id="project-icon"?><?id?>gilles-economics<?/id?></?use?>
                                 <?/block?>
@@ -283,3 +287,4 @@ a.card-preview:hover .card-preview-name {
         </?use?>
     <?/block?>
 </?use?>
+<?/block?>

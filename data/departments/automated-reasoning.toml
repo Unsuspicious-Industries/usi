@@ -1,0 +1,7 @@
+id = "automated-reasoning"
+name = "Automated Reasoning division"
+description = "Developing automated tools to support human reasoning and discovery."
+quote = "La connaissance est devenue force productive immédiate."
+quote_author = "Karl Marx"
+quote_work = "Grundrisse"
+order = 5

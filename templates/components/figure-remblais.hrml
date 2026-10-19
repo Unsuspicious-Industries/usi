@@ -1,0 +1,17 @@
+<?component id="figure-remblais"?>
+<?style?>
+.remblais-morph-frame { display: grid; place-items: center; }
+.remblais-morph { display: block; width: 12rem; max-width: 100%; height: auto; image-rendering: pixelated; border: 1px solid var(--border); }
+<?/style?>
+<?use id="demo"?><?block slot="content"?>
+                    <figure class="remblais-demo">
+                        <figcaption class="tool-caption" id="remblais">Python / Graphics tooling</figcaption>
+                        <div class="remblais-morph-frame">
+                            <picture>
+                                <source media="(prefers-reduced-motion: reduce)" srcset="/static/images/remblais-square-still.png">
+                                <img class="remblais-morph" src="/static/images/remblais-square.gif" width="96" height="96" alt="A white square moves and separates into red, green and blue blocks through Remblais transport." loading="lazy" decoding="async">
+                            </picture>
+                        </div>
+                    </figure>
+                <?/block?></?use?>
+<?/component?>

@@ -1,0 +1,7 @@
+id = "lsh"
+name = "LSH Department"
+description = "Research on history, art and literature."
+quote = "Les Hommes ont inventé la Naphthaline de la Beauté."
+quote_author = "Chris Marker"
+quote_work = "Le joli Mai"
+order = 6

@@ -1,3 +1,5 @@
+<?block slot="head"?><?title value="Ethics policy · Unsuspicious Industries"?><?meta name="description" content="How Unsuspicious Industries approaches research ethics."?><?og name="title" content="Ethics policy · Unsuspicious Industries"?><?og name="description" content="How Unsuspicious Industries approaches research ethics."?><?/block?>
+<?block slot="content"?>
 
 <?style?>
 main {
@@ -65,4 +67,4 @@ main .hero::before {
     <?author?>Chris Marker<?/author?>
     <?work?>Le Joli Mai<?/work?>
 </?use?>
-
+<?/block?>

@@ -124,6 +124,25 @@ a:hover {
 main {
     padding-top: 96px;
     display: block;
+    position: relative;
+    isolation: isolate;
+    overflow-x: clip; /* soft fields may reach past the viewport edge */
+}
+
+/* Every page lays a map under main. Where main ends the map would stop on a
+   straight line, so it fades into the page colour over its last stretch. The
+   layer sits above main's background and below its content (z-index -1 inside
+   main's own stacking context). */
+main::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 10rem;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(to bottom, transparent, var(--bg-page));
 }
 
 main > * {
@@ -294,7 +313,6 @@ code {
 .cloud {
     position: relative;
     isolation: isolate;
-    overflow: clip;
 }
 .cloud::before {
     content: '';

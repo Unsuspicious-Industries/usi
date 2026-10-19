@@ -9,7 +9,7 @@ tags: [research-notes, theorem-proving, program-synthesis, type-theory, RL, cons
 ---
 
 
-# Grammar, Logic and Meaning
+## Grammar, Logic and Meaning
 
 Prover models for large language models (LLMs) include DeepSeek-R1-Prover, described here as the pioneer, followed by OpenAI o3-pro and GPT-5-Thinking. These models use Chain-of-Thought (CoT) and reinforcement learning on hard mathematical problems. This approach has produced results, including with smaller models from Z.ai and Moonshot AI, but has limitations that can reduce accuracy and efficiency.
 
@@ -25,10 +25,10 @@ Companies such as **.txt** (dottxt.co) develop regex-based sampling to constrain
 Regex-based sampling covers simple patterns, and context-free constraints can go futher, up to data specifications like JSON, but none of them solves **logic**.
 
 
-# Proposition 7 (P7)
+## Proposition 7 (P7)
 [**Proposition 7**](https://github.com/Unsuspicious-Industries/p7) is a work-in-progress constrained-generation system intended to combine typed programming, proof construction, reasoning and natural language[^4].
 
-## Philosophy
+### Philosophy
 
 Philosophy asks questions. Mathematics is when we can determine whether the answers are true or false.
 
@@ -50,13 +50,13 @@ In formal reasoning, the tradeoff is different. Our thinking systems must balanc
 
 In this setup, the formal layer enforces truth within a formal system, while open-ended association remains in latent representations and a toggleable free-form reasoning. In prelimiary experiments, we've alredy demonstrated that formal constraints can reduce drastically the need for CoT and thus the compute cost.  
 
-## System Overview
+### System Overview
 - Constraint Engine: unified grammar and typing/proof rules that produce only valid moves/ASTs within a formal system.
 - Syntax independence: the formally constrained sampler is made to be *syntax independent* and work over runtime-specified context grammars with attached typing rules.
 - Constrained pretrained LLM: ranks valid moves, expressed as tokens.
 - Mode-switching sampler: the constraint engine can dynamically switch it's formal core, based on parameters like entropy, in order to avoid getting stuck. We can combine free-form text reasoning with formally valid output, for better exploration possibilities.
 
-## Constraint Engine
+### Constraint Engine
 The engine is comprised of three parts: 
  - A **meta-engine** that inteprets rules to parse code into partial ASTs
  - Rule files, written in a custom DSL inspired by the EBNF notation for grammars, and the natural deduction style for typing rules.
@@ -89,7 +89,7 @@ x ∈ Γ
 Γ ⊢ τ2
 ```
 
-### Meta Typing
+#### Meta Typing
 
 The rule file itself is parsed and *checked* before being admitted, and "executed" as a constraint engine on the input. 
 
@@ -107,17 +107,17 @@ Generation loop:
  6. Rank the completion using the LLM logits
  7. Sample and produce a token
 
-## A Paradox
+### A Paradox
 
 In this project we take the opiniated wager of young Wittgenstein, or at least some (Carnap inspired) generalization of it. Assuming that there is no "sayable" things outside of the space of constrained reasoning can be a risky take. This is why this project can be seen as an experiment, more than an engineering *solution*. Our primary goal is to study the behavior of constrained reasoning and measure its effects on creativity, entropy and overall intelligence. 
 
 
-## Architecture
+### Architecture
 <figure class="not-prose mx-auto w-full mb-8">
     <img src="/static/images/dia.svg" alt="P7 Architecture diagram" class="w-full h-auto" loading="lazy" decoding="async" />
 </figure>
 
-# Practical uses
+## Practical uses
 
 While our purpose is scientific, we see many practical applications of this work, as in **money making opportunities** : 
 
@@ -125,13 +125,13 @@ While our purpose is scientific, we see many practical applications of this work
 - Decision-makers: Expect better efficiency (less wasted compute) and better interpretability and traceability of the process.
 - Researchers: Treat interesting-ness as a learnable value function over valid moves; compare signals (structural, graph, human preference).
 
-# Implementation
+## Implementation
 
 A reference prototype for the **P7** system is currently being developped, mainly by me, with collaboration and feedback from Niels Müdler @ ETHZ
 
 The code is available freely on [github](https://github.com/Unsuspicious-Industries/p7)/ 
 
-# References
+## References
 - Wittgenstein, L. (1921). *Tractatus Logico-Philosophicus*.
 - Martin-Löf, P. (1984). Intuitionistic Type Theory.
 - Girard, J.-Y. (1972). Interprétation fonctionnelle... (System F / cut elimination).
@@ -141,7 +141,7 @@ The code is available freely on [github](https://github.com/Unsuspicious-Industr
 - Knuth, D. E. (1968). Semantics of context-free languages.
 
 
-## Notes
+### Notes
 
 [^1]: In Wittgenstein's *Tractatus Logico-Philosophicus*, *unsinnig* (nonsensical) refers to propositions that violate logical grammar and are therefore meaningless, distinct from *sinnlos* (senseless) which refers to tautologies and contradictions that are logically well-formed but say nothing about the world. See propositions 4.461-4.4611.
 

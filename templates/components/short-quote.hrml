@@ -7,9 +7,18 @@
     margin: 3rem auto;
     max-width: 80rem;
     padding: 2rem 2rem 2rem 2.5rem;
-    border-radius: 12px;
-    background: color-mix(in srgb, var(--accent) 6%, transparent);
     position: relative;
+    isolation: isolate;
+}
+/* A soft field instead of a boxed fill: the page ground is a map. */
+.short-quote::after {
+    content: '';
+    position: absolute;
+    inset: -1rem -3rem;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(70% 90% at 50% 50%, color-mix(in srgb, var(--accent) 7%, var(--bg-page)) 0%, color-mix(in srgb, var(--accent) 7%, var(--bg-page)) 40%, transparent 100%);
+    filter: blur(14px);
 }
 .short-quote::before {
     content: '\201C';

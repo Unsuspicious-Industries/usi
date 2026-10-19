@@ -1,0 +1,7 @@
+id = "macroeconomics"
+name = "Macroeconomics formalization department"
+description = "Formalizing economics research with high-performance computing and formal systems."
+quote = "In the long run we are all dead"
+quote_author = "J.M. Keynes"
+quote_work = "A Tract on Monetary Reform (1923)"
+order = 4

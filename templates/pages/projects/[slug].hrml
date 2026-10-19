@@ -1,0 +1,7 @@
+<?block slot="head"?><?data from="data/projects/$slug.mdx" as="proj"?><?title value="$proj.name · Unsuspicious Industries"?><?meta name="description" content="$proj.summary"?><?og name="title" content="$proj.name · Unsuspicious Industries"?><?og name="description" content="$proj.summary"?><?/block?>
+<?block slot="content"?>
+<?data from="data/projects/$slug.mdx" as="proj"?>
+<?use id="project-feature" pid="$proj.id" name="$proj.name" icon="$proj.icon" eyebrow="$proj.eyebrow" tagline="$proj.tagline" status="$proj.status" meta="$proj.meta" caveat="$proj.caveat"?>
+    <?block slot="prose"?>$proj.body<?/block?>
+</?use?>
+<?/block?>

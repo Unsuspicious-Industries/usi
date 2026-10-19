@@ -1,56 +1,5 @@
-<?use id="hero-cmp"?>
-    <?label?>Contact<?/label?>
-    <?title?>Contact us<?/title?>
-    <?description?>Email contact@unsuspicious.org or book a 15-minute meeting.<?/description?>
-</?use?>
-
-<?use id="section-cmp"?>
-    <?block slot="content"?>
-        <div class="contact-actions">
-            <a href="https://cal.com/unsuspicious/15min" target="_blank" rel="noopener" class="btn btn-primary btn-icon">
-                <svg class="btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4m-5 4h18"/></svg>
-                Book a 15‑min meeting
-            </a>
-            <a href="mailto:contact@unsuspicious.org" class="btn btn-secondary btn-icon">
-                <svg class="btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                Email contact@unsuspicious.org
-            </a>
-        </div>
-    </?block?>
-</?use?>
-
-<?use id="section-cmp"?>
-    <?block slot="content"?>
-        <?use id="section-header"?>
-            <?title?>Contact options<?/title?>
-            <?subtitle?>Call +33 7 57 48 67 30 or email contact@unsuspicious.org.<?/subtitle?>
-        </?use?>
-        <?use id="card-grid"?>
-            <?block slot="content"?>
-                <?use id="card-cmp"?>
-                    <?href?>tel:+33757486730<?/href?>
-                    <?icon?>mail<?/icon?>
-                    <?title?>Phone<?/title?>
-                    <?text?>+33 7 57 48 67 30<?/text?>
-                </?use?>
-                <?use id="card-cmp"?>
-                    <?href?>https://www.google.com/maps/search/?api=1&query=Paris%2C%20France<?/href?>
-                    <?icon?>leaf<?/icon?>
-                    <?title?>Location<?/title?>
-                    <?text?>Paris, France<?/text?>
-                </?use?>
-            </?block?>
-        </?use?>
-    </?block?>
-</?use?>
-
-<?use id="cta-section"?>
-    <?title?>Interested in working with us?<?/title?>
-    <?subtitle?>View current openings or email us about a role not listed.<?/subtitle?>
-    <?primary?>View Positions<?/primary?>
-    <?primary-href?>/jobs<?/primary-href?>
-</?use?>
-
+<?block slot="head"?><?title value="Contact · Unsuspicious Industries"?><?meta name="description" content="Email or a 15-minute call. Based in Paris."?><?og name="title" content="Contact · Unsuspicious Industries"?><?og name="description" content="Email or a 15-minute call. Based in Paris."?><?/block?>
+<?block slot="content"?>
 <?style?>
 main {
     background-image: url('/static/images/catacombs-contact.webp');
@@ -58,25 +7,75 @@ main {
     background-position: top center;
     background-repeat: no-repeat;
 }
-main .hero {
-    background: transparent;
-}
-main .hero::before {
-    display: none;
-}
-.contact-actions {
+main .hero { background: transparent; }
+main .hero::before { display: none; }
+.contact { max-width: 56rem; margin: 0 auto; padding: 1rem 2rem 6rem; }
+.contact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+.contact-card {
     display: flex;
-    gap: 1rem;
-    justify-content: center;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 2rem 1.75rem 1.75rem;
+    background: var(--bg-page);
+    border: 1px solid var(--border);
+    border-top: 6px solid var(--accent);
+}
+.contact-card svg { width: 1.75rem; height: 1.75rem; color: var(--accent); }
+.contact-card h2 { font-family: var(--font-serif); font-size: 1.5rem; line-height: 1.2; margin: 0; color: var(--text-heading); }
+.contact-card p { margin: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; flex: 1; }
+.contact-card .btn { align-self: flex-start; margin-top: 0.5rem; }
+.contact-notes {
+    display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
+    gap: 0.75rem 2rem;
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    position: relative;
+    isolation: isolate;
 }
-.btn-icon {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+/* A soft field under the line, as under the headings: the page ground is a map. */
+.contact-notes::before {
+    content: '';
+    position: absolute;
+    inset: -1rem -4rem -1rem -4rem;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(60% 90% at 50% 50%, var(--bg-page) 0%, var(--bg-page) 50%, transparent 100%);
+    filter: blur(14px);
 }
-.btn-svg {
-    width: 1.125rem;
-    height: 1.125rem;
+@media (max-width: 768px) {
+    .contact { padding: 1rem 1rem 3rem; }
+    .contact-grid { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
 }
 <?/style?>
+
+<?use id="hero-cmp"?>
+    <?label?>Contact<?/label?>
+    <?title?>Write, or <?accent?>talk<?/accent?>.<?/title?>
+<?/use?>
+
+<section class="contact">
+    <div class="contact-grid">
+        <article class="contact-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <h2>Email</h2>
+            <p>Questions, collaborations and corrections.</p>
+            <a class="btn btn-secondary" href="mailto:contact@unsuspicious.org">contact@unsuspicious.org</a>
+        </article>
+        <article class="contact-card">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4m-5 4h18"/></svg>
+            <h2>Fifteen minutes</h2>
+            <p>A short call to see whether we should work together.</p>
+            <a class="btn btn-primary" href="https://cal.com/unsuspicious/15min" target="_blank" rel="noopener">Book a slot</a>
+        </article>
+    </div>
+    <div class="contact-notes">
+        <span>Paris, France.</span>
+        <span>Looking for a role? <a href="/jobs">See the open positions</a>.</span>
+    </div>
+</section>
+<?/block?>

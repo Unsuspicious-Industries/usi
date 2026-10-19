@@ -105,6 +105,16 @@ EOF
             exec ${pkgs.nodejs}/bin/node ${self}/tools/check-site.cjs "$@"
           ''}";
         };
+        render = {
+          type = "app";
+          meta.description = "Full-page renders of the served site with pinned Chromium (default /tmp/usi-renders)";
+          program = "${pkgs.writeShellScript "usi-render" ''
+            set -eu
+            export PLAYWRIGHT_CORE=${pkgs.playwright-driver}
+            export PLAYWRIGHT_BROWSERS_PATH=${pkgs.playwright-driver.browsers-chromium}
+            exec ${pkgs.nodejs}/bin/node ${self}/tools/render.cjs "$@"
+          ''}";
+        };
       };
     };
 }

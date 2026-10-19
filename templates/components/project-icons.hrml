@@ -25,9 +25,12 @@
      `<?use id="project-icons"?></?use?>` once, next to the icons sprite. -->
 <?component id="project-icons"?>
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-    <!-- AUFBAU — a typing judgment. Γ ⊢ e : τ reduced to the turnstile, the
-         judged term, and the type it is checked against. -->
-    <symbol id="project-aufbau" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5.5V18.5"/><path d="M5 12h5"/><rect x="11.5" y="8.5" width="4.5" height="7" rx="1" fill="currentColor" stroke="none"/><circle cx="17.8" cy="10" r=".9" fill="currentColor" stroke="none"/><circle cx="17.8" cy="14" r=".9" fill="currentColor" stroke="none"/><path d="M19.3 9h3.2M20.9 9v7"/></symbol>
+    <!-- AUFBAU — an inference rule drawn as a tree. Two premises sit on the
+         tips of one rounded U, whose flat bottom is the rule line. The left
+         premise is a filled node and the right one an open bud, a premise not
+         yet proved. A stem runs from the rule to the conclusion, a black square for
+         the hole, which its typing rules write `?B`. -->
+    <symbol id="project-aufbau" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5V9.6Q6 12.6 9 12.6H15Q18 12.6 18 9.6V8.2"/><path d="M12 12.6V17.4"/><circle cx="6" cy="4.6" r="2.5" fill="currentColor" stroke="none"/><circle cx="18" cy="5.6" r="2.1" stroke-width="1.7"/><rect x="9.4" y="16.8" width="5.2" height="5.2" rx=".6" fill="currentColor" stroke="none"/></symbol>
     <!-- KARL — a corpus of revolutionary press: an open book, distinct from
          the generic closed `icon-book`. -->
     <symbol id="project-karl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.6c-1.8-1.7-4.6-2.2-7.5-1.8v13.6c2.9-.4 5.7.1 7.5 1.8"/><path d="M12 6.6c1.8-1.7 4.6-2.2 7.5-1.8v13.6c-2.9-.4-5.7.1-7.5 1.8"/><path d="M12 6.6v13.6"/></symbol>
@@ -42,20 +45,17 @@
          figure in unsuspicious.org). Reads at 16px, and cannot be confused
          with the mpi-rma window. -->
     <symbol id="project-political-alignment" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88Z" fill="currentColor" stroke="none"/></symbol>
-    <!-- mpi-rma — one-sided remote-memory access. A put from the sender enters
-         a compact memory window; the first slot is occupied. The ring-buffer
-         wrap-around cue is dropped: at 24px the old dot-ring read as a generic
-         ring, and the arrow into the slots is the part that means RMA. -->
-    <symbol id="project-mpi-rma" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="6" width="14.5" height="12" rx="1.5"/><path d="M11.8 6v12M16.6 6v12"/><rect x="8" y="8.4" width="3.2" height="7.2" rx=".5" fill="currentColor" stroke="none"/><path d="M1.5 12H5"/><path d="M7 12l-2.7-1.6v3.2Z" fill="currentColor" stroke="none"/></symbol>
-    <!-- trame — a plain weave: warp and weft. Following fr.wikipedia
-         "Trame (tissage)", "la trame désigne les fils passés entre les fils
-         de chaîne". Three vertical warp threads and two horizontal weft
-         threads; each thread is cut where the crossing thread passes over it,
-         so the gap is a segment end and never a background-coloured eraser
-         (which would vanish on the futurist palette). Not a plain grid: every
-         crossing alternates over/under. Butt caps preserve the small crossing
-         gaps; rounded caps would extend into the overpassing thread. -->
-    <symbol id="project-trame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="butt" stroke-linejoin="round"><path d="M6 2.5V6.3M6 9.7V21.5"/><path d="M12 2.5V14.3M12 17.7V21.5"/><path d="M18 2.5V6.3M18 9.7V21.5"/><path d="M2.5 8h7.8M13.7 8h7.8"/><path d="M2.5 16h1.8M7.7 16h8.6M19.7 16h1.8"/></symbol>
+    <!-- mpi-rma — the fixed-slot ring. Eight slots, the newest darkest and the
+         older ones fading behind it, so the ring reads as a buffer that is
+         being written and wraps. The needle at the centre points at the newest
+         slot: one put, one slot. -->
+    <symbol id="project-mpi-rma" viewBox="0 0 24 24" fill="currentColor"><path d="M12.44 0.81A11.2 11.2 0 0 1 19.6 3.78L17.02 6.57A7.4 7.4 0 0 0 12.29 4.61Z" opacity="1"/><path d="M4.4 3.78A11.2 11.2 0 0 1 11.56 0.81L11.71 4.61A7.4 7.4 0 0 0 6.98 6.57Z" opacity="0.6"/><path d="M0.81 11.56A11.2 11.2 0 0 1 3.78 4.4L6.57 6.98A7.4 7.4 0 0 0 4.61 11.71Z" opacity="0.6"/><path d="M3.78 19.6A11.2 11.2 0 0 1 0.81 12.44L4.61 12.29A7.4 7.4 0 0 0 6.57 17.02Z" opacity="0.32"/><path d="M11.56 23.19A11.2 11.2 0 0 1 4.4 20.22L6.98 17.43A7.4 7.4 0 0 0 11.71 19.39Z" opacity="0.32"/><path d="M19.6 20.22A11.2 11.2 0 0 1 12.44 23.19L12.29 19.39A7.4 7.4 0 0 0 17.02 17.43Z" opacity="0.32"/><path d="M23.19 12.44A11.2 11.2 0 0 1 20.22 19.6L17.43 17.02A7.4 7.4 0 0 0 19.39 12.29Z" opacity="0.32"/><path d="M20.22 4.4A11.2 11.2 0 0 1 23.19 11.56L19.39 11.71A7.4 7.4 0 0 0 17.43 6.98Z" opacity="0.32"/><path d="M14.14 6.83L7.47 13.8L11.62 12.92L13.93 16.48Z"/></symbol>
+    <!-- trame — a plain weave, two warp threads and two weft threads. Each thread
+         passes over one crossing and under the next, and is cut where it goes
+         under, so the gap is a segment end and never a background-coloured
+         eraser (which would vanish on the futurist palette). Butt caps keep the
+         gaps square. -->
+    <symbol id="project-trame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="butt" stroke-linejoin="round"><path d="M7 1.5V14M7 20V22.5M17 1.5V4M17 10V22.5M1.5 7H4M10 7H22.5M1.5 17H14M20 17H22.5"/></symbol>
     <!-- HRML — a markup tag with a component node between the brackets. -->
     <symbol id="project-hrml" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 6 4 12l5.5 6"/><path d="M14.5 6 20 12l-5.5 6"/><rect x="10.5" y="10.5" width="3" height="3" rx=".5" fill="currentColor" stroke="none"/></symbol>
     <!-- SLUT — the isometric cube mark from static/images/slut.svg, its
@@ -70,5 +70,8 @@
          medians to the interior node. The labelled rectangles become nodes; no
          indicator data is borrowed. -->
     <symbol id="project-gilles-economics" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 4 19h16Z"/><path d="M12 4v10M4 19l8-5M20 19l-8-5"/><circle cx="12" cy="4" r="1.7" fill="currentColor" stroke="none"/><circle cx="4" cy="19" r="1.7" fill="currentColor" stroke="none"/><circle cx="20" cy="19" r="1.7" fill="currentColor" stroke="none"/><circle cx="12" cy="14" r="1.7" fill="currentColor" stroke="none"/></symbol>
+<symbol id="project-nixsci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 9.1L12 5.4"/><path d="M14.51 10.55L17.72 8.7"/><path d="M14.51 13.45L17.72 15.3"/><path d="M12 14.9L12 18.6"/><path d="M9.49 13.45L6.28 15.3"/><path d="M9.49 10.55L6.28 8.7"/><circle cx="12" cy="3.4" r="2.0"/><circle cx="19.45" cy="7.7" r="2.0"/><circle cx="19.45" cy="16.3" r="2.0"/><circle cx="12" cy="20.6" r="2.0"/><circle cx="4.55" cy="16.3" r="2.0"/><circle cx="4.55" cy="7.7" r="2.0"/><polygon points="12,9.1 14.51,10.55 14.51,13.45 12,14.9 9.49,13.45 9.49,10.55" fill="currentColor" stroke="none"/>
+    </symbol>
 </svg>
 <?/component?>

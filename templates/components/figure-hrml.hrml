@@ -1,0 +1,31 @@
+<?component id="figure-hrml"?>
+<?use id="demo"?><?block slot="content"?>
+                    <p class="tool-caption">Rust / UI module</p>
+                    <div class="tool-sources">
+                        <div>
+                            <p class="tool-caption">Declare</p>
+                            <pre class="tool-code"><code>&lt;?<span class="syntax">component</span> id="badge"?&gt;
+&lt;?<span class="syntax">bind</span> var="text"/&gt;
+&lt;b class="badge"&gt;&#36;text&lt;/b&gt;
+&lt;?/component?&gt;</code></pre>
+                        </div>
+                        <div>
+                            <p class="tool-caption">Use</p>
+                            <pre class="tool-code"><code>&lt;?<span class="syntax">use</span> id="badge"
+  text="Suspicious"/&gt;
+&lt;?<span class="syntax">use</span> id="badge"
+  text="Unsuspicious"/&gt;</code></pre>
+                        </div>
+                    </div>
+                    <div class="tool-render">
+                        <span class="tool-caption">Rendered</span>
+                        <div class="tool-badges">
+                            <!-- A `use` directive with attributes is not taken as
+                                 self-closing here; the open directive runs on and
+                                 eats the closing div. Close it explicitly. -->
+                            <?use id="badge" text="Suspicious"?></?use?>
+                            <?use id="badge" text="Unsuspicious"?></?use?>
+                        </div>
+                    </div>
+                <?/block?></?use?>
+<?/component?>

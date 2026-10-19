@@ -1,0 +1,79 @@
+<?block slot="head"?><?title value="Projects · Unsuspicious Industries"?><?meta name="description" content="Research software and infrastructure: SLUT, HRML, Remblais, Political Alignment, mpi-rma, trame and nixsci."?><?og name="title" content="Projects · Unsuspicious Industries"?><?/block?>
+<?block slot="content"?>
+<?data from="data/projects" as="projects"?>
+<?sort over="projects" by="order" as="projects"?>
+
+<?style?>
+main {
+    background-image: url('/static/images/catacombs-tools.webp');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+main .hero { background: transparent; }
+main .hero::before { display: none; }
+.pgroup { max-width: 76rem; margin: 0 auto; padding: 1rem 2rem 3rem; }
+.pgroup-head { display: flex; align-items: baseline; gap: 1rem; margin: 0 0 1.5rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--border); }
+.pgroup-title { font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; color: var(--text-heading); margin: 0; }
+.pgroup-note { font-size: 0.8rem; color: var(--text-muted); }
+.pgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+.pcard { display: flex; flex-direction: column; min-width: 0; background: var(--bg-page); border: 1px solid var(--border); }
+.pcard-preview { position: relative; height: 17rem; overflow: hidden; padding: 1.25rem; background: color-mix(in srgb, var(--accent) 4%, var(--bg-page)); border-bottom: 1px solid var(--border); }
+.pcard-preview::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 3.5rem; pointer-events: none; background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--accent) 4%, var(--bg-page))); }
+.pcard-preview .demo { border: 0; background: transparent; padding: 0; }
+.pcard-body { flex: 1; padding: 1.25rem 1.5rem 0.75rem; }
+.pcard-head { display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.5rem; }
+.pcard-head .project-icon { width: 1.75rem; height: 1.75rem; color: var(--accent); }
+.pcard-name { font-family: var(--font-serif); font-size: 1.5rem; line-height: 1.3; margin: 0; }
+.pcard-name a { color: var(--text-heading); }
+.pcard-name a:hover { color: var(--accent); }
+.pcard-summary { color: var(--text-muted); font-size: 0.85rem; line-height: 1.7; margin: 0; }
+.pcard-foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin: 0 1.5rem; padding: 0.9rem 0; border-top: 1px solid var(--border); font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.pcard-foot a { font-size: 0.8rem; font-weight: 700; text-transform: none; letter-spacing: 0; }
+@media (max-width: 768px) {
+    .pgroup { padding: 1rem 1rem 2rem; }
+    .pgrid { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+}
+<?/style?>
+
+<?use id="hero-cmp"?>
+    <?label?>Projects<?/label?>
+    <?title?>Research <?accent?>software<?/accent?> and <?accent?>infrastructure<?/accent?>.<?/title?>
+<?/use?>
+
+<section class="pgroup">
+    <div class="pgroup-head"><h2 class="pgroup-title">Tools</h2><span class="pgroup-note">Software that makes something, or refuses to.</span></div>
+    <div class="pgrid">
+    <?map over="projects" as="p"?>
+    <?if cond="$p.section == tools"?>
+    <article class="pcard" aria-labelledby="card-$p.id">
+        <div class="pcard-preview"><?use id="project-figure" pid="$p.id" view="card"?></?use?></div>
+        <div class="pcard-body">
+            <div class="pcard-head"><?use id="project-icon"?><?id from="$p.icon"?></?use?><h3 class="pcard-name" id="card-$p.id"><a href="/projects/$p.id">$p.name</a></h3></div>
+            <p class="pcard-summary">$p.summary</p>
+        </div>
+        <div class="pcard-foot"><span>$p.status</span><a href="/projects/$p.id">Open</a></div>
+    </article>
+    <?/if?>
+    <?/map?>
+    </div>
+</section>
+
+<section class="pgroup">
+    <div class="pgroup-head"><h2 class="pgroup-title">Infrastructure</h2><span class="pgroup-note">Shared systems for research and compute.</span></div>
+    <div class="pgrid">
+    <?map over="projects" as="p"?>
+    <?if cond="$p.section == infra"?>
+    <article class="pcard" aria-labelledby="card-$p.id">
+        <div class="pcard-preview"><?use id="project-figure" pid="$p.id" view="card"?></?use?></div>
+        <div class="pcard-body">
+            <div class="pcard-head"><?use id="project-icon"?><?id from="$p.icon"?></?use?><h3 class="pcard-name" id="card-$p.id"><a href="/projects/$p.id">$p.name</a></h3></div>
+            <p class="pcard-summary">$p.summary</p>
+        </div>
+        <div class="pcard-foot"><span>$p.status</span><a href="/projects/$p.id">Open</a></div>
+    </article>
+    <?/if?>
+    <?/map?>
+    </div>
+</section>
+<?/block?>

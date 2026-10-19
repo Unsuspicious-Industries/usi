@@ -1,0 +1,12 @@
+<?component id="centered-text"?>
+<?style?>
+.centered-text {
+    max-width: 48rem;
+    margin: 0 auto;
+    text-align: left;
+}
+<?/style?>
+<div class="centered-text">
+    <?slot id="content"?>
+</div>
+<?/component?>

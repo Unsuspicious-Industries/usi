@@ -94,8 +94,12 @@
                 <a href="/about">About</a>
                 <a href="/contact">Contact</a>
                 <a href="/blog">Blog</a>
+                <a href="/projects">Projects</a>
+                <a href="/jobs">Jobs</a>
+                <a href="/ethics">Ethics</a>
                 <a href="/style">Style</a>
                 <a href="https://ent.unsuspicious.org">ENT</a>
+                <a href="https://github.com/Unsuspicious-Industries/usi">Source</a>
             </div>
         </div>
         <div class="footer-social">

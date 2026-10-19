@@ -1,0 +1,22 @@
+---
+id: nixsci
+name: "nixsci"
+order: 3
+section: infra
+department: "Industrial Infrastructure"
+eyebrow: "Reproducible experiments"
+status: "experimental"
+tagline: "Experiments, analyses and documents as Nix values, with sealed runs."
+summary: "Deploys closures, records experiments, analyses locked data, builds documents."
+meta: "Python · R · Nix · tag v0.1.0"
+caveat: "Not formally verified. A passing build is not scientific verification."
+icon: nixsci
+---
+
+nixsci deploys Nix closures, records experiments, runs R or Python analyses over locked data and builds documents from their outputs. Nix pins the toolchain, and peer stores share sealed runs by content hash.
+
+The goal is a traceable claim from each observation to the sentence that cites it. Today the code records provenance and runs claim checks. It does not prove the R or Python analyses, nor the coverage of its statistical procedures.
+
+usinix is the USI suite on nixsci.
+
+[GitHub](https://github.com/PKD667/nixsci) · [usinix](https://github.com/Unsuspicious-Industries/usinix)

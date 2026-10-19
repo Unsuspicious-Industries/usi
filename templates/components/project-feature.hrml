@@ -1,0 +1,29 @@
+<?component id="project-feature"?>
+<?bind var="pid"/?>
+<?bind var="name"/?>
+<?bind var="icon"/?>
+<?bind var="eyebrow"/?>
+<?bind var="tagline"/?>
+<?bind var="status"/?>
+<?bind var="meta"/?>
+<?bind var="caveat"/?>
+<?style?>
+.project-status { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin: 0 0 1rem; }
+.project-caveat { margin-top: 1rem; padding-left: 1rem; border-left: 3px solid var(--accent); color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; }
+.feature-prose pre { margin: 1rem 0; padding: 0.75rem 1rem; overflow-x: auto; background: var(--bg-section); border: 1px solid var(--border); font-size: 0.75rem; }
+.feature-prose pre code { white-space: pre-wrap; word-break: break-all; background: transparent; padding: 0; }
+<?/style?>
+<?use id="feature"?>
+    <?eyebrow from="$eyebrow"?>
+    <?name from="$name"?>
+    <?project from="$icon"?>
+    <?tagline from="$tagline"?>
+    <?block slot="prose"?>
+        <p class="project-status">$status</p>
+        <?slot id="prose"?>
+        <?if cond="$caveat"?><p class="project-caveat">$caveat</p><?/if?>
+    <?/block?>
+    <?block slot="figure"?><?use id="project-figure" pid="$pid"?></?use?><?/block?>
+    <?block slot="links"?><?if cond="$meta"?><span class="meta">$meta</span><?/if?><?/block?>
+</?use?>
+<?/component?>

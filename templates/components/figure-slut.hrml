@@ -1,0 +1,11 @@
+<?component id="figure-slut"?>
+<?use id="demo"?><?block slot="content"?>
+                    <p class="tool-caption">Rust / static analysis</p>
+                    <pre class="tool-code"><code><span class="syntax">let</span> mass = (10.0)
+    .scalar::&lt;<span class="syntax">Kilogram</span>&gt;();
+<span class="syntax">let</span> force = Vec2::&lt;f64, Force&gt;
+    ::new::&lt;<span class="syntax">Newton</span>&gt;([1.0, 2.0]);
+<span class="syntax">let</span> acc = force.scale(mass.inv());</code></pre>
+                    <div class="tool-check"><code>mass + force</code><span>Rejected: incompatible dimensions</span></div>
+                <?/block?></?use?>
+<?/component?>

@@ -1,0 +1,6 @@
+<?component id="figure-mpi-rma-ring"?>
+<?style?>
+.rma-ring { display: block; height: 100%; max-height: 14.5rem; width: auto; margin: 0 auto; }
+<?/style?>
+<img class="rma-ring" src="/static/images/mpi-rma-ring.svg" alt="The mpi-rma ring against MPI_Send, one slot per payload size: faster outward, slower inward." width="480" height="379">
+<?/component?>

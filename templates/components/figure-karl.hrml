@@ -1,0 +1,27 @@
+<?component id="figure-karl"?>
+<?style?>
+.karl-path { display: block; width: 100%; height: auto; border: 1px solid var(--border); }
+.karl-path .karl-t { font-family: var(--font-mono); font-size: 13px; font-weight: 600; fill: var(--text-heading); }
+.karl-path .karl-s { font-family: var(--font-mono); font-size: 11px; fill: var(--text-muted); }
+<?/style?>
+<figure class="feature-figure">
+            <svg class="karl-path" viewBox="0 0 620 256" role="img" aria-label="KARL training design: an international base of classics in many languages from marxists.org, then unsupervised pretraining on chapters, then a situated post-training whose SFT answer is the published article and whose question is generated.">
+                <defs>
+                    <marker id="karl-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                        <path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/>
+                    </marker>
+                </defs>
+                <line x1="14" y1="46" x2="14" y2="212" stroke="var(--accent)" stroke-width="2" marker-end="url(#karl-arrow)"/>
+                <rect x="30" y="16" width="570" height="64" fill="none" stroke="var(--border)"/>
+                <text x="46" y="42" class="karl-t">international base</text>
+                <text x="46" y="62" class="karl-s">classics from marxists.org, in many languages</text>
+                <rect x="30" y="96" width="570" height="64" fill="none" stroke="var(--border)"/>
+                <text x="46" y="122" class="karl-t">unsupervised pretraining</text>
+                <text x="46" y="142" class="karl-s">chapters, no instruction format</text>
+                <rect x="30" y="176" width="570" height="64" fill="none" stroke="var(--accent)"/>
+                <text x="46" y="202" class="karl-t">situated post-training</text>
+                <text x="46" y="222" class="karl-s">SFT: the published article is the answer; only the question is generated</text>
+            </svg>
+            <figcaption>An international base, a situated post-training. The design keeps the politics in the second stage and the training signal in the published texts.</figcaption>
+        </figure>
+<?/component?>

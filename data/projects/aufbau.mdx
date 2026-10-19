@@ -1,0 +1,22 @@
+---
+id: aufbau
+name: "AUFBAU"
+order: 1
+section: research
+department: "Automated Reasoning division"
+eyebrow: "Formally verified AI"
+status: "published"
+tagline: "A decoder enforcing semantic constraints on language models."
+summary: "Decoding that keeps a partial syntax tree well-formed and well-typed."
+meta: "Rust core · Python bindings (PyO3) · MIT"
+caveat: "The rules hold for the grammar and attributes you write. They say nothing about whether the output is true."
+icon: aufbau
+---
+
+Agents forget the shape of a tool call, mistake the type of an in-context variable, or touch data they may not. AUFBAU rules that out while the model decodes.
+
+Token by token, it builds continuations that keep a partial syntax tree well-formed and well-typed. The constraints are attributes you define on a context-free surface. They range from type constraints to relational rules between objects.
+
+You give the model hard rules, and it cannot break them.
+
+[GitHub](https://github.com/Unsuspicious-Industries/aufbau) · [PyPI](https://pypi.org/project/aufbau-rs)

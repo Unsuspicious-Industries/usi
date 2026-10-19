@@ -1,3 +1,5 @@
+<?block slot="head"?><?title value="Blog · Unsuspicious Industries"?><?meta name="description" content="Research notes and articles."?><?og name="title" content="Blog · Unsuspicious Industries"?><?og name="description" content="Research notes and articles."?><?/block?>
+<?block slot="content"?>
 <?data from="data/posts" as="posts"?>
 <?sort over="posts" by="publishDate" order="desc" as="posts"?>
 
@@ -18,7 +20,7 @@ main .hero::before {
     display: flex;
     flex-direction: column;
     gap: 3rem;
-    max-width: 100rem;
+    max-width: 72rem;
     margin: 0 auto;
     padding: 0 2rem;
 }
@@ -76,3 +78,4 @@ main .hero::before {
     <h2 class="blog-contribute-title">Wanna contribute</h2>
     <p class="blog-contribute-text">Posts are data. Add an <code>.mdx</code> file under <code>data/posts/</code> and open a pull request on <a href="https://github.com/Unsuspicious-Industries/usi" target="_blank" rel="noopener">Unsuspicious-Industries/usi</a>.</p>
 </section>
+<?/block?>

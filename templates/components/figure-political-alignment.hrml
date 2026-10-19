@@ -1,0 +1,11 @@
+<?component id="figure-political-alignment"?>
+<?use id="demo"?><?block slot="content"?>
+                    <p class="tool-caption" id="political-alignment">AI / interpretability</p>
+                    <p class="tool-pair">“marx” ↔ “stalin”</p>
+                    <dl class="tool-results">
+                        <div class="tool-result"><dt>GPT-2 base</dt><dd>1,985</dd></div>
+                        <div class="tool-result"><dt>MarxGPT-2 aligned</dt><dd>2,249</dd></div>
+                    </dl>
+                    <p class="tool-note">README-reported Euclidean distances between mean-pooled output logits, not political scores.</p>
+                <?/block?></?use?>
+<?/component?>

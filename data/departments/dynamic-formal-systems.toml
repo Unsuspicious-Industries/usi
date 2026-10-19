@@ -1,0 +1,7 @@
+id = "dynamic-formal-systems"
+name = "Dynamic & Formal Systems lab"
+description = "Research on proof systems, strong normalization and applied type theory."
+quote = "philosophy courses should teach how to use proof assistants"
+quote_author = "Alcuin"
+quote_work = "𝕏, @scheminglunatic"
+order = 1

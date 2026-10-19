@@ -195,8 +195,7 @@
     </label>
     <div class="nav-links">
         <a href="/research" class="nav-link">Research</a>
-        <a href="/tools" class="nav-link">Tools</a>
-        <a href="/infra" class="nav-link">Infra</a>
+        <a href="/projects" class="nav-link">Projects</a>
         <a href="/jobs" class="nav-link">Jobs</a>
         <a href="/about" class="nav-link">About</a>
         <a href="/blog" class="nav-link">Blog</a>

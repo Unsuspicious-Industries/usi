@@ -1,0 +1,20 @@
+---
+id: trame
+name: "trame"
+order: 2
+section: infra
+department: "Industrial Infrastructure"
+eyebrow: "Runtime contract"
+status: "experimental"
+tagline: "One contract, with the backend selected at build time."
+summary: "One contract for launches, frames and lanes. The backend is a Cargo feature."
+meta: "Rust 2024 · no licence file yet"
+caveat: "The contract is a model, not a proof. The conformance run records only the coverage it exercised."
+icon: trame
+---
+
+trame is a transport and execution layer. It defines one contract for launches, deployments, frames, lanes, processes and steps, and picks its implementation when the crate is built. The choices are a single process with no transport, an MPI backend, or one CUDA warp per rank.
+
+Because the choice is a Cargo feature, callers and verification fixtures are written once against the same functions, macros and bounds. The device backend is opt-in, so an ordinary build links no CUDA stack.
+
+[GitHub](https://github.com/PKD667/trame)

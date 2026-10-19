@@ -1,3 +1,5 @@
+<?block slot="head"?><?title value="Style · Unsuspicious Industries"?><?meta name="description" content="The palette of record, drawn from the live custom properties."?><?og name="title" content="Style · Unsuspicious Industries"?><?og name="description" content="The palette of record, drawn from the live custom properties."?><?/block?>
+<?block slot="content"?>
 <?style?>
 main {
     background-image: url('/static/images/catacombs-style.webp');
@@ -39,3 +41,4 @@ main .hero::before {
         </div>
     </?block?>
 </?use?>
+<?/block?>
