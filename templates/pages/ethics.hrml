@@ -51,12 +51,12 @@ main .hero::before {
 
 <?use id="quote-cmp"?>
     <?text?>
-        Vous êtes à Paris, capitale d'un pays prospère au millieu d'un monde qui guérit lentement de ses maladies héréditaires qu'il prenait pour des bijoux de famille : 
+        Vous êtes à Paris, capitale d'un pays prospère au milieu d'un monde qui guérit lentement de ses maladies héréditaires qu'il prenait pour des bijoux de famille : 
             la misère, la faim, la fatalité, la logique. 
-        Vous ouvrez peut-être le deuxième grand aiguillage de l'histoire humaine depuis la décourverte du feu. 
+        Vous ouvrez peut-être le deuxième grand aiguillage de l'histoire humaine depuis la découverte du feu. 
         Alors, avez vous peur de fantômas ?
-        Est-ce que comme on le dit beauccoup que vous pensez trop à vous ? 
-        Ou n'est-ce pas plutôt qu'a votre insu vous pensez trop aux autres ? 
+        Est-ce que comme on le dit beaucoup que vous pensez trop à vous ? 
+        Ou n'est-ce pas plutôt qu'à votre insu vous pensez trop aux autres ? 
         Peut-être sentez vous confusément que votre sort est lié à celui des autres,
         que le bonheur et le malheur sont deux sociétés secrètes, si secrètes que vous y êtes affilié sans le savoir, 
         et que sans l'entendre vous abritez cette voix qui dit :

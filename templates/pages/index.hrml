@@ -217,7 +217,7 @@ a.card-preview:hover .card-preview-name {
                     <?icon?>chart-line<?/icon?>
                     <?title?>Macroeconomics formalization department<?/title?>
                     <?text?>
-                        Formalizing economics research with high-performance computing and formal systems; modeling emergent market behavior from first principles.
+                        Formalizing economics research with high-performance computing and formal systems.
                     <?/text?>
                     <?quote-text?>In the long run we are all dead<?/quote-text?>
                     <?quote-author?>J.M Keynes<?/quote-author?>

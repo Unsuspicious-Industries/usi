@@ -13,9 +13,9 @@ nix run        # serve a dev instance of this checkout, with source reloads
 ```
 
 Templates write `USI_<ROLE>` tokens and the generator resolves them from a TOML
-palette at render time. Without one it writes the tokens out literally, the
-browser drops every declaration, and the page renders in browser defaults instead
-of the house palette. The palette is a flake input here -
+palette at render time. Without one it writes the tokens out literally.
+The browser ignores each declaration that contains one, so colours fall back to
+browser defaults while layout and font rules still apply. The palette is a flake input here -
 `usi-ui.lib.paletteFile`, pinned in `flake.lock`, the same helper the fleet's
 serve unit calls - so a dev render and the served site resolve the same file.
 Fetching it needs an ssh key with access to the private USI repositories.
