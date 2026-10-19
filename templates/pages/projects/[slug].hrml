@@ -8,7 +8,7 @@
 @media (max-width: 768px) { .project-slides { padding: 1rem 1rem 3rem; } }
 <?/style?>
 <?data from="data/projects/$slug.mdx" as="proj"?>
-<?use id="project-feature" pid="$proj.id" name="$proj.name" icon="$proj.icon" eyebrow="$proj.eyebrow" tagline="$proj.tagline" status="$proj.status" meta="$proj.meta" caveat="$proj.caveat" made="$proj.made_with" repro="$proj.repro"?>
+<?use id="project-feature" pid="$proj.id" name="$proj.name" icon="$proj.icon" eyebrow="$proj.eyebrow" tagline="$proj.tagline" status="$proj.status" meta="$proj.meta" caveat="$proj.caveat" made="$proj.made_with" repro="$proj.repro" level="1"?>
     <?block slot="prose"?>$proj.body<?/block?>
 </?use?>
 <?if cond="$proj.slides"?>

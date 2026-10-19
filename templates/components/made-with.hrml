@@ -14,7 +14,6 @@
 .made-with {
     margin: 0.75rem 0 0;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     gap: 0.4rem 0.75rem;
 }
@@ -33,7 +32,7 @@
 .made-with-tag b { color: var(--text-heading); font-weight: 700; }
 .made-with-tag:hover b { color: var(--accent); }
 .made-with-cmd {
-    flex: 1 1 18rem;
+    flex: 1 1 0;
     min-width: 0;
     padding: 0.4rem 0.7rem;
     background: var(--bg-section);

@@ -49,6 +49,11 @@ async function run() {
                     navBottom: document.querySelector('nav').getBoundingClientRect().bottom,
                     mainPadding: parseFloat(getComputedStyle(document.querySelector('main')).paddingTop),
                     leaked: /\{"[a-z_]+":|\}\.[a-z_]+\b|\$[a-z]+\.[a-z_]+/.exec(document.body.innerText)?.[0] ?? null,
+                    outside: [...document.querySelectorAll('.btn, .slides-bar button, .made-with-cmd')].filter(e => {
+                        const r = e.getBoundingClientRect();
+                        return r.width > 0 && (r.right > innerWidth + 0.5 || r.left < -0.5);
+                    }).map(e => e.textContent.trim().slice(0, 40)),
+                    cards: [...document.querySelectorAll('.pcard-name a')].map(a => a.getAttribute('href')),
                     badImages: [...document.images].filter(i => !i.complete || !i.naturalWidth).map(i => i.src),
                     features: [...document.querySelectorAll('.feature-prose')].map(e => {
                         const box = e.getBoundingClientRect();
@@ -63,6 +68,9 @@ async function run() {
                 assert.ok(result.scroll <= width + 1, `${route}: document overflow at ${width}`);
                 assert.ok(result.navBottom <= result.mainPadding + 1, `${route}: nav covers content at ${width}`);
                 assert.deepEqual(result.badImages, [], `${route}: broken images`);
+                assert.deepEqual(result.outside, [], `${route}: controls outside the viewport at ${width}`);
+                if (route === '/projects') assert.deepEqual(result.cards.sort(), [...tools, ...infra].map(id => `/projects/${id}`).sort(),
+                    'project cards do not lead to their own pages');
                 assert.equal(result.leaked, null, `${route}: unresolved template variable in the page text`);
                 if (width <= 768) for (const box of result.features) {
                     assert.ok(box.left >= 15 && box.right <= width - 15,

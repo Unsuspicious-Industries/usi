@@ -9,6 +9,7 @@
 <?bind var="caveat"/?>
 <?bind var="made"/?>
 <?bind var="repro"/?>
+<?bind var="level" default="2"/>
 <?style?>
 .project-status { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin: 0 0 1rem; }
 .project-caveat { margin-top: 1rem; padding-left: 1rem; border-left: 3px solid var(--accent); color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; }
@@ -18,6 +19,7 @@
 <?use id="feature"?>
     <?eyebrow from="$eyebrow"?>
     <?name from="$name"?>
+    <?level from="$level"?>
     <?project from="$icon"?>
     <?tagline from="$tagline"?>
     <?block slot="prose"?>

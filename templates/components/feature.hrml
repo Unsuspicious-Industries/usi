@@ -2,6 +2,7 @@
 <?bind var="eyebrow"/?>
 <?bind var="name"/?>
 <?bind var="project"/?>
+<?bind var="level" default="2"/>
 <?bind var="tagline"/?>
 <?style?>
 /* Infra uses only features, so section-cmp's tree-shaken CSS is absent there.
@@ -55,11 +56,14 @@
     line-height: 1;
     margin: 0.5rem 0;
     letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
 }
 .feature-name .project-icon {
     width: 2.25rem;
     height: 2.25rem;
     margin-right: 0.65rem;
+    flex-shrink: 0;
     color: var(--accent);
 }
 .feature-tag {
@@ -127,7 +131,11 @@
             <p class="feature-eyebrow">$eyebrow</p>
             <?/if?>
             <?if cond="$name"?>
-            <h2 class="feature-name"><?if cond="$project"?><?use id="project-icon"?><?id from="$project"?></?use?><?/if?>$name</h2>
+            <?if cond="$level == 1"?>
+            <h1 class="feature-name"><?if cond="$project"?><?use id="project-icon"?><?id from="$project"?></?use?><?/if?><span>$name</span></h1>
+            <?else?>
+            <h2 class="feature-name"><?if cond="$project"?><?use id="project-icon"?><?id from="$project"?></?use?><?/if?><span>$name</span></h2>
+            <?/if?>
             <?/if?>
             <?if cond="$tagline"?>
             <p class="feature-tag">$tagline</p>
