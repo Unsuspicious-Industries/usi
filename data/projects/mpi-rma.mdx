@@ -11,6 +11,8 @@ summary: "A typed Rust API over rsmpi, plus a ring transport."
 meta: "Rust · MPI · MIT"
 caveat: "Measured on one node over shared memory. The repository warns the result may not hold across nodes."
 icon: mpi-rma
+made_with: nixsci
+repro: "nix build github:PKD667/mpi-rma/333d559496258e12960d72b621be6aee5ba6a155#perf"
 ---
 
 MPI one-sided communication lets a process write into a peer's memory window. mpi-rma puts a typed Rust API over rsmpi and adds a ring transport. Payloads go into pre-allocated slots, polling reads local memory, and no sender waits for the receiver.
@@ -18,7 +20,3 @@ MPI one-sided communication lets a process write into a peer's memory window. mp
 Safe mode gates the sender with an acknowledgement counter, and a send that would overwrite an unread slot fails with `Error::Full`. Raw mode never refuses. It overwrites and reports the gap through `lost()`. Each slot carries a sequence, a length and a CRC32, so loss and corruption are visible.
 
 [crates.io](https://crates.io/crates/mpi-rma) · [docs.rs](https://docs.rs/mpi-rma) · [GitHub](https://github.com/PKD667/mpi-rma)
-
-```sh
-nix build github:PKD667/mpi-rma/333d559496258e12960d72b621be6aee5ba6a155#perf
-```

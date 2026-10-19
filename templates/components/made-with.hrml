@@ -1,0 +1,52 @@
+<!-- Provenance line: "Made with <mark> tool", plus the command that rebuilds the artefact.
+
+     `tool` is a registered project id (usi-ui.lib.projectIconIds), so the mark
+     comes from the sprite and the link goes to /projects/<tool>. Any project of
+     ours can be the tool: nixsci for an analysis, hrml for a page. `cmd` is
+     optional and is shown verbatim. It is a single click to select, and it
+     wraps rather than scrolls so it can be read on a phone. The badge only
+     asserts what the command asserts, so give a command that really rebuilds
+     the artefact. -->
+<?component id="made-with"?>
+<?bind var="tool"/?>
+<?bind var="cmd"/?>
+<?style?>
+.made-with { margin: 0.75rem 0 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.made-with-tag {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0.7rem 0.3rem 0.6rem;
+    border: 1px solid var(--border);
+    background: var(--bg-page);
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+}
+.made-with-tag svg { width: 1.1rem; height: 1.1rem; color: var(--accent); }
+.made-with-tag b { color: var(--text-heading); font-weight: 700; }
+.made-with-tag:hover { border-color: var(--accent); }
+.made-with-cmd {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg-section);
+    border: 1px solid var(--border);
+    font-size: 0.7rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-all;
+    user-select: all;
+}
+<?/style?>
+<div class="made-with">
+    <a class="made-with-tag" href="/projects/$tool">
+        <span>Made with</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#project-$tool"/></svg>
+        <b>$tool</b>
+    </a>
+    <?if cond="$cmd"?><code class="made-with-cmd">$cmd</code><?/if?>
+</div>
+<?/component?>

@@ -18,7 +18,7 @@
 <?map over="projects" as="p"?>
 <?if cond="$p.section == research"?>
 <div id="$p.id" class="feature-anchor">
-<?use id="project-feature" pid="$p.id" name="$p.name" icon="$p.icon" eyebrow="$p.eyebrow" tagline="$p.tagline" status="$p.status" meta="$p.meta" caveat="$p.caveat"?>
+<?use id="project-feature" pid="$p.id" name="$p.name" icon="$p.icon" eyebrow="$p.eyebrow" tagline="$p.tagline" status="$p.status" meta="$p.meta" caveat="$p.caveat" made="$p.made_with" repro="$p.repro"?>
     <?block slot="prose"?>$p.body<?/block?>
 </?use?>
 </div>

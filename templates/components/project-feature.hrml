@@ -7,6 +7,8 @@
 <?bind var="status"/?>
 <?bind var="meta"/?>
 <?bind var="caveat"/?>
+<?bind var="made"/?>
+<?bind var="repro"/?>
 <?style?>
 .project-status { font-family: var(--font-mono); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin: 0 0 1rem; }
 .project-caveat { margin-top: 1rem; padding-left: 1rem; border-left: 3px solid var(--accent); color: var(--text-muted); font-size: 0.85rem; line-height: 1.6; }
@@ -23,7 +25,10 @@
         <?slot id="prose"?>
         <?if cond="$caveat"?><p class="project-caveat">$caveat</p><?/if?>
     <?/block?>
-    <?block slot="figure"?><?use id="project-figure" pid="$pid"?></?use?><?/block?>
+    <?block slot="figure"?>
+        <?use id="project-figure" pid="$pid"?></?use?>
+        <?if cond="$made"?><?use id="made-with" tool="$made" cmd="$repro"?></?use?><?/if?>
+    <?/block?>
     <?block slot="links"?><?if cond="$meta"?><span class="meta">$meta</span><?/if?><?/block?>
 </?use?>
 <?/component?>
