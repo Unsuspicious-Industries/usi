@@ -1,0 +1,15 @@
+{
+  "upstream": "Wirt",
+  "revision": "dc2322709bd7f24e89f5041710638143dc19c731",
+  "upstream_files": {
+    "demo/ui/pages/index.hrml": "8398f4792aa985e9008ae8baaeff797fef4aa7a6cb4a9f7d40bb3345e25195ae",
+    "demo/ui/static/js/playground.js": "05f50854767e67dd3429cf07073e5fb2754652d0f93c961e794bd9206f77dc72",
+    "demo/fixtures/c-addition-qwen3.5-0.8b.json": "741b66cb0fca112c8af928456774c0a49b74771fa218c201414e4bd2d755114c"
+  },
+  "site_files": {
+    "templates/pages/wirt.hrml": "8d2d0dbecc18c018c5fa55dbbf69ffd8db2752aeb9bff11c375c2638952e88a3",
+    "static/js/wirt-playground.js": "6b345516073feb84cd543b0b4ecc495ba9b492338703beb12af54a101e88ce5e",
+    "static/wirt/c-addition-qwen3.5-0.8b.json": "741b66cb0fca112c8af928456774c0a49b74771fa218c201414e4bd2d755114c"
+  },
+  "adaptation": "Reproduced by tools/sync-wirt-ui.py: corporate palette aliases, narrow-layout wrapping, existing site layout/footer, Wirt label and script path, explicit source-preview notice, optional static replay button/listener. All API/generation logic unchanged; fixture byte-identical. Wirt remains authoritative. No live backend qualification or public rollout implied."
+}

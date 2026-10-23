@@ -132,6 +132,15 @@ rounded to whole units. Its `embedding.py` computes Euclidean distance between
 mean-pooled output logits. These examples were not reproduced here and do not
 establish political scores or cross-model comparability.
 
+## Wirt playground source preview
+
+`/wirt` reuses Wirt's playground and unchanged relative-path client. Exact
+upstream hashes and the palette/layout adaptations are recorded in
+`tools/wirt-ui-source.json`. This source preview is not live backend
+qualification: production needs a same-origin `/playground/*` proxy to the
+qualified API. Do not expose a working-demo link before that route and an actual
+generation have been checked together.
+
 ## Checks
 
 ```sh

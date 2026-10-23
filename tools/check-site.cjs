@@ -144,6 +144,7 @@ async function run() {
         if (artifacts) fs.writeFileSync(path.join(artifacts, 'results.json'),
             JSON.stringify({ metadata, records, errors, animation: true, reducedMotion: true }, null, 2));
         console.log('PASS: layout, decoded images, project marks/links, anchors, keyboard menu, GIF, reduced motion');
+        await require('./check-wirt.cjs')(browser, base, artifacts);
     } finally {
         await browser.close();
     }

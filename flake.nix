@@ -54,6 +54,7 @@
           cd ./source
           cmp templates/components/project-icons.hrml ${usi-ui.lib.projectIconsSprite}
           cmp templates/components/project-icon.hrml ${usi-ui.lib.projectIconComponent}
+          python3 tools/sync-wirt-ui.py --check
           xrml build --palette ${palette} >/dev/null
           python3 ${usi-ui}/tools/check-project-icons.py \
             --sprite templates/components/project-icons.hrml \
@@ -70,7 +71,7 @@
 
       devShells.${system}.default = pkgs.mkShell {
         name = "usi-site";
-        packages = [ xrml ];
+        packages = [ xrml pkgs.python3 ];
         shellHook = ''
           export USI_PALETTE=${palette}
           cat <<'EOF'
@@ -92,6 +93,15 @@ EOF
             set -eu
             [ "$#" -gt 0 ] || set -- serve .
             exec ${xrml}/bin/xrml "$@" --palette "''${USI_PALETTE:-${palette}}"
+          ''}";
+        };
+        check-preview = {
+          type = "app";
+          meta.description = "Build and check an isolated loopback-only static preview";
+          program = "${pkgs.writeShellScript "usi-check-preview" ''
+            set -eu
+            exec ${pkgs.python3}/bin/python3 ${self}/tools/check-preview.py \
+              ${self.packages.${system}.site} ${self.apps.${system}.check-browser.program}
           ''}";
         };
         # Optional end-to-end checks: keep the browser out of the ordinary site
