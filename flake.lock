@@ -78,11 +78,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1791512685,
-        "narHash": "sha256-6d00pDQWiyh73lYHHRq93nGUr7Dexex2vc2j5h89lGU=",
+        "lastModified": 1792775062,
+        "narHash": "sha256-3URoXBKOZ0AmXQD5yJyY7oMUIBOyyAfF0oMI7i930oQ=",
         "ref": "refs/heads/main",
-        "rev": "8a6d984536c97403a30ea855df44a1ae7f58bc35",
-        "revCount": 15,
+        "rev": "b638f42d7a6b1eda0b4eb4923f8f3dd04b3e9950",
+        "revCount": 26,
         "type": "git",
         "url": "ssh://git@github.com/Unsuspicious-Industries/ui.git"
       },
