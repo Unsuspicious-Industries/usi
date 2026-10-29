@@ -124,7 +124,7 @@ a.card-preview:hover .card-preview-name {
 
 <?use id="hero-cmp"?>
     <?title?>Formal Systems with <span class="blur text-accent">blurred</span> edges<?/title?>
-    <?description?><?accent?>Unsuspicious Industries</?accent?> is a research collective working across computer science, critical theory and the natural sciences.<?/description?>
+    <?description?><accent>Unsuspicious Industries</accent> is a research collective working across computer science, critical theory and the natural sciences.<?/description?>
 </?use?>
 
 <?use id="section-cmp"?>

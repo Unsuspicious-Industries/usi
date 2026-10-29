@@ -12,7 +12,7 @@
 
 <?use id="hero-cmp"?>
     <?label?>Research<?/label?>
-    <?title?> Studying complex systems with <?accent?>formal tools<?/accent?> and <?accent?>weird ideas<?/accent?>.<?/title?>
+    <?title?> Studying complex systems with <accent>formal tools</accent> and <accent>weird ideas</accent>.<?/title?>
 </?use?>
 
 <?map over="projects" as="p"?>

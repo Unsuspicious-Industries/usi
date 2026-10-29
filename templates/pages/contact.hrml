@@ -55,7 +55,7 @@ main .hero::before { display: none; }
 
 <?use id="hero-cmp"?>
     <?label?>Contact<?/label?>
-    <?title?>Write, or <?accent?>talk<?/accent?>.<?/title?>
+    <?title?>Write, or <accent>talk</accent>.<?/title?>
 <?/use?>
 
 <section class="contact">

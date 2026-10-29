@@ -39,7 +39,7 @@ main .hero::before { display: none; }
 
 <?use id="hero-cmp"?>
     <?label?>Projects<?/label?>
-    <?title?>Research <?accent?>software<?/accent?> and <?accent?>infrastructure<?/accent?>.<?/title?>
+    <?title?>Research <accent>software</accent> and <accent>infrastructure</accent>.<?/title?>
 <?/use?>
 
 <section class="pgroup">
